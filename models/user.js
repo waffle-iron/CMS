@@ -1,0 +1,20 @@
+/**
+ * Created by sghaida on 5/11/2017.
+ */
+
+var mongo   = require('mongoose'),
+    Schema  = mongo.Schema;
+
+var userSchema = new Schema({
+    groupNumber: String,
+    fullName: String,
+    emailAddress: String,
+    department: String,
+    lastLoginDate: {type: Date, default: Date.now},
+    listOfApps: [{
+        type: Schema.Types.ObjectId,
+        ref: 'App'
+    }]
+});
+
+module.exports = mongo.model('User', userSchema);
