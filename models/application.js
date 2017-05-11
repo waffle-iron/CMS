@@ -5,7 +5,7 @@
 var mongo   = require('mongoose'),
     Schema  = mongo.Schema;
 
-var appSchema = new Schema({
+var applicationSchema = new Schema({
     title: String,
     body: String,
     imageUrl: {type: String, default: ''},
@@ -24,4 +24,4 @@ var appSchema = new Schema({
     }],
 });
 
-module.exports = mongo.model('App', appSchema);
+module.exports = mongo.model('Application', applicationSchema);
