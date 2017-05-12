@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+var express     = require('express'),
+    router      = express.Router(),
+    passport    = require('passport'),
+    auth        = require('../middleware/authentication');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', auth.isLoggedIn, function(req, res, next) {
+  console.log(req.currentUser);
+  res.render('index');
 });
 
 module.exports = router;

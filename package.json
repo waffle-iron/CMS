@@ -17,6 +17,9 @@
     "mongoose": "^4.9.8",
     "morgan": "~1.8.1",
     "passport": "^0.3.2",
+    "passport-activedirectory": "^1.0.4",
+    "passport-ldapauth": "^1.0.0",
+    "remove": "^0.1.5",
     "serve-favicon": "~2.4.2"
   }
 }

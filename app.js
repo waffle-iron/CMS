@@ -8,14 +8,17 @@ var express                 = require('express'),
     bodyParser              = require('body-parser'),
     mongo                   = require('mongoose'),
     passport                = require('passport'),
+    LdapStrategy            = require('passport-ldapauth').Strategy,
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
+    conv                    = require('binstring'),
     seedDB                  = require('./db/seeds');
 
 /* Routes */
 var index       = require('./routes/index'),
     users       = require('./routes/users'),
-    login       = require('./routes/login');
+    login       = require('./routes/login'),
+    logout      = require('./routes/logout');
 
 var app = express();
 
@@ -58,14 +61,43 @@ app.use(expressSession({
     secret: '=25_ar;p1100',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000}
+    cookie: { maxAge: 10800000} // 3h
 }));
 
+
+var ldapOpts = {
+    server: {
+        url: 'ldap://10.1.0.230:3268',
+        bindDn: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
+        bindCredentials: 'Admin1Admin2@',
+        searchBase: 'dc=ccg,dc=local',
+        searchFilter: '(&(objectcategory=person)(objectclass=user)(|(samaccountname={{username}})(mail={{username}})))',
+        searchAttributes: [
+            'displayName',
+            'mail',
+            'samaccountname',
+            'emoloyeeid',
+            'title',
+            'department',
+            'co',
+            'physicaldeliveryofficename',
+            'thumbnailphoto'
+        ],
+    }
+};
+
+passport.use(new LdapStrategy(ldapOpts));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//passport.serializeUser (User.serializeUser());
-//passport.deserializeUser (User.deserializeUser());
+passport.serializeUser(function(user, done) {
+    //user.thumbnailPhoto = conv(user.thumbnailPhoto , {in: 'binary', out:'bytes'});
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 //passport.use(new localStrategy(User.authenticate()));
 
 
@@ -79,10 +111,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(flash());
 
+
+//define global variables
+//pass the user info implicitly for every single route
+app.use(function (req, res, next) {
+    console.log(req.user);
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
+    next();
+});
+
 /* define the used routes*/
 app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
+app.use('/logout', logout);
 
 /*catch 404 and forward to error handler*/
 app.use(function(req, res, next) {
