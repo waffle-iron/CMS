@@ -14,7 +14,8 @@ var express                 = require('express'),
 
 /* Routes */
 var index       = require('./routes/index'),
-    users       = require('./routes/users');
+    users       = require('./routes/users'),
+    login       = require('./routes/login');
 
 var app = express();
 
@@ -81,6 +82,7 @@ app.use(flash());
 /* define the used routes*/
 app.use('/', index);
 app.use('/users', users);
+app.use('/login', login);
 
 /*catch 404 and forward to error handler*/
 app.use(function(req, res, next) {
