@@ -13,7 +13,7 @@ var userSchema = new Schema({
     lastLoginDate: {type: Date, default: Date.now},
     listOfApps: [{
         type: Schema.Types.ObjectId,
-        ref: 'App'
+        ref: 'Application'
     }]
 });
 
