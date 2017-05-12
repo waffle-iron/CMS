@@ -10,14 +10,8 @@
     <script src="javascripts/semantic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
     <style type="text/css">
-        body {
-            background-color: #000;
-        }
         body > .grid {
             height: 100%;
-        }
-        .image {
-            margin-top: -100px;
         }
         .column {
             max-width: 450px;
@@ -27,8 +21,8 @@
 </head>
 <body>
     <div id="landing-header">
-        <h1 class="welcome-message">Welcome to Your Portal</h1>
-        <div class="ui middle aligned center aligned grid">
+        <!--<h1 class="welcome-message">Welcome to Your Portal</h1>-->
+        <div class="ui middle aligned center aligned grid" style="margin-top: 10%">
             <div class="ui column segment">
                 <h2 class="ui teal image header">
                     <div class="content">
@@ -40,13 +34,13 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" name="email" placeholder="E-mail address">
+                                <input type="text" name="user[username]" placeholder="E-mail Address">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="password" placeholder="Password">
+                                <input type="password" name="user[password]" placeholder="Password">
                             </div>
                         </div>
                         <div class="ui fluid large teal submit button">Login</div>
@@ -62,11 +56,4 @@
             </div>
         </div>
     </div>
-    <ul class="slideshow">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
 <% include partials/footer.ejs%>
