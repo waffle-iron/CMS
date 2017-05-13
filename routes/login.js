@@ -17,8 +17,16 @@ router.post('/', passport.authenticate('ldapauth',{
         failureFlash: true,
         successFlash: true
     }), function(req, res) {
-        res.redirect(req.session.returnTo || '/');
-        delete req.session.returnTo;
+        console.log('you logged in as: ' + req.user.mail);
+        User.findOne({employeeid: req.user.employeeID}, function (err, user) {
+            if(err){
+                console.log(err);
+            } else {
+                req.session.passport.user._id  = user._id.toString();
+                res.redirect(req.session.returnTo || '/');
+                delete req.session.returnTo;
+            }
+        });
 });
 
 /*router.post('/', passport.authenticate('ldapauth', {

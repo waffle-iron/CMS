@@ -65,7 +65,7 @@ app.use(expressSession({
     secret: '=25_ar;p1100',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 10800000} // 3h
+    cookie: { maxAge: 10800000, httpOnly: true} // 3h
 }));
 
 
@@ -80,7 +80,7 @@ var ldapOpts = {
             'displayName',
             'mail',
             'samaccountname',
-            'emoloyeeid',
+            'employeeid',
             'title',
             'department',
             'co',
@@ -96,11 +96,25 @@ app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
     //user.thumbnailPhoto = conv(user.thumbnailPhoto , {in: 'binary', out:'bytes'});
-    done(null, user);
+    var sessionUser = {
+        _id: user._id,
+        dn: user.dn,
+        employeeid: user.employeeID,
+        name: user.displayName,
+        samaccountname: user.sAMAccountName,
+        mail: user.mail,
+        title: user.title,
+        office: user.physicalDeliveryOfficeName,
+        country: user.co,
+        department: user.department,
+        thumbnail: new Buffer(user.thumbnailPhoto).toString('base64')
+    };
+
+    done(null, sessionUser);
 });
 
-passport.deserializeUser(function(user, done) {
-    done(null, user);
+passport.deserializeUser(function(sessionUser, done) {
+    done(null, sessionUser);
 });
 //passport.use(new localStrategy(User.authenticate()));
 
@@ -121,7 +135,7 @@ app.use(flash());
 app.use(function (req, res, next) {
     console.log(req.user);
     res.locals.currentUser = req.user;
-    //req.locals.returnTo = req.path;
+    //res.locals.currentUserId = req.
     res.locals.error = req.flash('error');
     res.locals.success = req.flash('success');
     next();
