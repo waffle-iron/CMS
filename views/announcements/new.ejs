@@ -1,0 +1,41 @@
+<% include ../partials/header.ejs %>
+
+<form class="ui form" action="/announcements" method="post">
+    <h4 class="ui dividing header">Add new Announcement</h4>
+    <div class="two fields">
+        <div class="field">
+            <input type="text" value="test" name="announcement[title]">
+        </div>
+        <div class="field">
+            <input class="ui input" type="text" value="test test test" name="announcement[body]">
+        </div>
+    </div>
+
+    <div class="two fields">
+        <div class="field">
+            <input class="ui input" type="text" value="test test test" name="announcement[department]">
+        </div>
+        <div class="field">
+            <select class="ui search selection multiple dropdown" id="multi-select" name="announcement[tags]">
+                <option value="">States</option>
+                <option value="5917236081c0711c4c417575">Alabama</option>
+                <option value="5917236081c0711c4c417576">Alaska</option>
+                <option value="5917236081c0711c4c417577">Arizona</option>
+                <option value="5917236081c0711c4c417578">Arkansas</option>
+                <option value="5917236081c0711c4c417579">California</option>
+                <option value="5917236081c0711c4c41757a">Ohio</option>
+                <option value="5917236081c0711c4c41757b">Oklahoma</option>
+                <option value="5917236081c0711c4c41757c">Oregon</option>
+            </select>
+        </div>
+    </div>
+    <div class="field">
+        <button class="ui primary button">Submit</button>
+    </div>
+</form>
+
+<script>
+    $('#multi-select').dropdown();
+</script>
+
+<% include ../partials/header.ejs %>
