@@ -6,11 +6,18 @@ var mongo   = require('mongoose'),
     Schema  = mongo.Schema;
 
 var applicationSchema = new Schema({
-    title: String,
-    body: String,
+    name: String,
+    description: String,
     imageUrl: {type: String, default: ''},
     creationDate: {type: Date, default: Date.now},
     isGlobal: {type: Boolean, default: false},
+    owner: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Department'
+        },
+        name: String
+    },
     author: {
         id: {
             type: Schema.Types.ObjectId,
