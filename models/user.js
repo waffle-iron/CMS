@@ -10,7 +10,6 @@ var userSchema = new Schema({
     fullName: String,
     emailAddress: String,
     department: String,
-    lastLoginDate: {type: Date, default: Date.now},
     listOfApps: [{
         type: Schema.Types.ObjectId,
         ref: 'Application'
