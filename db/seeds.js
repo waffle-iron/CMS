@@ -32,22 +32,31 @@ var tags = [
 
 var users = [
     {
-        groupNumber: '418732',
-        fullName: 'Saddam Abu Ghaida',
-        emailAddress: 'sghaida@ccc.net',
+        employeeid: '418732',
+        name: 'Saddam Abu Ghaida',
+        mail: 'SGhaida@ccc.net',
+        title: 'SR IT SUPPORT ENGINEER',
+        office: 'MOA',
         department: 'ISD',
+        country: 'Greece',
         listOfApps: []
     },{
-        groupNumber: '418732',
-        fullName: 'Robert Naccache',
-        emailAddress: 'rnaccache@ccc.net',
+        employeeid: '418733',
+        name: 'Robert Naccache',
+        mail: 'rnaccache@ccc.net',
+        title: 'IT Support Engineer',
         department: 'ISD',
+        office: 'MOA',
+        country: 'Greece',
         listOfApps: []
     },{
-        groupNumber: '418732',
-        fullName: 'Nader Barakat',
-        emailAddress: 'nbarakat@ccc.net',
+        employeeid: '418734',
+        name: 'Nader Barakat',
+        mail: 'nbarakat@ccc.net',
+        title: 'Sr. IT Support Engineer',
         department: 'ISD',
+        office: 'MOA',
+        country: 'Greece',
         listOfApps: []
     }
 ]
@@ -74,7 +83,7 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            departments.forEach(function (seed) {
+            tags.forEach(function (seed) {
                 Tag.create(seed, function (err, tag) {
                     if(err){
                         console.log(err);
@@ -106,7 +115,15 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            //TODO: POPLATE USER
+            users.forEach(function (seed) {
+                User.create(seed, function (err, user) {
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log(user);
+                    }
+                });
+            });
         }
     });
 }
