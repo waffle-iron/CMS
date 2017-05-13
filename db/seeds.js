@@ -30,6 +30,28 @@ var tags = [
     {name: 'services', description: 'Services related'},
 ]
 
+var users = [
+    {
+        groupNumber: '418732',
+        fullName: 'Saddam Abu Ghaida',
+        emailAddress: 'sghaida@ccc.net',
+        department: 'ISD',
+        listOfApps: []
+    },{
+        groupNumber: '418732',
+        fullName: 'Robert Naccache',
+        emailAddress: 'rnaccache@ccc.net',
+        department: 'ISD',
+        listOfApps: []
+    },{
+        groupNumber: '418732',
+        fullName: 'Nader Barakat',
+        emailAddress: 'nbarakat@ccc.net',
+        department: 'ISD',
+        listOfApps: []
+    }
+]
+
 function seedDB() {
 
     Department.remove({}, function (err) {
