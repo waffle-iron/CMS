@@ -4,6 +4,7 @@
 
 var express     = require('express'),
     passport    = require('passport'),
+    User        = require('../models/user')
     router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -13,17 +14,8 @@ router.get('/', function(req, res, next) {
 router.post('/', passport.authenticate('ldapauth', {
         session: true,
         successReturnToOrRedirect: '/',
-        failureRedirect: '/login'
-    }),
-    function(req, res) {
-        // var returnTo = '/'
-        // if (req.session.returnTo) {
-        //     returnTo = req.session.returnTo
-        //     delete req.session.returnTo
-        // }
-        //console.log(res)
-        //res.send({status: 'ok'});
-    }
+        failureRedirect: '/login',
+    })
 );
 
 module.exports = router;
