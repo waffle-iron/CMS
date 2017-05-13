@@ -15,10 +15,11 @@ var express                 = require('express'),
     seedDB                  = require('./db/seeds');
 
 /* Routes */
-var index       = require('./routes/index'),
-    users       = require('./routes/users'),
-    login       = require('./routes/login'),
-    logout      = require('./routes/logout');
+var index           = require('./routes/index'),
+    users           = require('./routes/users'),
+    announcements   = require('./routes/announcements'),
+    login           = require('./routes/login'),
+    logout          = require('./routes/logout');
 
 var app = express();
 
@@ -124,6 +125,7 @@ app.use(function (req, res, next) {
 
 /* define the used routes*/
 app.use('/', index);
+app.use('/announcements', announcements);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/logout', logout);
