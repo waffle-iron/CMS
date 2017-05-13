@@ -7,9 +7,12 @@ var mongo   = require('mongoose'),
 
 var userSchema = new Schema({
     groupNumber: String,
-    fullName: String,
-    emailAddress: String,
+    name: String,
+    mail: String,
+    title: String,
     department: String,
+    office: String,
+    country: String,
     listOfApps: [{
         type: Schema.Types.ObjectId,
         ref: 'Application'

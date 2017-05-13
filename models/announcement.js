@@ -23,7 +23,7 @@ var announcementSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        emailAddress: String
+        name: String
     },
     tags : [{
         type: Schema.Types.ObjectId,
