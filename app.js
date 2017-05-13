@@ -53,6 +53,9 @@ process.on('SIGINT', function() {
     });
 });
 
+/* populate the database with some initial data*/
+seedDB();
+
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
