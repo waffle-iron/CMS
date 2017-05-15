@@ -12,7 +12,6 @@ var express                 = require('express'),
     btoa                    = require('btoa'),
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
-    conv                    = require('binstring'),
     seedDB                  = require('./db/seeds');
 
 /* Routes */
