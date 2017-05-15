@@ -1,8 +1,7 @@
 /**
  * Created by sghaida on 5/15/2017.
  */
-var btoa = require('btoa'),
-    encoder = require('text-encoding');
+var btoa = require('btoa');
 
 
 function base64ArrayBuffer(arrayBuffer) {
