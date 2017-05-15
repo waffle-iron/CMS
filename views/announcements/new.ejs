@@ -1,44 +1,157 @@
 <% include ../partials/header.ejs %>
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<style>
+    #announce-drop {
+        min-width: 11em;
+    }
+    #dpt-drop {
+        min-width: 8em;
+    }
+    #modal-preview {
+        margin: 0!important;
+    }
+    .footer {
+        margin-top: 5px!important;
+    }
+</style>
 
-<form class="ui form" action="/announcements" method="post">
-    <h4 class="ui dividing header">Add new Announcement</h4>
-    <div class="two fields">
-        <div class="field">
-            <input type="text" value="test" name="announcement[title]">
-        </div>
-        <div class="field">
-            <input class="ui input" type="text" value="test test test" name="announcement[body]">
+    <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+        <!--Header -->
+        <h2 class="ui icon header center aligned">
+            <i class="announcement icon"></i>
+            <div class="content">
+                Announcement Form
+                <div class="sub header">Use the Below Form to Submit a New Announcement</div>
+            </div>
+        </h2>
+        <!--Form Starts here -->
+        <div class="ui segment">
+            <form class="ui form">
+                <div class="fields">
+                    <div class="field new-pic">
+                        <img class="item" src="https://placeimg.com/135/135/any">
+                    </div>
+                    <div class="fifteen wide field">
+                        <div class="fields">
+                            <div class="required twelve wide field">
+                                <label>Title</label>
+                                <input type="text" name="Title" placeholder="Title" class="new-title">
+                            </div>
+                            <!--Department Dropdown List -->
+                            <div class="required four wide field">
+                                <label>Department</label>
+                                <div class="field">
+                                    <select class="ui search selection dropdown" name="announcement[department]">
+                                        <option value="">Department</option>
+                                        <% departments.forEach(function(dep){ %>
+                                        <option class="new-department" value="<%= dep._id%>"><%= dep.name%></option>
+                                        <% })%>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <!-- duration dropdown list -->
+                            <div class="five wide field">
+                                <label>Announcment Duration</label>
+                                <div class="ui selection dropdown" id="announce-drop">
+                                    <input type="hidden" name="gender">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">1 Month (Default)</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="1">1 Month</div>
+                                        <div class="item" data-value="0">2 Weeks</div>
+                                        <div class="item" data-value="0">1 Week</div>
+                                        <div class="item" data-value="0">3 Days</div>
+                                        <div class="item" data-value="0">1 Day</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="required eleven wide field">
+                                <label>Tag</label>
+                                <div class="field">
+                                    <select class="ui search selection multiple fluid dropdown new-tags" name="announcement[tags]">
+                                        <option value="">Tag</option>
+                                        <% tags.forEach(function(tag){ %>
+                                        <option  value="<%= tag._id%>"><%= tag.name%></option>
+                                        <% })%>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--WYSIWYG Editor CKeditor-->
+                <div class="required field">
+                    <label>Description</label>
+                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                            Enter Your description Here
+                        </textarea>
+                    <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        CKEDITOR.replace( 'editor1', {
+                            customConfig: '/javascripts/config.js'
+                        });
+                    </script>
+                </div>
+            </form>
+            <!--submission section -->
+            <footer class="ui grid footer">
+                <div class="two column row">
+                    <div class="ui checkbox left floated column">
+                        <input type="checkbox" tabindex="0" class="hidden">
+                        <label>Add New Announcement</label>
+                    </div>
+                    <div class="right floated right aligned column">
+                        <button id="preview" class="ui button">Preview</button>
+                        <button class="ui button" type="submit">Submit</button>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 
-    <div class="two fields">
-        <div class="field">
-            <input class="ui input" type="text" value="test test test" name="announcement[imageUrl]">
-        </div>
-        <div class="field">
-            <select class="ui search selection multiple dropdown" id="multi-select" name="announcement[tags]">
-                <option value="">Tag</option>
-                <% tags.forEach(function(tag){ %>
-                    <option value="<%= tag._id%>"><%= tag.name%></option>
-                <% })%>
-            </select>
-        </div>
-        <div class="field">
-            <select class="ui search selection dropdown" id="multi-select" name="announcement[department]">
-                <option value="">Department</option>
-                <% departments.forEach(function(dep){ %>
-                <option value="<%= dep._id%>"><%= dep.name%></option>
-                <% })%>
-            </select>
+    <!-- Set Modal -->
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="ui raised very padded text segment" id="modal-preview">
+            <div class="ui items">
+                <div class="item">
+                    <a class="ui small image">
+                        <img class="item" src="https://placeimg.com/125/125/any">
+                        <h5 class="article-date"></h5>
+                        <h4>Author</h4>
+                        <p class="article-author">Robert Naccache</p>
+                        <h4>Tags</h4>
+                        <p class="small ui blue basic label">ISD</p>
+                        <div class="small ui red basic label">Important</div>
+                    </a>
+                    <div class="content">
+                        <a class="header article-title"></a>
+                        <div class="description">
+                            <p class="article-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="field">
-        <button class="ui primary button">Submit</button>
-    </div>
-</form>
-
 <script>
-    $('#multi-select').dropdown();
+    $('.ui.selection.dropdown')
+        .dropdown()
+    ;
+    //populates modal on Preview click
+    $('#preview').click(function(){
+        var d = new Date(Date.now());
+        $(".article-author").text($('Robert Naccache'));
+        $(".article-date").text(d.toDateString());
+        $(".article-title").text($('.new-title').val());
+        $(".article-text").html(CKEDITOR.instances.editor1.getData());
+    })
+    //opens modal on preview click
+    $('.ui.modal')
+        .modal('attach events', '#preview', 'show')
+    ;
 </script>
 
 <% include ../partials/header.ejs %>
