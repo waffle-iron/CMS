@@ -29,7 +29,7 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
             announcement.department = req.body.announcement.department
             announcement.save();
 
-            res.render('/announcements/view');
+            res.render('announcements');
         }
     });
 })

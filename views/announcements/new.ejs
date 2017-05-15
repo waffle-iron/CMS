@@ -26,7 +26,7 @@
         </h2>
         <!--Form Starts here -->
         <div class="ui segment">
-            <form class="ui form">
+            <form class="ui form" action="/announcements" method="post">
                 <div class="fields">
                     <div class="field new-pic">
                         <img class="item" src="https://placeimg.com/135/135/any">
@@ -35,7 +35,7 @@
                         <div class="fields">
                             <div class="required twelve wide field">
                                 <label>Title</label>
-                                <input type="text" name="Title" placeholder="Title" class="new-title">
+                                <input type="text" placeholder="Title" class="new-title" name="announcement[title]">
                             </div>
                             <!--Department Dropdown List -->
                             <div class="required four wide field">
@@ -54,18 +54,7 @@
                             <!-- duration dropdown list -->
                             <div class="five wide field">
                                 <label>Announcment Duration</label>
-                                <div class="ui selection dropdown" id="announce-drop">
-                                    <input type="hidden" name="gender">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">1 Month (Default)</div>
-                                    <div class="menu">
-                                        <div class="item" data-value="1">1 Month</div>
-                                        <div class="item" data-value="0">2 Weeks</div>
-                                        <div class="item" data-value="0">1 Week</div>
-                                        <div class="item" data-value="0">3 Days</div>
-                                        <div class="item" data-value="0">1 Day</div>
-                                    </div>
-                                </div>
+                                <input type="number" name="announcement[archiveAfter]" >
                             </div>
                             <div class="required eleven wide field">
                                 <label>Tag</label>
@@ -83,31 +72,29 @@
                 </div>
                 <!--WYSIWYG Editor CKeditor-->
                 <div class="required field">
-                    <label>Description</label>
-                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                    <label>Content</label>
+                    <textarea name="announcement[body]" id="editor1" rows="10" cols="80">
                             Enter Your description Here
                         </textarea>
                     <script>
                         // Replace the <textarea id="editor1"> with a CKEditor
-                        CKEDITOR.replace( 'editor1', {
-                            customConfig: '/javascripts/config.js'
-                        });
+                        CKEDITOR.replace( 'editor1', {customConfig: '/javascripts/config.js'});
                     </script>
                 </div>
+                <!--submission section -->
+                <footer class="ui grid footer">
+                    <div class="two column row">
+                        <div class="ui checkbox left floated column">
+                            <input type="checkbox" tabindex="0" class="hidden">
+                            <label>Add New Announcement</label>
+                        </div>
+                        <div class="right floated right aligned column">
+                            <button id="preview" class="ui button">Preview</button>
+                            <button class="ui button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </footer>
             </form>
-            <!--submission section -->
-            <footer class="ui grid footer">
-                <div class="two column row">
-                    <div class="ui checkbox left floated column">
-                        <input type="checkbox" tabindex="0" class="hidden">
-                        <label>Add New Announcement</label>
-                    </div>
-                    <div class="right floated right aligned column">
-                        <button id="preview" class="ui button">Preview</button>
-                        <button class="ui button" type="submit">Submit</button>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 
