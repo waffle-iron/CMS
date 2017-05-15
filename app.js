@@ -9,6 +9,7 @@ var express                 = require('express'),
     mongo                   = require('mongoose'),
     passport                = require('passport'),
     LdapStrategy            = require('passport-ldapauth').Strategy,
+    btoa                    = require('btoa'),
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
     conv                    = require('binstring'),
@@ -107,7 +108,7 @@ passport.serializeUser(function(user, done) {
         office: user.physicalDeliveryOfficeName,
         country: user.co,
         department: user.department,
-        thumbnail: new Buffer(user.thumbnailPhoto).toString('base64')
+        thumbnail: btoa(user.thumbnailPhoto)
     };
 
     done(null, sessionUser);
