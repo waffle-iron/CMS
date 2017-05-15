@@ -55,7 +55,7 @@
 
         <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu">
           <img src="https://semantic-ui.com/images/avatar2/large/matthew.png">
-          <p><%= currentUser.displayName%></p>
+          <p><%= currentUser.samaccountname%></p>
           <div class="menu dropdown" id='dropdown-right-menu' >
             <div class="ui message">
               <div class="ui card">
@@ -63,12 +63,12 @@
                   <img src="https://semantic-ui.com/images/avatar2/large/matthew.png">
                 </div>
                 <div class="content">
-                  <h1 class="header"><%= currentUser.displayName%></h1>
+                  <h1 class="header"><%= currentUser.name%></h1>
                   <div class="meta">
                     <span class="date"><%= currentUser.title%></span>
                   </div>
                   <div class="description">
-                    <i class="greece flag"></i><span><%= currentUser.physicalDeliveryOfficeName%></span>
+                    <i class="<%= currentUser.country.toLowerCase()%> flag"></i><span><%= currentUser.office%></span>
                   </div>
                 </div>
                 <div class="extra content right aligned ">
