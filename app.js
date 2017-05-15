@@ -9,9 +9,7 @@ var express                 = require('express'),
     mongo                   = require('mongoose'),
     passport                = require('passport'),
     LdapStrategy            = require('passport-ldapauth').Strategy,
-    fs                      = require('fs'),
-    btoa                    = require('btoa'),
-    encoder                 = require('./helpers/encoder'),
+    // fs                      = require('fs'),
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
     seedDB                  = require('./db/seeds');
@@ -89,6 +87,7 @@ var ldapOpts = {
             'physicaldeliveryofficename',
             'thumbnailphoto'
         ],
+        includeRaw: true
     }
 };
 
@@ -109,9 +108,8 @@ passport.serializeUser(function(user, done) {
         office: user.physicalDeliveryOfficeName,
         country: user.co || 'greece',
         department: user.department,
-        thumbnail:  user.thumbnailPhoto
+        thumbnail:  Buffer.from(user._raw.thumbnailPhoto,'binary').toString('base64')
     };
-    //var dst  =fs.writeFileSync(path.join(__dirname, 'public/images/' + sessionUser.employeeid), sessionUser.thumbnail,'binary');
 
     done(null, sessionUser);
 });
