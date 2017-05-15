@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "async": "^2.4.0",
+    "base64-js": "^1.2.0",
     "body-parser": "~1.17.1",
     "btoa": "^1.1.2",
     "connect-ensure-login": "^0.1.1",
@@ -23,6 +24,7 @@
     "passport-activedirectory": "^1.0.4",
     "passport-ldapauth": "^1.0.0",
     "remove": "^0.1.5",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "text-encoding": "^0.6.4"
   }
 }

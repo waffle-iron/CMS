@@ -9,7 +9,9 @@ var express                 = require('express'),
     mongo                   = require('mongoose'),
     passport                = require('passport'),
     LdapStrategy            = require('passport-ldapauth').Strategy,
+    fs                      = require('fs'),
     btoa                    = require('btoa'),
+    encoder                 = require('./helpers/encoder'),
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
     seedDB                  = require('./db/seeds');
@@ -105,10 +107,11 @@ passport.serializeUser(function(user, done) {
         mail: user.mail,
         title: user.title,
         office: user.physicalDeliveryOfficeName,
-        country: user.co,
+        country: user.co || 'greece',
         department: user.department,
-        thumbnail: btoa(user.thumbnailPhoto)
+        thumbnail:  user.thumbnailPhoto
     };
+    //var dst  =fs.writeFileSync(path.join(__dirname, 'public/images/' + sessionUser.employeeid), sessionUser.thumbnail,'binary');
 
     done(null, sessionUser);
 });
