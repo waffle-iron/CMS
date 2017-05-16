@@ -14,7 +14,7 @@ var express         = require('express'),
 
 /* View all announcements  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    Announcement.find({}, function (err, announcements) {
+    Announcement.find().populate('departments').populate('tags').exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
@@ -41,7 +41,7 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
             if(req.body['new-announcement'] === 'on') {
                 res.redirect('/announcements/new')
             } else {
-                res.render('announcements/view');
+                res.redirect('/announcements');
             }
 
         }
