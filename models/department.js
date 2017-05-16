@@ -7,7 +7,8 @@ var mongo   = require('mongoose'),
 
 var departmentSchema = new Schema({
     name: String,
-    description: String
+    description: String,
+    picture: String,
 });
 
 module.exports = mongo.model('Department', departmentSchema);

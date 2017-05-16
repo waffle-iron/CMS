@@ -7,7 +7,8 @@ var mongo   = require('mongoose'),
 
 var tagSchema = new Schema({
     name: String,
-    description: String
+    description: String,
+    color: String
 });
 
 module.exports = mongo.model('Tag', tagSchema);
