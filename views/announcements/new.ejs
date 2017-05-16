@@ -1,6 +1,9 @@
 <% include ../partials/header.ejs %>
 <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <style>
+    .body {
+        padding-bottom: 0px;
+    }
     #announce-drop {
         min-width: 11em;
     }
@@ -14,7 +17,9 @@
         margin-top: 5px!important;
     }
     .submit-div {
-        bottom: 50px;
+        position:relative;
+        float: right;
+        bottom: 36px;
         margin-right: 95px;
     }
     .img-icon {
@@ -58,7 +63,7 @@
                                     <select class="ui search selection dropdown new-dep" name="announcement[department]">
                                         <option value="">Department</option>
                                         <% departments.forEach(function(dep){ %>
-                                        <option class="new-department" value="<%= dep._id%>" data-support="<%= dep.picture%>"><%= dep.name%></option>
+                                        <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%= dep.name%></option>
                                         <% })%>
                                     </select>
                                 </div>
@@ -68,16 +73,16 @@
                             <!-- duration dropdown list -->
                             <div class="four wide field">
                                 <label>Duration</label>
-                                <input type="number" name="announcement[archiveAfter]" >
+                                <input type="number" value="30" name="announcement[archiveAfter]" >
                             </div>
                             <div class="required twelve wide field">
                                 <!-- Tag drowpdown section -->
                                 <label>Tag</label>
                                 <div class="field">
-                                    <select class="ui search selection multiple fluid dropdown new-tags" name="announcement[tags]">
+                                    <select class="ui search selection multiple dropdown new-tags" name="announcement[tags]">
                                         <option value="">Tag</option>
                                         <% tags.forEach(function(tag){ %>
-                                        <option  value="<%= tag._id%>" data-tagcolor="<%= tag.color%>"><%= tag.name%></option>
+                                        <option value="<%= tag._id%>"><%= tag.name%></option>
                                         <% })%>
                                     </select>
                                 </div>
@@ -99,9 +104,11 @@
                 <!--submission section -->
                 <footer class="ui grid footer">
                     <div class="two column row">
-                        <div class="ui checkbox left floated">
-                            <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
-                            <label>Add New Announcement</label>
+                        <div class="column">
+                            <div class="ui checkbox left floated">
+                                <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
+                                <label>Add New Announcement</label>
+                            </div>
                         </div>
                         <div class="right floated right aligned column">
                             <button class="ui button" type="submit">Submit</button>
@@ -109,12 +116,8 @@
                     </div>
                 </footer>
             </form>
-            <div class="ui grid">
-                <div class="row">
-                    <div class="right aligned column submit-div">
-                    <button id="preview" class="ui button">Preview</button>
-                    </div>
-                </div>
+            <div class="submit-div">
+                <button id="preview" class="ui button">Preview</button>
             </div>
         </div>
     </div>
@@ -160,7 +163,7 @@
         //Clear Tags and re-populate
         $('.article-tags').empty();
         for (var i=0; i<tagList.length;i++){
-            $('.article-tags').append('<p class="small ui' + 'red' + ' basic label">' + tagList[i].text + '</p>');
+            $('.article-tags').append('<p class="small ui ' + tagList.data('value') + ' basic label">' + tagList[i].text + '</p>');
         }
     })
     //opens modal on preview click
