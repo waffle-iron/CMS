@@ -14,20 +14,26 @@ var departments = [
     {name: 'ISD', description: 'Information System Department'},
     {name: 'PMV', description: 'Procurement for Machinery and Vehicles '},
     {name: 'KM', description: 'Knowledge Management'},
-    {name: 'OPS', description: 'Operations'},
-    {name: 'COMMS', description: 'Communications'},
-    {name: 'CSR', description: 'Corporate social responsibility'}
+    {name: 'CSR', description: 'Corporate social responsibility'},
+    {name: 'SVC', description: 'Services'},
+    {name: 'CIB', description: 'Consolidated Insurance Brokers'},
+    {name: 'HR', description: 'Human Resource'},
+    {name: 'MAC', description: 'Managing office Accounts'}
 ]
 
 var tags = [
-    {name: 'critical', description: 'critical'},
-    {name: 'important', description: 'important'},
-    {name: 'info', description: 'Informative'},
-    {name: 'tax', description: 'Taxation related'},
-    {name: 'travel', description: 'Travel related'},
-    {name: 'isd', description: 'ISD related'},
-    {name: 'csr', description: 'CSR Related'},
-    {name: 'services', description: 'Services related'},
+    {name: 'critical', description: 'Critical', color: 'red'},
+    {name: 'downtime', description: 'Services downtime', color: 'red'},
+    {name: 'important', description: 'Important', color: 'orange'},
+    {name: 'security', description: 'Security Related', color: 'orange'},
+    {name: 'info', description: 'Informative', color: 'yellow'},
+    {name: 'news', description: 'Mail Related', color: 'teal'},
+    {name: 'awards', description: 'Mail Related', color: 'olive'},
+    {name: 'service', description: 'Service related', color: 'blue'},
+    {name: 'tax', description: 'Tax related', color: 'green'},
+    {name: 'travel', description: 'Travel related', color: 'blue'},
+    {name: 'procedure', description: 'Procedure', color: 'green'},
+    {name: 'project', description: 'Mail Related', color: 'brown'},
 ]
 
 var users = [
