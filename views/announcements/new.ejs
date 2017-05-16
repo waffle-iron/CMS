@@ -4,8 +4,8 @@
     #announce-drop {
         min-width: 11em;
     }
-    #dpt-drop {
-        min-width: 8em;
+    .new-dep {
+        min-width: 8em!important;
     }
     #modal-preview {
         margin: 0!important;
@@ -16,6 +16,16 @@
     .submit-div {
         bottom: 50px;
         margin-right: 95px;
+    }
+    .img-icon {
+        width: 135px;
+        height: 135px;
+    }
+    .ui.label {
+        margin-bottom: 5px;
+    }
+    ui.label:first-child {
+        margin-left: 2px
     }
 </style>
 
@@ -33,7 +43,7 @@
             <form class="ui form" action="/announcements" method="post">
                 <div class="fields">
                     <div class="field new-pic">
-                        <img class="item" src="https://placeimg.com/135/135/any">
+                        <img class="item img-icon" src="/images/departments/Default.svg" alt="Default Icon">
                     </div>
                     <div class="fifteen wide field">
                         <div class="fields">
@@ -45,10 +55,10 @@
                             <div class="required four wide field">
                                 <label>Department</label>
                                 <div class="field">
-                                    <select class="ui search selection dropdown" name="announcement[department]">
+                                    <select class="ui search selection dropdown new-dep" name="announcement[department]">
                                         <option value="">Department</option>
                                         <% departments.forEach(function(dep){ %>
-                                        <option class="new-department" value="<%= dep._id%>"><%= dep.name%></option>
+                                        <option class="new-department" value="<%= dep._id%>" data-support="<%= dep.picture%>"><%= dep.name%></option>
                                         <% })%>
                                     </select>
                                 </div>
@@ -57,7 +67,7 @@
                         <div class="fields">
                             <!-- duration dropdown list -->
                             <div class="four wide field">
-                                <label>Announcment Duration</label>
+                                <label>Duration</label>
                                 <input type="number" name="announcement[archiveAfter]" >
                             </div>
                             <div class="required twelve wide field">
@@ -67,7 +77,7 @@
                                     <select class="ui search selection multiple fluid dropdown new-tags" name="announcement[tags]">
                                         <option value="">Tag</option>
                                         <% tags.forEach(function(tag){ %>
-                                        <option  value="<%= tag._id%>"><%= tag.name%></option>
+                                        <option  value="<%= tag._id%>" data-tagcolor="<%= tag.color%>"><%= tag.name%></option>
                                         <% })%>
                                     </select>
                                 </div>
@@ -116,7 +126,7 @@
             <div class="ui items">
                 <div class="item">
                     <a class="ui small image">
-                        <img class="item" src="https://placeimg.com/125/125/any">
+                        <img class="item article-img" src="/images/departments/Default.svg" alt="Department Icon">
                         <h5 class="article-date"></h5>
                         <h4>Author</h4>
                         <p><%= currentUser.name%></p>
@@ -145,11 +155,12 @@
         $('.article-date').text(today.toDateString());
         $('.article-title').text($('.new-title').val());
         $('.article-text').html(CKEDITOR.instances.editor1.getData());
+        $('.article-img').attr('src',$('.new-dep option:selected').data("support"));
 
         //Clear Tags and re-populate
         $('.article-tags').empty();
         for (var i=0; i<tagList.length;i++){
-            $('.article-tags').append('<p class="small ui blue basic label">' + tagList[i].text + '</p>');
+            $('.article-tags').append('<p class="small ui' + 'red' + ' basic label">' + tagList[i].text + '</p>');
         }
     })
     //opens modal on preview click
