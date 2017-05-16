@@ -32,9 +32,8 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
         } else {
             announcement.author.id = req.user._id;
             announcement.author.name = req.user.name;
-            req.body.announcement.tags.forEach(function(tag){
-                announcement.tags.push(tag);
-            });
+            announcement.tags =req.body.announcement.tags
+
             announcement.department = req.body.announcement.department
             announcement.save();
 
