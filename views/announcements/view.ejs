@@ -11,24 +11,27 @@
     <hr style="margin: 50px 0 50px 0;">
     <div class="ui raised very padded text  segment">
         <div class="ui items">
-            <div class="item ">
-                <a class="ui small image">
-                    <img class="item" src="https://placeimg.com/125/125/any">
-                    <h5> December 16th 2017</h5>
-                    <h4>Author</h4>
-                    <p>Robert Naccache</p>
-                    <h4>Tags</h4>
-                    <p class="small ui blue basic label">ISD</p>
-                    <div class="small ui red basic label">Important</div>
-                </a>
-                <div class="content ">
-                    <a class="header">Server Downtime Today 1:00AM</a>
-                    <div class="description">
-                        <p class="article-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam magna ligula, congue eu magna vel, ullamcorper volutpat mauris. Nullam non libero neque. Proin ultrices nulla tempor augue placerat venenatis. Curabitur lacinia mi ut bibendum tempor. Phasellus laoreet ex quis dui facilisis, nec lobortis ante dapibus. Nulla magna metus, suscipit eget urna sed, placerat dictum ipsum. Nunc tristique, lacus ut gravida tristique, mi diam egestas metus, a dictum erat justo non ligula. Aenean posuere laoreet odio, in hendrerit neque rhoncus a. Phasellus diam justo, condimentum sit amet eros ac, suscipit tempor nibh. Nam dui risus, tincidunt at ultrices vel, vulputate nec elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vehicula rhoncus elementum. Aliquam erat volutpat. Curabitur semper libero est, viverra vulputate massa laoreet et. Morbi scelerisque, nibh sit amet pharetra iaculis, tellus sapien dapibus ante, et sodales massa augue nec sapien. Quisque in felis odio. Nulla ac diam condimentum, consectetur diam eu, finibus odio. Nullam ac lacus lectus. Phasellus pharetra neque turpis, ac tincidunt ante consectetur eget. Quisque tristique erat justo, sed ultrices felis pretium sed. Aenean at mi commodo, vehicula velit eu, congue tellus. Aenean volutpat in augue at efficitur. Quisque tincidunt molestie lacus vitae interdum. Pellentesque accumsan eros a pharetra finibus. Curabitur venenatis lorem non tincidunt tincidunt. Ut vitae imperdiet eros. Cras libero augue, varius lacinia metus mollis, semper scelerisque ipsum. Praesent mi orci, imperdiet vel mi eu, iaculis pharetra massa. Mauris vehicula iaculis turpis, a eleifend libero efficitur eu. Suspendisse mattis libero quis ante tincidunt, sed congue ante malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum pellentesque porttitor tortor sit amet pulvinar. Curabitur est lectus, rutrum quis molestie vitae, interdum sit amet sem. Nam elementum faucibus sem at hendrerit. Sed laoreet nulla neque, non interdum mauris gravida eget. Vivamus rutrum rutrum leo, sit amet ultricies enim. Vivamus sit amet erat lobortis, suscipit tortor id, ullamcorper diam. Nulla sed mollis quam, eu lobortis quam. Suspendisse ultricies elit sed condimentum tristique. Duis vitae feugiat nibh, non sollicitudin justo. Quisque varius felis posuere elit lobortis, sit amet euismod sapien elementum. Curabitur hendrerit vestibulum ex, vel rutrum lorem convallis eu. Sed iaculis felis eget accumsan tristique. Quisque nec velit sed tellus pharetra congue at eu nunc. Fusce vel tempor ante. Suspendisse fringilla felis eu est hendrerit, a pellentesque arcu efficitur. Vivamus ut lorem vel mauris scelerisque egestas vel ut est. Praesent imperdiet lacus ut metus varius vestibulum. Donec dictum, elit et porttitor fringilla, justo diam scelerisque lacus, id blandit enim erat vitae nunc.</p>
-
+            <% announcements.forEach(function (announcement) { %>
+                <div class="item ">
+                    <a class="ui small image">
+                        <img class="item" src="https://placeimg.com/125/125/any">
+                        <h5> <%= announcement.creationDate.toLocaleDateString()%></h5>
+                        <h4>Author</h4>
+                        <p><%= announcement.author.name%></p>
+                        <h4>Tags</h4>
+                        <% announcement.tags.forEach(function(tag) { %>
+                            <p class="small ui <%= tag.color %> basic label"><%= tag.name %></p>
+                        <% }) %>
+                    </a>
+                    <div class="content ">
+                        <a class="header"><%= announcement.title%></a>
+                        <div class="description">
+                            <p class="article-text"><%- announcement.body %></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <%})%>
+
         </div>
     </div>
 </div>

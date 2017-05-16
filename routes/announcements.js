@@ -12,10 +12,19 @@ var express         = require('express'),
     async           = require('async');
 
 
+/* View all announcements  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    res.render('announcements/view');
+    Announcement.find().populate('departments').populate('tags').exec(function (err, announcements) {
+        if(err){
+            console.log(err);
+        }else {
+            res.render('announcements/view', {announcements: announcements});
+        }
+    });
+
 });
 
+/* Submits new announcement */
 router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
     Announcement.create(req.body.announcement, function (err, announcement) {
         if(err){
@@ -32,13 +41,14 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
             if(req.body['new-announcement'] === 'on') {
                 res.redirect('/announcements/new')
             } else {
-                res.render('announcements/view');
+                res.redirect('/announcements');
             }
 
         }
     });
 })
 
+/* shows the new announcement form */
 router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
    async.parallel([
            function (cb) {
