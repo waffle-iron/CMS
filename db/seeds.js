@@ -11,14 +11,14 @@ var mongo           = require('mongoose'),
 
 
 var departments = [
-    {name: 'ISD', description: 'Information System Department'},
-    {name: 'PMV', description: 'Procurement for Machinery and Vehicles '},
-    {name: 'KM', description: 'Knowledge Management'},
-    {name: 'CSR', description: 'Corporate social responsibility'},
-    {name: 'SVC', description: 'Services'},
-    {name: 'CIB', description: 'Consolidated Insurance Brokers'},
-    {name: 'HR', description: 'Human Resource'},
-    {name: 'MAC', description: 'Managing office Accounts'}
+    {name: 'ISD', description: 'Information System Department', picture: '/images/departments/isd.svg'},
+    {name: 'PMV', description: 'Procurement for Machinery and Vehicles ', picture: '/images/departments/default.svg'},
+    {name: 'KM', description: 'Knowledge Management', picture: '/images/departments/default.svg'},
+    {name: 'CSR', description: 'Corporate social responsibility', picture: '/images/departments/csr.svg'},
+    {name: 'SVC', description: 'Services', picture: '/images/departments/svc.svg'},
+    {name: 'CIB', description: 'Consolidated Insurance Brokers', picture: '/images/departments/cib.svg'},
+    {name: 'HR', description: 'Human Resource', picture: '/images/departments/hr.svg'},
+    {name: 'MAC', description: 'Managing office Accounts', picture: '/images/departments/mac.svg'}
 ]
 
 var tags = [
