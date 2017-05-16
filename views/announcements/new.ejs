@@ -13,6 +13,10 @@
     .footer {
         margin-top: 5px!important;
     }
+    .submit-div {
+        bottom: 50px;
+        margin-right: 95px;
+    }
 </style>
 
     <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
@@ -52,11 +56,12 @@
                         </div>
                         <div class="fields">
                             <!-- duration dropdown list -->
-                            <div class="five wide field">
+                            <div class="four wide field">
                                 <label>Announcment Duration</label>
                                 <input type="number" name="announcement[archiveAfter]" >
                             </div>
-                            <div class="required eleven wide field">
+                            <div class="required twelve wide field">
+                                <!-- Tag drowpdown section -->
                                 <label>Tag</label>
                                 <div class="field">
                                     <select class="ui search selection multiple fluid dropdown new-tags" name="announcement[tags]">
@@ -89,12 +94,18 @@
                             <label>Add New Announcement</label>
                         </div>
                         <div class="right floated right aligned column">
-                            <button id="preview" class="ui button">Preview</button>
                             <button class="ui button" type="submit">Submit</button>
                         </div>
                     </div>
                 </footer>
             </form>
+            <div class="ui grid">
+                <div class="row">
+                    <div class="right aligned column submit-div">
+                    <button id="preview" class="ui button">Preview</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -108,10 +119,9 @@
                         <img class="item" src="https://placeimg.com/125/125/any">
                         <h5 class="article-date"></h5>
                         <h4>Author</h4>
-                        <p class="article-author">Robert Naccache</p>
+                        <p><%= currentUser.name%></p>
                         <h4>Tags</h4>
-                        <p class="small ui blue basic label">ISD</p>
-                        <div class="small ui red basic label">Important</div>
+                        <div class = "article-tags"></div>
                     </a>
                     <div class="content">
                         <a class="header article-title"></a>
@@ -124,16 +134,23 @@
         </div>
     </div>
 <script>
+    var today = new Date(Date.now());
+
     $('.ui.selection.dropdown')
         .dropdown()
     ;
     //populates modal on Preview click
     $('#preview').click(function(){
-        var d = new Date(Date.now());
-        $(".article-author").text($('Robert Naccache'));
-        $(".article-date").text(d.toDateString());
-        $(".article-title").text($('.new-title').val());
-        $(".article-text").html(CKEDITOR.instances.editor1.getData());
+        var tagList = ($('.new-tags a'))
+        $('.article-date').text(today.toDateString());
+        $('.article-title').text($('.new-title').val());
+        $('.article-text').html(CKEDITOR.instances.editor1.getData());
+
+        //Clear Tags and re-populate
+        $('.article-tags').empty();
+        for (var i=0; i<tagList.length;i++){
+            $('.article-tags').append('<p class="small ui blue basic label">' + tagList[i].text + '</p>');
+        }
     })
     //opens modal on preview click
     $('.ui.modal')
