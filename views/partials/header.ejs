@@ -15,10 +15,10 @@
     <div class="item" style="padding-top: 50px;">
       <h3>Menu</h3>
     </div>
-    <a class="item" href="dashbord.html">
+    <a class="item" href="/">
       <i class="dashboard icon"></i> Dashboard
     </a>
-    <a class="item" href="announcement.html">
+    <a class="item" href="/announcements">
       <i class="announcement icon"></i> Announcement
     </a>
     <a class="item" href="applications.html">
@@ -42,9 +42,7 @@
       <a id="toggle" class="item">
         <i class="sidebar icon"></i>
       </a>
-      <a class="active item" href="dashbord.html">Home</a>
-      <a class="item">Messages</a>
-      <a class="item">Friends</a>
+      <a class="active item" href="/">Home</a>
       <div class="right menu">
         <div class="item">
           <div class="ui icon input">
@@ -54,13 +52,13 @@
         </div>
 
         <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu">
-          <img src="data:image/jpeg;base64,<%= currentUser.thumbnail%>">
+          <img class="small-profile-image" src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" alt="small profile picture">
           <p><%= currentUser.samaccountname%></p>
           <div class="menu dropdown" id='dropdown-right-menu' >
             <div class="ui message">
               <div class="ui card">
                 <div class="image">
-                  <img src="data:image/jpeg;base64,<%= currentUser.thumbnail%>">
+                  <img  src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" >
                 </div>
                 <div class="content">
                   <h1 class="header"><%= currentUser.name%></h1>
