@@ -18,7 +18,7 @@
             <div class="ui items segment">
                 <div class="item">
                     <div class="ui small image">
-                        <form action="/announcements/department/<%= announcement.department._id%>">
+                        <form action="/announcements/department/<%= announcement.department._id%>" method="post">
                             <input class="item department-img" type="image" src="<%= announcement.department.picture%>">
                         </form>
                         <h5> <%= announcement.creationDate.toLocaleDateString()%></h5>
@@ -26,7 +26,7 @@
                         <p><%= announcement.author.name%></p>
                         <h4>Tags</h4>
                         <% announcement.tags.forEach(function(tag) { %>
-                            <form action="/announcements/tag/<%= tag._id%>" class="tags">
+                            <form action="/announcements/tag/<%= tag._id%>" class="tags" method="post">
                                 <input type="submit" class="small ui <%= tag.color %> basic  label announcement-tags" value="<%= tag.name %>">
                             </form>
                         <% }) %>
