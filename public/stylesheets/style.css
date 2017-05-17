@@ -102,12 +102,7 @@ div.scrollmenu a {
   border-radius: 30px;
 }
 
-/*announcement department image */
-.department-img {
-  max-width: 100%;
+/*Round edges on announcement image */
+.round-edges {
   border-radius: .28571429rem;
-}
-
-.tags {
-  display: inline;
 }
