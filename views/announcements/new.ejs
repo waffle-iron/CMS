@@ -71,7 +71,17 @@
                         </textarea>
                     <script>
                         // Replace the <textarea id="editor1"> with a CKEditor
-                        CKEDITOR.replace( 'editor1', {customConfig: '/javascripts/config.js'});
+                        CKEDITOR.replace( 'editor1', {
+                            customConfig: '/javascripts/config.js',
+                            on:{
+                                instanceReady: function (evt)
+                                {
+                                    var editor = evt.editor,
+                                    body = editor.document.getBody();
+                                    body.setAttribute('id', 'content-body');
+                                }
+                            }
+                        });
                     </script>
                     </div>
             </div>
@@ -121,82 +131,6 @@
             </div>
         </div>
     </div>
-<script>
-    var today = new Date(Date.now());
-
-    $('.ui.selection.dropdown')
-        .dropdown()
-    ;
-    //populates modal on Preview click
-    $('#preview').click(function(){
-        var tagList = ($('.new-tags a'))
-        $('.article-date').text(today.toDateString());
-        $('.article-title').text($('.new-title').val());
-        $('.article-text').html(CKEDITOR.instances.editor1.getData());
-        $('.article-img').attr('src',$('.new-dep option:selected').data("support"));
-
-        //Clear Tags and re-populate
-        $('.article-tags').empty();
-        for (var i=0; i<tagList.length;i++){
-            $('.article-tags').append('<p class="small ui ' + tagList.data('value') + ' basic label">' + tagList[i].text + '</p>');
-        }
-    })
-    //opens modal on preview click
-    $('.ui.modal')
-        .modal('attach events', '#preview', 'show')
-    ;
-
-    //Validation form
-    $('.ui.form')
-        .form({
-            fields: {
-                name: {
-                    identifier: 'announcement[title]',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'Please enter the title of the announcement'
-                        }
-                    ]
-                },
-                body: {
-                    identifier: 'announcement[body]',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'Please fill the content of the announcement'
-                        }
-                    ]
-                },
-                department: {
-                    identifier: 'announcement[department]',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'Please select a department'
-                        }
-                    ]
-                },
-                tags: {
-                    identifier: 'announcement[tags]',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: 'Please select at least 1 tag'
-                        }
-                    ]
-                },
-                duration: {
-                    identifier: 'announcement[archiveAfter]',
-                    rules: [
-                        {
-                            type: 'integer[1..30]',
-                            prompt: 'Duration cannot be more than 30 days or less than 1'
-                        }
-                    ]
-                }
-            }
-        });
-</script>
+<script src="/javascripts/new-form.js"></script>
 
 <% include ../partials/footer.ejs %>

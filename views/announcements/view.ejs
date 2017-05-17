@@ -13,10 +13,10 @@
         </div>
     </h2>
     <hr style="margin: 50px 0 50px 0;">
-    <div class="ui raised very padded text  segment">
-        <div class="ui items">
+    <div class="ui raised very padded text">
             <% announcements.forEach(function (announcement) { %>
-                <div class="item ">
+            <div class="ui items segment">
+                <div class="item">
                     <a class="ui small image">
                         <img class="item" src="https://placeimg.com/125/125/any">
                         <h5> <%= announcement.creationDate.toLocaleDateString()%></h5>
@@ -34,9 +34,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
             <%})%>
-
-        </div>
     </div>
 </div>
 
