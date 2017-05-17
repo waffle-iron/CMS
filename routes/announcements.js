@@ -14,7 +14,7 @@ var express         = require('express'),
 
 /* View all announcements  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    Announcement.find().populate('departments').populate('tags').exec(function (err, announcements) {
+    Announcement.find().populate('departments tags').exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
