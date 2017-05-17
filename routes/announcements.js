@@ -68,6 +68,46 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 
 });
 
+/* show edit form*/
+router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    async.parallel([
+        function (cb) {
+            Tag.find({},cb);
+        },
+        function (cb) {
+            Department.find({},cb);
+        },
+        function (cb) {
+            Announcement.findById(req.params.id).populate('department').exec(cb);
+        }
+    ],function (err, result) {
+        if(err) {
+            console.log('fuckin error' + err)
+        }else {
+            console.log(result);
+            console.log('fuck');
+            if(result[2] === null){
+                res.redirect('/announcements');
+            } else {
+                res.render('announcements/edit', {tags: result[0], departments: result[1], announcement: result[2]});
+            }
+
+        }
+    });
+});
+
+/* update announcement */
+router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, toBeUpdated) {
+        if(err){
+            res.redirect('/announcements');
+        } else {
+            res.redirect('/announcements');
+        }
+    });
+});
+
+
 /* get by tag refrence*/
 router.get('/tag/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
    Announcement.find({'tags': Object(req.params.id)}).populate('department tags').exec(function (err, announcements) {
