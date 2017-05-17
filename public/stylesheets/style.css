@@ -90,6 +90,14 @@ div.scrollmenu a {
   padding-bottom: 5px;
 }
 
-.five.wide.column{
+.five.wide.column {
   padding: 0 0!important;
+}
+.menu-margin {
+  margin: 0;
+}
+
+/*Round header profile image*/
+.small-profile-image {
+  border-radius: 30px;
 }

@@ -1,0 +1,62 @@
+/*Used for new announcement form*/
+.body {
+    padding-bottom: 0px;
+}
+#announce-drop {
+    min-width: 11em;
+}
+.new-dep {
+    min-width: 8em!important;
+}
+#modal-preview {
+    margin: 0!important;
+}
+.footer {
+    margin-top: 5px!important;
+}
+.submit-div {
+    position:relative;
+    float: right;
+    bottom: 36px;
+    margin-right: 95px;
+}
+.img-icon {
+    width: 135px;
+    height: 135px;
+    border-radius: .28571429rem;
+}
+.ui.label {
+    margin-bottom: 5px;
+}
+ui.label:first-child {
+    margin-left: 2px
+}
+
+/* round the yswyg editor */
+#cke_editor1  {
+    border-radius: .28571429rem;
+}
+.cke_inner.cke_reset {
+    border-radius: .28571429rem;
+}
+#cke_1_top {
+    border-top-left-radius: .28571429rem;
+    border-top-right-radius: .28571429rem;
+}
+
+#cke_1_bottom {
+    border-bottom-right-radius: .28571429rem;
+    border-bottom-left-radius: .28571429rem;
+}
+
+.fields {
+    margin-bottom: 0px!important;
+}
+
+.label-padding {
+    padding-top: 7px;
+}
+
+.form-row {
+    margin-top: 10px!important;
+}

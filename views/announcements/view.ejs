@@ -1,5 +1,9 @@
 <% include ../partials/header.ejs %>
-
+<style>
+    .announcement-tags {
+        margin-bottom: 5px!important;
+    }
+</style>
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
     <h2 class="ui icon header center aligned">
         <i class="announcement icon"></i>
@@ -20,7 +24,7 @@
                         <p><%= announcement.author.name%></p>
                         <h4>Tags</h4>
                         <% announcement.tags.forEach(function(tag) { %>
-                            <p class="small ui <%= tag.color %> basic label"><%= tag.name %></p>
+                            <p class="small ui <%= tag.color %> basic label announcement-tags"><%= tag.name %></p>
                         <% }) %>
                     </a>
                     <div class="content ">
