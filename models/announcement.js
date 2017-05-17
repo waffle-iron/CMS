@@ -11,7 +11,10 @@ var announcementSchema = new Schema({
     imageUrl: {type: String, default: ''},
     creationDate: {type: Date, default: Date.now},
     archiveAfter: {type: Number, default: 30},
-    department: { type: Schema.Types.ObjectId, ref: 'Department' },
+    department: {
+        type: Schema.Types.ObjectId,
+        ref: 'Department'
+    },
     author: {
         id: {
             type: Schema.Types.ObjectId,
