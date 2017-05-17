@@ -18,5 +18,6 @@ CKEDITOR.editorConfig = function( config ) {
         { name: 'colors', groups: [ 'colors' ] }
     ];
 
+    config.height = 450;
     config.removeButtons = 'Underline,Subscript,Superscript,Anchor';
 };
