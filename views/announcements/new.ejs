@@ -1,39 +1,6 @@
 <% include ../partials/header.ejs %>
 <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-<style>
-    .body {
-        padding-bottom: 0px;
-    }
-    #announce-drop {
-        min-width: 11em;
-    }
-    .new-dep {
-        min-width: 8em!important;
-    }
-    #modal-preview {
-        margin: 0!important;
-    }
-    .footer {
-        margin-top: 5px!important;
-    }
-    .submit-div {
-        position:relative;
-        float: right;
-        bottom: 36px;
-        margin-right: 95px;
-    }
-    .img-icon {
-        width: 135px;
-        height: 135px;
-    }
-    .ui.label {
-        margin-bottom: 5px;
-    }
-    ui.label:first-child {
-        margin-left: 2px
-    }
-</style>
-
+<link rel="stylesheet" type="text/css" href="/stylesheets/new-form.css">
     <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
         <!--Header -->
         <h2 class="ui icon header center aligned">
@@ -44,8 +11,8 @@
             </div>
         </h2>
         <!--Form Starts here -->
-        <div class="ui segment">
-            <form class="ui form" action="/announcements" method="post">
+        <form class="ui form" action="/announcements" method="post">
+            <div class="ui segment">
                 <div class="fields">
                     <div class="field new-pic">
                         <img class="item img-icon" src="/images/departments/Default.svg" alt="Default Icon">
@@ -90,7 +57,9 @@
                         </div>
                     </div>
                 </div>
-                <!--WYSIWYG Editor CKeditor-->
+            </div>
+            <!--WYSIWYG Editor CKeditor-->
+            <div class="ui segment">
                 <div class="required field">
                     <label>Content</label>
                     <textarea name="announcement[body]" id="editor1" rows="10" cols="80">
@@ -100,26 +69,28 @@
                         // Replace the <textarea id="editor1"> with a CKEditor
                         CKEDITOR.replace( 'editor1', {customConfig: '/javascripts/config.js'});
                     </script>
-                </div>
-                <!--submission section -->
-                <footer class="ui grid footer">
-                    <div class="two column row">
-                        <div class="column">
-                            <div class="ui checkbox left floated">
-                                <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
-                                <label>Add New Announcement</label>
-                            </div>
-                        </div>
-                        <div class="right floated right aligned column">
-                            <button class="ui button" type="submit">Submit</button>
+                    </div>
+            </div>
+            <!--submission section -->
+            <footer class="ui grid footer segment">
+                <div class="two column row">
+                    <div class="four wide column">
+                        <div class="ui checkbox left floated">
+                            <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
+                            <label>Add New Announcement</label>
                         </div>
                     </div>
-                </footer>
-            </form>
-            <div class="submit-div">
-                <button id="preview" class="ui button">Preview</button>
-            </div>
-        </div>
+                    <div class="right floated right aligned twelve wide column">
+                        <div class="ui buttons">
+                            <p class="ui button" id="preview">Preview</p>
+                            <div class="or"></div>
+                            <button class="ui positive submit button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="ui error message"></div>
+        </form>
     </div>
 
     <!-- Set Modal -->
@@ -170,6 +141,22 @@
     $('.ui.modal')
         .modal('attach events', '#preview', 'show')
     ;
+
+    //Validation form
+    $('.ui.form')
+        .form({
+            fields: {
+                name: {
+                    identifier: 'announcement[title]',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please enter the title of the announcement'
+                        }
+                    ]
+                }
+            }
+        });
 </script>
 
 <% include ../partials/footer.ejs %>
