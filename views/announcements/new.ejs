@@ -81,8 +81,13 @@
                                 <div class="field">
                                     <select class="ui search selection multiple dropdown new-tags" name="announcement[tags]">
                                         <option value="">Tag</option>
+                                        <script>
+                                            this.tags = [];
+                                            this.tags.push(<%- JSON.stringify(tags)%>)
+                                        </script>
                                         <% tags.forEach(function(tag){ %>
                                         <option value="<%= tag._id%>"><%= tag.name%></option>
+
                                         <% })%>
                                     </select>
                                 </div>
