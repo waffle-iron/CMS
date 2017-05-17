@@ -68,7 +68,27 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 
 });
 
+/* get by tag refrence*/
+router.get('/tag/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
+   Announcement.find({'tags': Object(req.params.id)}).populate('department tags').exec(function (err, announcements) {
+       if(err){
+           console.log(err);
+       }else {
+           res.render('announcements/view', {announcements: announcements});
+       }
+   });
+});
 
+/* get by department refrence*/
+router.get('/department/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    Announcement.find({'department': Object(req.params.id)}).populate('department tags').exec(function (err, announcements) {
+        if(err){
+            console.log(err);
+        }else {
+            res.render('announcements/view', {announcements: announcements});
+        }
+    });
+});
 
 module.exports = router;
 
