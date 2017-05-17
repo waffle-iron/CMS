@@ -93,6 +93,9 @@ div.scrollmenu a {
 .five.wide.column {
   padding: 0 0!important;
 }
+.menu-margin {
+  margin: 0;
+}
 
 /*Round header profile image*/
 .small-profile-image {

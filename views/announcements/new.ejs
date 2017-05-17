@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="fields">
+                        <div class="fields form-row">
                             <!-- duration dropdown list -->
                             <div class="four wide field">
                                 <label>Duration</label>
@@ -63,7 +63,6 @@
                 <div class="required field">
                     <label>Content</label>
                     <textarea name="announcement[body]" id="editor1" rows="10" cols="80">
-                            Enter Your description Here
                         </textarea>
                     <script>
                         // Replace the <textarea id="editor1"> with a CKEditor
@@ -75,7 +74,7 @@
             <footer class="ui grid footer segment">
                 <div class="two column row">
                     <div class="four wide column">
-                        <div class="ui checkbox left floated">
+                        <div class="ui checkbox left floated label-padding">
                             <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
                             <label>Add New Announcement</label>
                         </div>
@@ -152,6 +151,42 @@
                         {
                             type: 'empty',
                             prompt: 'Please enter the title of the announcement'
+                        }
+                    ]
+                },
+                body: {
+                    identifier: 'announcement[body]',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please fill the content of the announcement'
+                        }
+                    ]
+                },
+                department: {
+                    identifier: 'announcement[department]',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please select a department'
+                        }
+                    ]
+                },
+                tags: {
+                    identifier: 'announcement[tags]',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Please select at least 1 tag'
+                        }
+                    ]
+                },
+                duration: {
+                    identifier: 'announcement[archiveAfter]',
+                    rules: [
+                        {
+                            type: 'integer[1..30]',
+                            prompt: 'Duration cannot be more than 30 days or less than 1'
                         }
                     ]
                 }

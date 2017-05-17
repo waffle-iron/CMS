@@ -52,3 +52,11 @@ ui.label:first-child {
 .fields {
     margin-bottom: 0px!important;
 }
+
+.label-padding {
+    padding-top: 7px;
+}
+
+.form-row {
+    margin-top: 10px!important;
+}

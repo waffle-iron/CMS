@@ -43,6 +43,17 @@
         <i class="sidebar icon"></i>
       </a>
       <a class="active item" href="/">Home</a>
+      <div class="ui  dropdown item ">
+          <p class="menu-margin">Admin</p>
+          <div class="ui vertical menu">
+             <div class="ui large header">
+                <h4>Announcement</h4>
+             </div>
+             <a class="item" href="/announcements/new">
+               Add New <i class="ui right floated plus icon"></i>
+             </a>
+          </div>
+      </div>
       <div class="right menu">
         <div class="item">
           <div class="ui icon input">
@@ -50,7 +61,6 @@
             <i class="search link icon"></i>
           </div>
         </div>
-
         <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu">
           <img class="small-profile-image" src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" alt="small profile picture">
           <p><%= currentUser.samaccountname%></p>
@@ -79,5 +89,8 @@
       </div>
     </div>
   </div>
+  <script>
+    $('.ui.dropdown').dropdown();
+  </script>
   <div class="dimmed pusher">
       <div class="ui container body margin-0">
