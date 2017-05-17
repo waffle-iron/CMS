@@ -101,3 +101,8 @@ div.scrollmenu a {
 .small-profile-image {
   border-radius: 30px;
 }
+
+/*Round edges on announcement image */
+.round-edges {
+  border-radius: .28571429rem;
+}
