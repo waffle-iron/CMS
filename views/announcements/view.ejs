@@ -18,15 +18,17 @@
             <div class="ui items segment">
                 <div class="item">
                     <div class="ui small image">
-                        <a href="/announcements/department/<%= announcement.department._id%>">
-                            <img class="item round-edges" src="<%= announcement.department.picture%>" alt="department logo">
-                        </a>
+                        <form action="/announcements/department/<%= announcement.department._id%>">
+                            <input class="item department-img" type="image" src="<%= announcement.department.picture%>">
+                        </form>
                         <h5> <%= announcement.creationDate.toLocaleDateString()%></h5>
                         <h4>Author</h4>
                         <p><%= announcement.author.name%></p>
                         <h4>Tags</h4>
                         <% announcement.tags.forEach(function(tag) { %>
-                            <a class="small ui <%= tag.color %> basic label announcement-tags" href="/announcements/tag/<%= tag._id%>"><%= tag.name %></a>
+                            <form action="/announcements/tag/<%= tag._id%>" class="tags">
+                                <input type="submit" class="small ui <%= tag.color %> basic  label announcement-tags" value="<%= tag.name %>">
+                            </form>
                         <% }) %>
                     </div>
                     <div class="content ">
@@ -37,6 +39,7 @@
                     </div>
                 </div>
             </div>
+
             <%})%>
     </div>
 </div>
