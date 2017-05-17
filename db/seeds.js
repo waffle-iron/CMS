@@ -5,6 +5,7 @@
 var mongo           = require('mongoose'),
     Tag             = require('../models/tag'),
     User            = require('../models/user'),
+    Role            = require('../models/role'),
     Application     = require('../models/application'),
     Department      = require('../models/department'),
     Announcement    = require('../models/announcement');
@@ -34,6 +35,12 @@ var tags = [
     {name: 'travel', description: 'Travel related', color: 'blue'},
     {name: 'procedure', description: 'Procedure', color: 'green'},
     {name: 'project', description: 'Mail Related', color: 'brown'},
+]
+
+var roles = [
+    {name: 'site-admin', description: 'administer site related functionalities'},
+    {name: 'department-admin', description: 'administer department related functionalities'},
+    {name: 'system-admin', description: 'administer system related functionalities'}
 ]
 
 var users = [
@@ -91,6 +98,22 @@ function seedDB() {
         } else {
             tags.forEach(function (seed) {
                 Tag.create(seed, function (err, tag) {
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log(tag);
+                    }
+                });
+            });
+        }
+    });
+
+    Role.remove({}, function (err) {
+        if(err){
+            console.log(err);
+        } else {
+            roles.forEach(function (seed) {
+                Role.create(seed, function (err, tag) {
                     if(err){
                         console.log(err);
                     } else {
