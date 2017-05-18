@@ -74,7 +74,11 @@ router.get('/:id', auth.ensureLoggedIn('/login'),function (req, res, next) {
         if(err){
             res.redirect('/announcements');
         } else {
-            res.render('announcements/view', {announcemeent: announcement});
+            if(announcement.length > 0){
+                res.render('announcements/view', {announcements: announcement});
+            } else {
+                res.redirect('/announcements');
+            }
         }
     });
 });
