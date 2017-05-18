@@ -16,13 +16,17 @@ background: linear-gradient(to left, #5691c8, #457fcffa);
   background: #FFF3E0;
 }
 
+/* footer elements */
 .ui.footer.form-page{
   position:fixed;
   bottom:0;
   width: 100%;
-  border: 0;
   z-index: 4;
   text-align: center;
+  height: 1em;
+}
+.footer-description {
+  margin-top: -10px;
 }
 
 .body {
