@@ -27,7 +27,7 @@
             <div class="required four wide field">
               <label>Department</label>
               <div class="field">
-                <select class="ui search selection dropdown new-dep" name="announcement[department]">
+                <select class="ui search selection dropdown new-dep" name="announcement[department]" id="tag-dropdown">
                   <option value="" >Department</option>
                     <% departments.forEach(function(dep){ %>
                         <%if (announcement.department.id == dep._id){%>
@@ -57,11 +57,7 @@
                       this.tags.push(<%- JSON.stringify(tags)%>)
                   </script>
                     <% tags.forEach(function(tag){ %>
-                      <%if (announcement.tags.indexOf(tag._id) > -1 ){%>
-                        <option value="<%= tag._id%>" selected><%= tag.name%></option>
-                      <% } else {%>
                           <option value="<%= tag._id%>"><%= tag.name%></option>
-                      <% }%>
                     <% })%>
                 </select>
               </div>
@@ -139,6 +135,14 @@
     </div>
   </div>
 </div>
+<script>
+      var idArray = [];
+      var importedTags = <%- JSON.stringify(announcement.tags)%>;
+      importedTags.forEach(function (selTag) {
+          idArray.push(selTag);
+      });
+      $('.ui.dropdown.new-tags').dropdown('set selected', idArray);
+</script>
 <script src="/javascripts/new-form.js"></script>
 
 <% include ../partials/footer.ejs %>
