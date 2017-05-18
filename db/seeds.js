@@ -38,9 +38,8 @@ var tags = [
 ]
 
 var roles = [
+    {name: 'system-admin', description: 'administer system related functionalities'},
     {name: 'site-admin', description: 'administer site related functionalities'},
-    {name: 'department-admin', description: 'administer department related functionalities'},
-    {name: 'system-admin', description: 'administer system related functionalities'}
 ]
 
 var users = [
