@@ -11,7 +11,7 @@
     </div>
   </h2>
   <!--Form Starts here -->
-  <form class="ui form" action="/announcements/<%= announcement._id%>?_method=PUT" method="post">
+  <form class="ui form" action="/announcements/<%- announcement._id%>?_method=PUT" method="post">
     <div class="ui segment">
       <div class="fields">
         <div class="field new-pic">
@@ -21,7 +21,7 @@
           <div class="fields">
             <div class="required twelve wide field">
               <label>Title</label>
-              <input type="text" class="new-title" name="announcement[title]" value="<%= announcement.title%>">
+              <input type="text" class="new-title" name="announcement[title]" value="<%- announcement.title%>">
             </div>
             <!--Department Dropdown List -->
             <div class="required four wide field">
@@ -31,9 +31,9 @@
                   <option value="" >Department</option>
                     <% departments.forEach(function(dep){ %>
                         <%if (announcement.department.id == dep._id){%>
-                            <option value="<%= dep._id%>" data-support="<%= dep.picture%>" selected><%= dep.name%></option>
+                            <option value="<%- dep._id%>" data-support="<%= dep.picture%>" selected><%- dep.name%></option>
                         <% } else {%>
-                            <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%= dep.name%></option>
+                            <option value="<%- dep._id%>" data-support="<%= dep.picture%>"><%- dep.name%></option>
                         <% } %>
                     <% })%>
                 </select>
@@ -57,7 +57,7 @@
                       this.tags.push(<%- JSON.stringify(tags)%>)
                   </script>
                     <% tags.forEach(function(tag){ %>
-                          <option value="<%= tag._id%>"><%= tag.name%></option>
+                          <option value="<%= tag._id%>"><%- tag.name%></option>
                     <% })%>
                 </select>
               </div>

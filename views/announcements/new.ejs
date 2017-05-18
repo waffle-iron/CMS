@@ -30,7 +30,7 @@
                                     <select class="ui search selection dropdown new-dep" name="announcement[department]">
                                         <option value="">Department</option>
                                         <% departments.forEach(function(dep){ %>
-                                        <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%= dep.name%></option>
+                                        <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%- dep.name%></option>
                                         <% })%>
                                     </select>
                                 </div>
@@ -53,7 +53,7 @@
                                             this.tags.push(<%- JSON.stringify(tags)%>)
                                         </script>
                                         <% tags.forEach(function(tag){ %>
-                                        <option value="<%= tag._id%>"><%= tag.name%></option>
+                                        <option value="<%- tag._id%>"><%- tag.name%></option>
 
                                         <% })%>
                                     </select>
