@@ -47,6 +47,17 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
     });
 })
 
+/* show a single announcement*/
+router.get('/:id', auth.ensureLoggedIn('/login'),function (req, res, next) {
+    Announcement.find({_id: req.params.id}).populate('department tags').exec(function (err, announcement) {
+        if(err){
+            res.redirect('/announcements');
+        } else {
+            res.render('announcements/view', {announcemeent: announcement});
+        }
+    });
+});
+
 /* shows the new announcement form */
 router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
    async.parallel([
@@ -85,7 +96,6 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next)
             console.log('fuckin error' + err)
         }else {
             console.log(result);
-            console.log('fuck');
             if(result[2] === null){
                 res.redirect('/announcements');
             } else {
@@ -106,7 +116,6 @@ router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
         }
     });
 });
-
 
 /* get by tag refrence*/
 router.get('/tag/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
