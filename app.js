@@ -78,6 +78,7 @@ var ldapOpts = {
         searchFilter: '(&(objectcategory=person)(objectclass=user)(|(samaccountname={{username}})(mail={{username}})))',
         searchAttributes: [
             'displayName',
+            'givenname',
             'mail',
             'samaccountname',
             'employeeid',
@@ -102,6 +103,7 @@ passport.serializeUser(function(user, done) {
         dn: user.dn,
         employeeid: user.employeeID,
         name: user.displayName,
+        firstname: user.givenName,
         samaccountname: user.sAMAccountName,
         mail: user.mail,
         title: user.title,
