@@ -3,6 +3,12 @@
     .announcement-tags {
         margin-bottom: 5px!important;
     }
+    .edit-url {
+        font-size: 1.5em;
+        text-decoration: none;
+        color: inherit;
+    }
+
 </style>
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
     <h2 class="ui icon header center aligned">
@@ -15,7 +21,7 @@
     <hr style="margin: 50px 0 50px 0;">
     <div class="ui raised very padded text">
         <% announcements.forEach(function (announcement) { %>
-        <div class="ui items segment">
+        <div class="ui items segment" id="<%=announcement._id%>">
             <div class="item">
                 <div class="ui small image">
                     <a href="/announcements/department/<%= announcement.department._id%>">
@@ -30,15 +36,20 @@
                     <% }) %>
                 </div>
                 <div class="content ">
-                    <a class="header"><%= announcement.title%></a>
-                    <div class="description">
-                        <p class="article-text"><%- announcement.body %></p>
+                    <p class="header"><%= announcement.title%></p>
+                    <div class="announcement ">
+                        <%- announcement.body %>
                     </div>
                 </div>
+                <a href="" class="edit-url"><i class="edit icon"></i></a>
             </div>
         </div>
         <%})%>
     </div>
 </div>
-
+<script>
+    $('.edit.icon').click(function(){
+        $('.edit-url').attr('href', '/announcements/'+ $(this).parent().parent().parent().attr('id') + '/edit');
+    })
+</script>
 <% include ../partials/footer.ejs %>
