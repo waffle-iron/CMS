@@ -53,8 +53,9 @@ $('.ui.form')
                     }
                 ]
             },
+            //TODO: Fix body validation
             body: {
-                identifier: 'announcement[body]',
+                identifier: '',
                 rules: [
                     {
                         type: 'empty',
