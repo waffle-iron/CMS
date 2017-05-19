@@ -9,6 +9,7 @@ var applicationSchema = new Schema({
     name: String,
     description: String,
     imageUrl: {type: String, default: ''},
+    url: String,
     creationDate: {type: Date, default: Date.now},
     exposedTo: {
         sites: [String],

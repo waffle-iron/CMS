@@ -42,6 +42,82 @@ var roles = [
     {name: 'site-admin', description: 'administer site related functionalities'},
 ]
 
+var apps = [
+    {
+        name: 'ISD Wiki',
+        description: 'Information Systems Department Wiki',
+        imageUrl: 'images/applications/isd-wiki-bw_icon.svg',
+        url: 'https://wiki.ccc.gr',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'sghaida@ccc.net'},
+        isOnline: false
+    },{
+        name: 'AD Manager',
+        description: 'Manage Engine Active Directory Manager',
+        imageUrl: 'images/applications/isd-ad-bw_icon.svg',
+        url: 'https://cloud-adman-01.cloud.ccg.local:8443/',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'rnaccache@ccc.net'},
+        isOnline: true
+    },{
+        name: 'Academy',
+        description: 'CCC Learning Platform',
+        imageUrl: 'images/applications/academy-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'sghaida@ccc.net'},
+        isOnline: false
+    },{
+        name: 'My Files',
+        description: 'Next-cloud File Sharing',
+        imageUrl: 'images/applications/my-files-bw_icon.svg',
+        url: 'http://share.ccc.net',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'rnaccache@ccc.net'},
+        isOnline: true
+    },{
+        name: 'Fanous',
+        description: 'Knowledge Management Platform',
+        imageUrl: 'images/applications/fanous-bw_icon.svg',
+        url: 'http://fanous.ccc.gr',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'sghaida@ccc.net'},
+        isOnline: false
+    },{
+        name: 'Webmail',
+        description: 'MOA Webmail',
+        imageUrl: 'images/applications/webmail-icon.svg',
+        url: 'https://moawebmail.ccc.gr/owa',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'rnaccache@ccc.net'},
+        isOnline: true
+    },{
+        name: 'Maximo',
+        description: 'IBM Maximo',
+        imageUrl: 'images/applications/maximo-bw_icon.svg',
+        url: 'http://maximo.ccc.gr',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'sghaida@ccc.net'},
+        isOnline: false
+    },{
+        name: 'Citrix',
+        description: 'Citrix Apps',
+        imageUrl: 'images/applications/citrix-bw_icon.svg',
+        url: 'https://apps.ccc.net',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'rnaccache@ccc.net'},
+        isOnline: true
+    },{
+        name: 'iBill',
+        description: 'Lync Telephony Billing System',
+        imageUrl: 'images/applications/ibill-bw_icon.svg',
+        url: 'http://ibill.ccc.gr/ibill',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: {emailAddress: 'rnaccache@ccc.net'},
+        isOnline: true
+    }
+]
+
 var users = [
     {
         employeeid: '418732',
@@ -127,7 +203,15 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            //TODO: POPLATE Applications
+            apps.forEach(function (seed) {
+                Application.create(seed, function (err, tag) {
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log(tag);
+                    }
+                });
+            });
         }
     });
 

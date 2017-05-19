@@ -29,156 +29,31 @@
     <div class="ui two column stackable grid padding-0 margin-0">
         <div class="ui ten wide column " style="padding:15px 0; margin-top:15px">
             <div class="ui three column stackable grid centered app-list">
-                <a href="https://wiki.ccc.gr" target="_blank" class="five wide column">
+                <% applications.forEach(function(application){ %>
+                    <a href="<%= application.url%>" target="_blank" class="five wide column">
                     <div class="ui fade reveal image">
                         <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="/images/applications/isd-wiki-bw_icon.svg">
-                            <h2 class="ui header app-name">ISD Wiki</h2>
+                            <img class="app-logo" src="<%- application.imageUrl %>">
+                            <h2 class="ui header app-name"><%- application.name %></h2>
                             <p></p>
                             <p></p>
                         </div>
                         <div class="ui raised very text center aligned segment fixsize hidden middle align content hidden-app" >
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>
                             <button class="ui positive basic button">Online</button>
                             <p></p>
                             <p></p>
                         </div>
                     </div>
                 </a>
-                <a href="https://cloud-adman-01.cloud.ccg.local:8443/" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/isd-ad-bw_icon.svg">
-                            <h2 class="ui header app-name">AD Manager</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://ccctraining.ccc.net" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/academy-bw_icon.svg">
-                            <h2 class="ui header app-name">Academy</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="http://share.ccc.net" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/my-files-bw_icon.svg">
-                            <h2 class="ui header app-name">My Files</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="http://fanous.ccc.gr" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/fanous-bw_icon.svg">
-                            <h2 class="ui header app-name">Fanous</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://moawebmail.ccc.gr/owa" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/webmail-icon.svg">
-                            <h2 class="ui header app-name">Webmail</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="http://maximo.ccc.gr" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/maximo-bw_icon.svg">
-                            <h2 class="ui header app-name">Maximo</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://apps.ccc.net" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/citrix-bw_icon.svg">
-                            <h2 class="ui header app-name">Citrix</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
-                <a href="http://ibill.ccc.gr/ibill" target="_blank" class="five wide column">
-                    <div class="ui fade reveal image">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
-                            <img class="app-logo" src="images/applications/ibill-bw_icon.svg">
-                            <h2 class="ui header app-name">iBill</h2>
-                            <p></p>
-                            <p></p>
-                        </div>
-                        <div class="ui raised very text center aligned segment fixsize hidden content hidden-app">
-                            <p class="ui header" style="font-size: 8pt;">This application is used to provide Cloud services</p>
-                            <button class="ui positive basic button">Online</button>
-                            <p></p>
-                            <p></p>
-                        </div>
-                    </div>
-                </a>
+                <% }) %>
                 <div class="fifteen wide column" style="margin:  0 0 0 0!important ; padding: 0 0!important ;">
                     <a href="applications.html">
                         <button class="fluid ui blue button">All Apps</button>
                     </a>
                 </div>
             </div>
+
         </div>
         <div class="right floated six wide column">
             <div class="ui raised very text segment" id="short-announcements">
