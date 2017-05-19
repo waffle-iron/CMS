@@ -1,7 +1,291 @@
 <% include partials/header.ejs %>
+<style>
+    .app-logo {
+        width: 75px;
+        display: inline!important;
+    }
+    .app-name {
+        margin-top: 5px!important;
+    }
+</style>
 
-<h1><%= currentUser._id%></h1>
-<p>Welcome to Index page</p>
+<div class="ui container body margin-0">
+    <div class="ui two column stackable grid padding-0 margin-0">
+        <div class="ui ten wide column " style="padding:15px 0; margin-top:15px">
+            <div class="ui three column stackable grid centered app-list">
+                <a href="https://wiki.ccc.gr" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="/images/applications/isd-wiki-bw_icon.svg">
+                            <h2 class="ui header app-name">ISD Wiki</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden middle align content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://cloud-adman-01.cloud.ccg.local:8443/" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/isd-ad-bw_icon.svg">
+                            <h2 class="ui header app-name">AD Manager</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://ccctraining.ccc.net" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/academy-bw_icon.svg">
+                            <h2 class="ui header app-name">Academy</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://share.ccc.net" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/my-files-bw_icon.svg">
+                            <h2 class="ui header app-name">My Files</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0; padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://fanous.ccc.gr" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/fanous-bw_icon.svg">
+                            <h2 class="ui header app-name">Fanous</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://moawebmail.ccc.gr/owa" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/webmail-icon.svg">
+                            <h2 class="ui header app-name">Webmail</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://maximo.ccc.gr" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/maximo-bw_icon.svg">
+                            <h2 class="ui header app-name">Maximo</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://apps.ccc.net" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/citrix-bw_icon.svg">
+                            <h2 class="ui header app-name">Citrix</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">Short Description here</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://ibill.ccc.gr/ibill" target="_blank" class="five wide column">
+                    <div class="ui fade reveal image">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                            <img class="app-logo" src="images/applications/ibill-bw_icon.svg">
+                            <h2 class="ui header app-name">iBill</h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden content" style="margin-top:0;padding-top:4em">
+                            <p class="ui header" style="font-size: 8pt;">This application is used to provide Cloud services</p>
+                            <button class="ui positive basic button">Online</button>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                <div class="fifteen wide column" style="margin:  0 0 0 0!important ; padding: 0 0!important ;">
+                    <a href="applications.html">
+                        <button class="fluid ui blue button">All Apps</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="right floated six wide column">
+            <div class="ui raised very text segment">
+                <p class="ui orange ribbon label">Announcements</p>
+                <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label">
+                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                </div>
+                                <div class="text content">
+                                    <p class="date">Today</p>
+                                    Servers Down for Maintenance <br> Remember to Save your work. <a>More Info</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label">
+                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                </div>
+                                <div class="text content">
+                                    <p class="date">May 5, 2017</p>
+                                    Paperless Thursday! <br>Don't Forget to Hug a tree! <a>More Info</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label">
+                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                </div>
+                                <div class="text content">
+                                    <p class="date">May 5, 2017</p>
+                                    Message from the President!<br> <a>Click Here to View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label">
+                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                </div>
+                                <div class="text content">
+                                    <p class="date">May 4, 2017</p>
+                                    Take Our Latest Survey <br> And let us know what you think. <a>Here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label">
+                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                </div>
+                                <div class="text content">
+                                    <p class="date">May 2, 2017</p>
+                                    This is an Announcement.  <a>Click here for more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ui raised very text segment">
+                <p class="ui red ribbon label">Holidays</p>
+                <div class="ui celled list">
+                    <div class="item">
+                        <img class="ui avatar image" src="http://www.clipartbest.com/cliparts/yco/eqz/ycoeqzaKi.svg">
+                        <div class="content">
+                            <div class="header">Boxing Day</div>
+                            June 5th, 2017
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="ui avatar image" src="http://www.freepngimg.com/thumb/easter_bunny/6-2-easter-bunny-png-file-thumb.png">
+                        <div class="content">
+                            <div class="header">Easter</div>
+                            April 15th, 2017
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="ui avatar image" src="http://www.clipartbest.com/cliparts/yco/eqz/ycoeqzaKi.svg">
+                        <div class="content">
+                            <div class="header">Virgin Mary</div>
+                            August 15th, 2017
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="ui avatar image" src="http://www.clipartbest.com/cliparts/yco/eqz/ycoeqzaKi.svg">
+                        <div class="content">
+                            <div class="header">Boxing Day</div>
+                            March 1st, 2017
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="ui avatar image" src="http://www.clipartkid.com/images/718/jolly-holiday-svg-FvKztM-clipart.png">
+                        <div class="content">
+                            <div class="header">Christmas</div>
+                            December 25th, 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 <% include partials/footer.ejs %>
