@@ -33,6 +33,7 @@ var applicationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Tag'
     }],
+    isOnline: {type: Boolean, default: true}
 });
 
 module.exports = mongo.model('Application', applicationSchema);
