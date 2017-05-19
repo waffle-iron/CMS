@@ -40,7 +40,12 @@
                         </div>
                         <div class="ui raised very text center aligned segment fixsize hidden middle align content hidden-app" >
                             <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>
-                            <button class="ui positive basic button">Online</button>
+                            <% if(application.isOnline) { %>
+                                <button class="ui positive basic button">Online</button>
+                            <% } else { %>
+                                <button class="ui negative basic button">Offline</button>
+                            <% }%>
+
                             <p></p>
                             <p></p>
                         </div>
