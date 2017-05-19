@@ -1,19 +1,27 @@
-var express     = require('express'),
-    router      = express.Router(),
-    passport    = require('passport'),
-    auth        = require('connect-ensure-login'),
-    Application = require('../models/application');
+var express         = require('express'),
+    router          = express.Router(),
+    passport        = require('passport'),
+    async           = require('async'),
+    auth            = require('connect-ensure-login'),
+    Application     = require('../models/application'),
+    Announcement    = require('../models/announcement');
 
 /* GET home page. */
 router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
-    Application.find({}, function (err, apps) {
-       if(err){
-           console.log(err);
-       } else {
-           res.render('index', {applications: apps});
-       }
+    async.parallel([
+        function (cb) {
+            Announcement.find({},null,{sort : {creationDate: 'desc'}}).limit(5).exec(cb);
+        },
+        function (cb) {
+            Application.find({},cb)
+        }
+    ], function (err, result) {
+        if(err){
+            console.log(err)
+        } else {
+            res.render('index', {announcements: result[0], applications: result[1]});
+        }
     });
-
 });
 
 router.get('/test',auth.ensureLoggedIn('/login'), function(req, res, next) {
