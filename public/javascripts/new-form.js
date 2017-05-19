@@ -33,6 +33,11 @@ $('.ui.modal')
     .modal('attach events', '#preview', 'show')
 ;
 
+$.fn.form.settings.rules.myCustomRule = function() {
+    // Your validation condition goes here
+    return ($('#content-body p') === '');
+};
+
 
 //Validation form
 $('.ui.form')
@@ -49,7 +54,7 @@ $('.ui.form')
                 ]
             },
             body: {
-                identifier: 'content-body',
+                identifier: 'announcement[body]',
                 rules: [
                     {
                         type: 'empty',
