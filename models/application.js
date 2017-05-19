@@ -10,7 +10,10 @@ var applicationSchema = new Schema({
     description: String,
     imageUrl: {type: String, default: ''},
     creationDate: {type: Date, default: Date.now},
-    isGlobal: {type: Boolean, default: false},
+    exposedTo: {
+        sites: [String],
+        countries: [String]
+    },
     owner: {
         id: {
             type: Schema.Types.ObjectId,
