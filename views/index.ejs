@@ -7,6 +7,12 @@
     .app-name {
         margin-top: 5px!important;
     }
+    #short-announcements {
+        padding-bottom: 25px!important;
+    }
+    .announce-more{
+        float: right;
+    }
 </style>
 
 <div class="ui container body margin-0">
@@ -165,7 +171,7 @@
             </div>
         </div>
         <div class="right floated six wide column">
-            <div class="ui raised very text segment">
+            <div class="ui raised very text segment" id="short-announcements">
                 <p class="ui orange ribbon label">Announcements</p>
                 <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
                     <li>
@@ -234,6 +240,7 @@
                         </div>
                     </li>
                 </ul>
+                <a class="announce-more" href="/announcements">view more...</a>
             </div>
             <div class="ui raised very text segment">
                 <p class="ui red ribbon label">Holidays</p>
