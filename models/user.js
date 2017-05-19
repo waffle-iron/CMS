@@ -16,6 +16,9 @@ var userSchema = new Schema({
     listOfApps: [{
         type: Schema.Types.ObjectId,
         ref: 'Application'
+    }],
+    roles : [{
+        type: Schema.Types.ObjectId,
     }]
 });
 
