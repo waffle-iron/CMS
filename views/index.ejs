@@ -79,14 +79,17 @@
                                 <div class="label ">
                                     <img src="/images/departments/ISD.svg">
                                     <div class="ui basic mini label">
-                                        <!-- TODO: add department info -->
-                                       ABC
+                                        <% departments.forEach(function(dep){ %>
+                                            <%if (announcement.department === dep._id){%>
+                                                <%= dep.name %>
+                                            <% } %>
+                                        <% })%>
                                     </div>
                                 </div>
                                 <div class="text content">
                                     <p class="date"><%- announcement.creationDate.toDateString() %></p>
-                                    <!-- todo: add a short description of the announcement -->
-                                    <h4><%- announcement.title %></h4> REPLACE ME WITH CONTENT <a href="/announcements/<%- announcement._id %>">More Info</a>
+                                    <h4><%- announcement.title %></h4> <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,35) %>
+                                    <a href="/announcements/<%- announcement._id %>">...More</a>
                                 </div>
                             </div>
                         </div>

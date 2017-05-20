@@ -4,6 +4,7 @@ var express         = require('express'),
     async           = require('async'),
     auth            = require('connect-ensure-login'),
     Application     = require('../models/application'),
+    Department      = require('../models/department'),
     Announcement    = require('../models/announcement');
 
 /* GET home page. */
@@ -14,12 +15,15 @@ router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
         },
         function (cb) {
             Application.find({},cb)
+        },
+        function (cb) {
+            Department.find({},cb)
         }
     ], function (err, result) {
         if(err){
             console.log(err)
         } else {
-            res.render('index', {announcements: result[0], applications: result[1]});
+            res.render('index', {announcements: result[0], applications: result[1], departments: result[2]});
         }
     });
 });
