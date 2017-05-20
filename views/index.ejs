@@ -77,18 +77,14 @@
                         <div class="ui feed">
                             <div class="event">
                                 <div class="label ">
-                                    <img src="/images/departments/ISD.svg">
-                                    <div class="ui basic mini label">
-                                        <% departments.forEach(function(dep){ %>
-                                            <%if (announcement.department === dep._id){%>
-                                                <%= dep.name %>
-                                            <% } %>
-                                        <% })%>
-                                    </div>
+                                    <img src="<%= announcement.department.picture%>">
                                 </div>
                                 <div class="text content">
-                                    <p class="date"><%- announcement.creationDate.toDateString() %></p>
-                                    <h4><%- announcement.title %></h4> <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,35) %>
+                                    <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
+                                    <h5>
+                                        <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                    </h5>
+                                    <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,80) %>
                                     <a href="/announcements/<%- announcement._id %>">...More</a>
                                 </div>
                             </div>
