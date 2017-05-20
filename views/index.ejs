@@ -18,6 +18,14 @@
         padding-top: 4em!important;
         background: #F5F5F5!important;
     }
+
+    .text.content h4 {
+        margin: 0;
+    }
+
+    .event {
+        padding-bottom: 10px!important;
+    }
     @media (min-width: 992px) {
         .ui.ten.wide.column {
             max-width: 60%!important;
@@ -64,71 +72,26 @@
             <div class="ui raised very text segment" id="short-announcements">
                 <p class="ui orange ribbon label">Announcements</p>
                 <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
+                    <% announcements.forEach(function(announcement){ %>
                     <li>
                         <div class="ui feed">
                             <div class="event">
-                                <div class="label">
-                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                <div class="label ">
+                                    <img src="/images/departments/ISD.svg">
+                                    <div class="ui basic mini label">
+                                        <!-- TODO: add department info -->
+                                       ABC
+                                    </div>
                                 </div>
                                 <div class="text content">
-                                    <p class="date">Today</p>
-                                    Servers Down for Maintenance <br> Remember to Save your work. <a>More Info</a>
+                                    <p class="date"><%- announcement.creationDate.toDateString() %></p>
+                                    <!-- todo: add a short description of the announcement -->
+                                    <h4><%- announcement.title %></h4> REPLACE ME WITH CONTENT <a href="/announcements/<%- announcement._id %>">More Info</a>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="ui feed">
-                            <div class="event">
-                                <div class="label">
-                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
-                                </div>
-                                <div class="text content">
-                                    <p class="date">May 5, 2017</p>
-                                    Paperless Thursday! <br>Don't Forget to Hug a tree! <a>More Info</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ui feed">
-                            <div class="event">
-                                <div class="label">
-                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
-                                </div>
-                                <div class="text content">
-                                    <p class="date">May 5, 2017</p>
-                                    Message from the President!<br> <a>Click Here to View</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ui feed">
-                            <div class="event">
-                                <div class="label">
-                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
-                                </div>
-                                <div class="text content">
-                                    <p class="date">May 4, 2017</p>
-                                    Take Our Latest Survey <br> And let us know what you think. <a>Here</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ui feed">
-                            <div class="event">
-                                <div class="label">
-                                    <img src="https://semantic-ui.com/images/avatar/small/elliot.jpg">
-                                </div>
-                                <div class="text content">
-                                    <p class="date">May 2, 2017</p>
-                                    This is an Announcement.  <a>Click here for more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    <% }) %>
                 </ul>
                 <a class="announce-more" href="/announcements">view more...</a>
             </div>
