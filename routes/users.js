@@ -7,7 +7,7 @@ var express     = require('express'),
 
 /* GET users listing. */
 router.get('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res, next) {
-  User.find({}).populate('roles').exec(function (users,err) {
+  User.find({}).populate('roles').exec(function (err, users) {
      if(err){
        console.log(err);
      } else {
