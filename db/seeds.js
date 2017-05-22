@@ -138,7 +138,8 @@ var users = [
         department: 'ISD',
         country: 'Greece',
         listOfApps: [],
-        roles: [ObjectId("59200ab998d04d097040af6e")]
+        roles: [ObjectId("59200ab998d04d097040af6e")],
+        accountdisabled: false
     },{
         employeeid: '580181',
         name: 'Robert Naccache',
@@ -148,7 +149,8 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: [ObjectId("59200ab998d04d097040af6f")]
+        roles: [ObjectId("59200ab998d04d097040af6f")],
+        accountdisabled: false
     },{
         employeeid: '418734',
         name: 'Nader Barakat',
@@ -158,7 +160,8 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: mongo.Types.ObjectId("59200ab998d04d097040af6f")
+        roles: mongo.Types.ObjectId("59200ab998d04d097040af6f"),
+        accountdisabled: false
     }
 ]
 

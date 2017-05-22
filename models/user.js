@@ -20,7 +20,8 @@ var userSchema = new Schema({
     roles : [{
         type: Schema.Types.ObjectId,
         ref: 'Role'
-    }]
+    }],
+    accountdisabled: Boolean
 });
 
 module.exports = mongo.model('User', userSchema);
