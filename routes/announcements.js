@@ -4,6 +4,7 @@
 
 var express         = require('express'),
     router          = express.Router(),
+    middleware      = require('../middleware/authentication'),
     passport        = require('passport'),
     auth            = require('connect-ensure-login'),
     Announcement    = require('../models/announcement'),
@@ -25,7 +26,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
 });
 
 /* Submits new announcement */
-router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
+router.post('/', auth.ensureLoggedIn('/login'),middleware.isSystemAdmin , function (req, res, next) {
     Announcement.create(req.body.announcement, function (err, announcement) {
         if(err){
             console.log(err);
@@ -48,7 +49,7 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
 })
 
 /* shows the new announcement form */
-router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
+router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
    async.parallel([
            function (cb) {
                Tag.find({},cb);
@@ -84,7 +85,7 @@ router.get('/:id', auth.ensureLoggedIn('/login'),function (req, res, next) {
 });
 
 /* show edit form*/
-router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next) {
+router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
     async.parallel([
         function (cb) {
             Tag.find({},cb);
@@ -111,7 +112,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next)
 });
 
 /* update announcement */
-router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
+router.put('/:id', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
     Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, toBeUpdated) {
         if(err){
             res.redirect('/announcements');
