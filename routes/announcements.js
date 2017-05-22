@@ -46,7 +46,7 @@ router.post('/', auth.ensureLoggedIn('/login'),middleware.isSystemAdmin , functi
 
         }
     });
-})
+});
 
 /* shows the new announcement form */
 router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
