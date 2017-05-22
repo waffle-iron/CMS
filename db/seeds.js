@@ -3,6 +3,7 @@
  */
 
 var mongo           = require('mongoose'),
+    ObjectId           = mongo.Types.ObjectId;
     Tag             = require('../models/tag'),
     User            = require('../models/user'),
     Role            = require('../models/role'),
@@ -12,38 +13,39 @@ var mongo           = require('mongoose'),
 
 
 var departments = [
-    {name: 'ISD', description: 'Information System Department', picture: '/images/departments/isd.svg'},
-    {name: 'PMV', description: 'Procurement for Machinery and Vehicles ', picture: '/images/departments/default.svg'},
-    {name: 'KM', description: 'Knowledge Management', picture: '/images/departments/default.svg'},
-    {name: 'CSR', description: 'Corporate social responsibility', picture: '/images/departments/csr.svg'},
-    {name: 'SVC', description: 'Services', picture: '/images/departments/svc.svg'},
-    {name: 'CIB', description: 'Consolidated Insurance Brokers', picture: '/images/departments/cib.svg'},
-    {name: 'HR', description: 'Human Resource', picture: '/images/departments/hr.svg'},
-    {name: 'MAC', description: 'Managing office Accounts', picture: '/images/departments/mac.svg'}
+    {_id:  ObjectId("5922895f16dd790518d1e110"), name: 'ISD', description: 'Information System Department', picture: '/images/departments/isd.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e111"), name: 'PMV', description: 'Procurement for Machinery and Vehicles ', picture: '/images/departments/default.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e112"), name: 'KM', description: 'Knowledge Management', picture: '/images/departments/default.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e113"), name: 'CSR', description: 'Corporate social responsibility', picture: '/images/departments/csr.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e114"), name: 'SVC', description: 'Services', picture: '/images/departments/svc.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e115"), name: 'CIB', description: 'Consolidated Insurance Brokers', picture: '/images/departments/cib.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e116"), name: 'HR', description: 'Human Resource', picture: '/images/departments/hr.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e117"), name: 'MAC', description: 'Managing office Accounts', picture: '/images/departments/mac.svg'}
 ]
 
 var tags = [
-    {name: 'critical', description: 'Critical', color: 'red'},
-    {name: 'downtime', description: 'Services downtime', color: 'red'},
-    {name: 'important', description: 'Important', color: 'orange'},
-    {name: 'security', description: 'Security Related', color: 'orange'},
-    {name: 'info', description: 'Informative', color: 'yellow'},
-    {name: 'news', description: 'Mail Related', color: 'teal'},
-    {name: 'awards', description: 'Mail Related', color: 'olive'},
-    {name: 'service', description: 'Service related', color: 'blue'},
-    {name: 'tax', description: 'Tax related', color: 'green'},
-    {name: 'travel', description: 'Travel related', color: 'blue'},
-    {name: 'procedure', description: 'Procedure', color: 'green'},
-    {name: 'project', description: 'Mail Related', color: 'brown'},
+    {_id: ObjectId("592288ee19b61c135c41d332"), name: 'critical', description: 'Critical', color: 'red'},
+    {_id: ObjectId("592288ee19b61c135c41d333"), name: 'downtime', description: 'Services downtime', color: 'red'},
+    {_id: ObjectId("592288ee19b61c135c41d334"), name: 'important', description: 'Important', color: 'orange'},
+    {_id: ObjectId("592288ee19b61c135c41d335"), name: 'security', description: 'Security Related', color: 'orange'},
+    {_id: ObjectId("592288ee19b61c135c41d336"), name: 'info', description: 'Informative', color: 'yellow'},
+    {_id: ObjectId("592288ee19b61c135c41d337"), name: 'news', description: 'Mail Related', color: 'teal'},
+    {_id: ObjectId("592288ee19b61c135c41d338"), name: 'awards', description: 'Mail Related', color: 'olive'},
+    {_id: ObjectId("592288ee19b61c135c41d339"), name: 'service', description: 'Service related', color: 'blue'},
+    {_id: ObjectId("592288ee19b61c135c41d33a"), name: 'tax', description: 'Tax related', color: 'green'},
+    {_id: ObjectId("592288ee19b61c135c41d33b"), name: 'travel', description: 'Travel related', color: 'blue'},
+    {_id: ObjectId("592288ee19b61c135c41d33c"), name: 'procedure', description: 'Procedure', color: 'green'},
+    {_id: ObjectId("592288ee19b61c135c41d33d"), name: 'project', description: 'Mail Related', color: 'brown'},
 ]
 
 var roles = [
-    {name: 'system-admin', description: 'administer system related functionalities'},
-    {name: 'site-admin', description: 'administer site related functionalities'},
+    {_id: ObjectId("59200ab998d04d097040af6e"), name: 'system-admin', description: 'administer system related functionalities'},
+    {_id: ObjectId("59200ab998d04d097040af6f"), name: 'site-admin', description: 'administer site related functionalities'},
 ]
 
 var apps = [
     {
+        _id: ObjectId("592287f03009782848a80098"),
         name: 'ISD Wiki',
         description: 'Information Systems Department Wiki',
         imageUrl: 'images/applications/isd-wiki-bw_icon.svg',
@@ -52,6 +54,7 @@ var apps = [
         author: {emailAddress: 'sghaida@ccc.net'},
         isOnline: false
     },{
+        _id: ObjectId("592287f03009782848a80099"),
         name: 'AD Manager',
         description: 'Manage Engine Active Directory Manager',
         imageUrl: 'images/applications/isd-ad-bw_icon.svg',
@@ -60,6 +63,7 @@ var apps = [
         author: {emailAddress: 'rnaccache@ccc.net'},
         isOnline: true
     },{
+        _id: ObjectId("592287f03009782848a8009a"),
         name: 'Academy',
         description: 'CCC Learning Platform',
         imageUrl: 'images/applications/academy-bw_icon.svg',
@@ -68,6 +72,7 @@ var apps = [
         author: {emailAddress: 'sghaida@ccc.net'},
         isOnline: false
     },{
+        _id: ObjectId("592287f03009782848a8009b"),
         name: 'My Files',
         description: 'Next-cloud File Sharing',
         imageUrl: 'images/applications/my-files-bw_icon.svg',
@@ -76,6 +81,7 @@ var apps = [
         author: {emailAddress: 'rnaccache@ccc.net'},
         isOnline: true
     },{
+        _id: ObjectId("592287f03009782848a8009c"),
         name: 'Fanous',
         description: 'Knowledge Management Platform',
         imageUrl: 'images/applications/fanous-bw_icon.svg',
@@ -84,6 +90,7 @@ var apps = [
         author: {emailAddress: 'sghaida@ccc.net'},
         isOnline: false
     },{
+        _id: ObjectId("592287f03009782848a8009d"),
         name: 'Webmail',
         description: 'MOA Webmail',
         imageUrl: 'images/applications/webmail-icon.svg',
@@ -92,6 +99,7 @@ var apps = [
         author: {emailAddress: 'rnaccache@ccc.net'},
         isOnline: true
     },{
+        _id: ObjectId("592287f03009782848a8009e"),
         name: 'Maximo',
         description: 'IBM Maximo',
         imageUrl: 'images/applications/maximo-bw_icon.svg',
@@ -100,6 +108,7 @@ var apps = [
         author: {emailAddress: 'sghaida@ccc.net'},
         isOnline: false
     },{
+        _id: ObjectId("592287f03009782848a8009f"),
         name: 'Citrix',
         description: 'Citrix Apps',
         imageUrl: 'images/applications/citrix-bw_icon.svg',
@@ -108,6 +117,7 @@ var apps = [
         author: {emailAddress: 'rnaccache@ccc.net'},
         isOnline: true
     },{
+        _id: ObjectId("592287f03009782848a800a0"),
         name: 'iBill',
         description: 'Lync Telephony Billing System',
         imageUrl: 'images/applications/ibill-bw_icon.svg',
@@ -127,7 +137,8 @@ var users = [
         office: 'MOA',
         department: 'ISD',
         country: 'Greece',
-        listOfApps: []
+        listOfApps: [],
+        roles: [ObjectId("59200ab998d04d097040af6e")]
     },{
         employeeid: '580181',
         name: 'Robert Naccache',
@@ -136,7 +147,8 @@ var users = [
         department: 'ISD',
         office: 'MOA',
         country: 'Greece',
-        listOfApps: []
+        listOfApps: [],
+        roles: [ObjectId("59200ab998d04d097040af6f")]
     },{
         employeeid: '418734',
         name: 'Nader Barakat',
@@ -145,7 +157,8 @@ var users = [
         department: 'ISD',
         office: 'MOA',
         country: 'Greece',
-        listOfApps: []
+        listOfApps: [],
+        roles: mongo.Types.ObjectId("59200ab998d04d097040af6f")
     }
 ]
 
