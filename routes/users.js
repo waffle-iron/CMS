@@ -1,11 +1,22 @@
-var express     = require('express'),
+var util        = require('util');
+    express     = require('express'),
     router      = express.Router(),
     mongo       = require('mongoose'),
     auth        = require('connect-ensure-login'),
     middleware  = require('../middleware/authentication'),
     User        = require('../models/user'),
     Role        = require('../models/role'),
+    ldap        = require('activedirectory'),
     async       = require('async');
+
+var config = {
+        url: 'ldap://10.1.0.230:3268',
+        baseDN: 'dc=ccg,dc=local',
+        username: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
+        password: 'Admin1Admin2@'
+    },
+    ad = new ldap(config);
+
 
 /* GET users listing. */
 router.get('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res, next) {
@@ -73,4 +84,19 @@ router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, func
     });
 });
 
+
+router.get('/find/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
+    var username = req.params.name;
+    var query = util.format(
+        '(&(|(objectClass=user)(objectClass=person))(!(objectClass=computer))(!(objectClass=group))(|(sAMAccountName=%s*)(mail=%s*)(cn=%s*)))',
+        username,username,username
+    );
+
+    ad.findUsers(query, function (err, users) {
+        if(err) { return err; }
+
+        res.send(users);
+    });
+
+});
 module.exports = router;

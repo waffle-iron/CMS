@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "activedirectory": "^0.7.2",
     "async": "^2.4.0",
     "base64-js": "^1.2.0",
     "body-parser": "~1.17.1",
