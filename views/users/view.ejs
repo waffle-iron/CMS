@@ -1,6 +1,3 @@
-/**
- * Created by RNaccache on 5/22/2017.
- */
 <% include ../partials/header.ejs %>
 
 
@@ -10,6 +7,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
 
 <div class="ui container body segment form" style="margin-bottom: 50px; padding-top: 15px;">
+    <a class="ui button" id="adduser" href="/users/new">
+        <i class="add icon"></i>
+    </a>
     <table id="user" class="ui celled table" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -17,6 +17,7 @@
             <th>Full Name</th>
             <th>Location</th>
             <th>Department</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -26,18 +27,24 @@
             <th>Full Name</th>
             <th>Location</th>
             <th>Department</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
         </tfoot>
         <tbody>
         <% users.forEach(function(user){ %>
-        <tr>
+        <tr id="<%=user._id%>">
             <td><%= user.mail.toLowerCase()%></td>
             <td><%= user.name%></td>
             <td><%= user.country%></td>
             <td><%= user.department%></td>
+            <% if (user.accountdisabled === true) {%>
+            <td>Disabled</td>
+            <% } else { %>
+            <td>Enabled</td>
+            <%}%>
             <td>
-                Cell
+                <i class="edit icon"></i>
             </td>
         </tr>
         <% }) %>
@@ -45,13 +52,17 @@
         </tbody>
     </table>
 </div>
-</div>
+
 <script>
     $(document).ready(function() {
         $('#user').DataTable();
+        $('.edit.icon').click(function(){
+            console.log('click');
+            window.open('/users/'+ $(this).parent().parent().attr('id') + '/edit');
+        })
     } );
 
 </script>
 
-<!--<% include ../partials/user/new.ejs%>-->
+
 <% include ../partials/footer.ejs %>

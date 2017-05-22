@@ -48,12 +48,20 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
 
 /* GET edit user form */
 router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
-   User.findById(req.params.id).populate('roles').exec(function (err, user) {
-       if(err) {
-           console.log(err);
-       } else {
-           res.render('users/edit');
-       }
+    async.parallel([
+        function (cb) {
+            Role.find({},cb);
+        },
+        function (cb) {
+            User.findById(req.params.id).populate('roles').exec(cb)
+            }
+        ],function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('users/edit', {roles: result[0], users: result[1]});
+        }
+
    });
 });
 
