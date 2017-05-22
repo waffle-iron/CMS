@@ -18,10 +18,17 @@ router.post('/', passport.authenticate('ldapauth',{
         successFlash: true
     }), function(req, res) {
         console.log('you logged in as: ' + req.user.mail);
-        User.findOne({employeeid: req.user.employeeID}, function (err, user) {
+        User.findOne({employeeid: req.user.employeeID}).populate('roles').exec( function (err, user) {
             if(err){
                 console.log(err);
             } else {
+                var roles = [];
+
+                user.roles.forEach(function (role) {
+                    roles.push(role.name);
+                });
+
+                req.session.passport.user.roles = roles;
                 req.session.passport.user._id  = user._id.toString();
                 res.redirect(req.session.returnTo || '/');
                 delete req.session.returnTo;

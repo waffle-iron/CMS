@@ -110,7 +110,8 @@ passport.serializeUser(function(user, done) {
         office: user.physicalDeliveryOfficeName,
         country: user.co || 'greece',
         department: user.department,
-        thumbnail:  Buffer.from(user._raw.thumbnailPhoto,'binary').toString('base64')
+        thumbnail:  Buffer.from(user._raw.thumbnailPhoto,'binary').toString('base64'),
+        roles: user.roles
     };
 
     done(null, sessionUser);
