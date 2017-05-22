@@ -2,6 +2,13 @@
  * Created by RNaccache on 5/22/2017.
  */
 <% include ../partials/header.ejs %>
+
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
+
 <div class="ui container body segment form" style="margin-bottom: 50px; padding-top: 15px;">
     <table id="user" class="ui celled table" cellspacing="0" width="100%">
         <thead>
@@ -13,124 +20,28 @@
             <th>Actions</th>
         </tr>
         </thead>
+        <tfoot>
+        <tr>
+            <th>User Email</th>
+            <th>Full Name</th>
+            <th>Location</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+        </tfoot>
         <tbody>
+        <% users.forEach(function(user){ %>
         <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
+            <td><%= user.mail.toLowerCase()%></td>
+            <td><%= user.name%></td>
+            <td><%= user.country%></td>
+            <td><%= user.department%></td>
             <td>
                 Cell
             </td>
         </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                abc
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
-        <tr>
-            <td>RNaccache@ccc.net</td>
-            <td>Robert Naccache</td>
-            <td>Greece</td>
-            <td>ISD</td>
-            <td>
-                Cell
-            </td>
-        </tr>
+        <% }) %>
+
         </tbody>
     </table>
 </div>
