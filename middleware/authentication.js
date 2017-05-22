@@ -12,19 +12,19 @@ exports.isLoggedIn = function(req, res, next) {
 };
 
 exports.isSystemAdmin = function (req, res, next) {
-    if (req.currentUser.roles.indexOf('system-admin') > -1){
+    if (req.user.roles.indexOf('system-admin') > -1){
         return next();
     } else {
         req.flash('error', 'you dont have permission');
-        req.redirect('back');
+        res.redirect('back');
     }
 }
 
 exports.isSiteAdmin = function (req, res, next) {
-    if (req.currentUser.roles.indexOf('site-admin') > -1){
+    if (req.user.roles.indexOf('site-admin') > -1){
         return next();
     } else {
         req.flash('error', 'you dont have permission');
-        req.redirect('back');
+        res.redirect('back');
     }
 }
