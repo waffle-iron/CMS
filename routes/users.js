@@ -79,7 +79,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, func
             console.log(err)
         }else {
             console.log(result);
-            res.render('announcements/new', {roles: result[0]});
+            res.render('users/new', {roles: result[0]});
         }
     });
 });
