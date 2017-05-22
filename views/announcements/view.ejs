@@ -50,7 +50,9 @@
                         <%- announcement.body %>
                     </div>
                 </div>
-                <a href="" class="edit-url"><i class="edit icon"></i></a>
+                <% if (currentUser.roles.indexOf('system-admin') > -1) { %>
+                    <a href="" class="edit-url"><i class="edit icon"></i></a>
+                <% } %>
             </div>
         </div>
         <%})%>
