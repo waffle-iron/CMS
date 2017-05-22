@@ -4,7 +4,7 @@
 
 var express     = require('express'),
     passport    = require('passport'),
-    User        = require('../models/user')
+    User        = require('../models/user'),
     router = express.Router();
 
 router.get('/', function(req, res, next) {
