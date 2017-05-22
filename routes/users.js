@@ -11,7 +11,7 @@ router.get('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functio
      if(err){
        console.log(err);
      } else {
-         res.render('users', {users: users});
+         res.render('users/view', {users: users});
      }
   });
 });
