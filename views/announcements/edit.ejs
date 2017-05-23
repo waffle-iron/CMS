@@ -3,13 +3,13 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/new-form.css">
 
   <div class="item">
-    <div class="ui breadcrumb">
-      <a class="section" href="/">Home</a>
-      <span class="divider">/</span>
-      <a class="section" href="/announcements/">Announcements</a>
-      <span class="divider">/</span>
-      <div class="active section">Edit</div>
-    </div>
+      <div class="ui breadcrumb">
+          <% breadcrumbs.forEach(function (breadcrumb) { %>
+          <a class="section" href="<%= breadcrumb.url%>"><%= breadcrumb.name%></a>
+          <span class="divider">/</span>
+          <% })%>
+          <!-- <div class="active section">Edit</div>-->
+      </div>
   </div>
 
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">

@@ -1,6 +1,7 @@
 /* Dependencies */
 var express                 = require('express'),
     expressSession          = require('express-session'),
+    breadcrumbs             = require('express-breadcrumbs'),
     path                    = require('path'),
     favicon                 = require('serve-favicon'),
     logger                  = require('morgan'),
@@ -55,6 +56,14 @@ process.on('SIGINT', function() {
 
 /* populate the database with some initial data*/
 seedDB();
+
+//setup breadcrump
+app.use(breadcrumbs.init());
+app.use(breadcrumbs.setHome());
+app.use('/', breadcrumbs.setHome({
+    name: 'Dashboard',
+    url: '/'
+}));
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));

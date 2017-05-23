@@ -3,6 +3,7 @@
  */
 
 var express         = require('express'),
+    breadcrumbs     = require('express-breadcrumbs'),
     router          = express.Router(),
     middleware      = require('../middleware/authentication'),
     passport        = require('passport'),
@@ -19,7 +20,8 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
         if(err){
             console.log(err);
         }else {
-            res.render('announcements/view', {announcements: announcements});
+            req.breadcrumbs('Announcements')
+            res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
         }
     });
 
@@ -102,9 +104,11 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
         }else {
             console.log(result);
             if(result[2] === null){
-                res.redirect('/announcements');
+                req.breadcrumbs({name: 'Announcements', url: '/announcements'})
+                res.redirect('/announcements', {breadcrumbs: req.breadcrumbs()});
             } else {
-                res.render('announcements/edit', {tags: result[0], departments: result[1], announcement: result[2]});
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Edit', url: 'announcements/edit'}])
+                res.render('announcements/edit', {tags: result[0], departments: result[1], announcement: result[2], breadcrumbs: req.breadcrumbs()});
             }
 
         }
