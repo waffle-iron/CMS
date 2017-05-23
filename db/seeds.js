@@ -51,7 +51,8 @@ var apps = [
         imageUrl: 'images/applications/isd-wiki-bw_icon.svg',
         url: 'https://wiki.ccc.gr',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'sghaida@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a80099"),
@@ -60,7 +61,8 @@ var apps = [
         imageUrl: 'images/applications/isd-ad-bw_icon.svg',
         url: 'https://cloud-adman-01.cloud.ccg.local:8443/',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'rnaccache@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a8009a"),
@@ -69,7 +71,8 @@ var apps = [
         imageUrl: 'images/applications/academy-bw_icon.svg',
         url: 'https://ccctraining.ccc.net',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'sghaida@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009b"),
@@ -78,7 +81,8 @@ var apps = [
         imageUrl: 'images/applications/my-files-bw_icon.svg',
         url: 'http://share.ccc.net',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'rnaccache@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a8009c"),
@@ -87,7 +91,8 @@ var apps = [
         imageUrl: 'images/applications/fanous-bw_icon.svg',
         url: 'http://fanous.ccc.gr',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'sghaida@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009d"),
@@ -96,7 +101,8 @@ var apps = [
         imageUrl: 'images/applications/webmail-icon.svg',
         url: 'https://moawebmail.ccc.gr/owa',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'rnaccache@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a8009e"),
@@ -105,7 +111,8 @@ var apps = [
         imageUrl: 'images/applications/maximo-bw_icon.svg',
         url: 'http://maximo.ccc.gr',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'sghaida@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009f"),
@@ -114,7 +121,8 @@ var apps = [
         imageUrl: 'images/applications/citrix-bw_icon.svg',
         url: 'https://apps.ccc.net',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'rnaccache@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a800a0"),
@@ -123,13 +131,15 @@ var apps = [
         imageUrl: 'images/applications/ibill-bw_icon.svg',
         url: 'http://ibill.ccc.gr/ibill',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
-        author: {emailAddress: 'rnaccache@ccc.net'},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
     }
 ]
 
 var users = [
     {
+        _id: ObjectId("592416130fc2fd16dc6a7071"),
         employeeid: '418732',
         name: 'Saddam Abu Ghaida',
         mail: 'SGhaida@ccc.net',
@@ -141,6 +151,7 @@ var users = [
         roles: [ObjectId("59200ab998d04d097040af6e")],
         accountdisabled: false
     },{
+        _id: ObjectId("592416130fc2fd16dc6a7072"),
         employeeid: '580181',
         name: 'Robert Naccache',
         mail: 'rnaccache@ccc.net',
@@ -152,6 +163,7 @@ var users = [
         roles: [ObjectId("59200ab998d04d097040af6f")],
         accountdisabled: false
     },{
+        _id: ObjectId("592416130fc2fd16dc6a7073"),
         employeeid: '418734',
         name: 'Nader Barakat',
         mail: 'nbarakat@ccc.net',
@@ -160,7 +172,7 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: mongo.Types.ObjectId("59200ab998d04d097040af6f"),
+        roles: ObjectId("59200ab998d04d097040af6f"),
         accountdisabled: false
     }
 ]
@@ -215,6 +227,22 @@ function seedDB() {
         }
     });
 
+    User.remove({}, function (err) {
+        if(err){
+            console.log(err);
+        } else {
+            users.forEach(function (seed) {
+                User.create(seed, function (err, user) {
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log(user);
+                    }
+                });
+            });
+        }
+    });
+
     Application.remove({}, function (err) {
         if(err){
             console.log(err);
@@ -235,25 +263,11 @@ function seedDB() {
         if(err){
             console.log(err);
         } else {
-            //TODO: POPLATE Announcements
+            //TODO: POPULATE Announcements
         }
     });
 
-    User.remove({}, function (err) {
-        if(err){
-            console.log(err);
-        } else {
-            users.forEach(function (seed) {
-                User.create(seed, function (err, user) {
-                    if(err){
-                        console.log(err);
-                    } else {
-                        console.log(user);
-                    }
-                });
-            });
-        }
-    });
+
 }
 
 module.exports = seedDB;

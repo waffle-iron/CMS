@@ -15,20 +15,9 @@ var applicationSchema = new Schema({
         sites: [String],
         countries: [String]
     },
-    owner: {
-        id: {
-            type: Schema.Types.ObjectId,
-            ref: 'Department'
-        },
-        name: String
-    },
-    author: {
-        id: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        emailAddress: String
-    },
+    owner: { type: Schema.Types.ObjectId, ref: 'Department'},
+    author: { type: Schema.Types.ObjectId, ref: 'User'},
+
     tags : [{
         type: Schema.Types.ObjectId,
         ref: 'Tag'
