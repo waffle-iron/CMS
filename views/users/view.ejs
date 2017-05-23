@@ -6,51 +6,62 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
 
+<div class="item">
+    <div class="ui breadcrumb">
+        <a class="section" href="/">Home</a>
+        <span class="divider">/</span>
+        <div class="active section">Users</div>
+    </div>
+</div>
+
 <div class="ui container body segment form" style="margin-bottom: 50px; padding-top: 15px;">
+    <div class="ui right floated sixteen wide column">
     <a class="ui button" id="adduser" href="/users/new">
         <i class="add icon"></i>
     </a>
-    <table id="user" class="ui celled table" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th>User Email</th>
-            <th>Full Name</th>
-            <th>Location</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>User Email</th>
-            <th>Full Name</th>
-            <th>Location</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <% users.forEach(function(user){ %>
-        <tr id="<%=user._id%>">
-            <td><%= user.mail.toLowerCase()%></td>
-            <td><%= user.name%></td>
-            <td><%= user.country%></td>
-            <td><%= user.department%></td>
-            <% if (user.accountdisabled === true) {%>
-            <td>Disabled</td>
-            <% } else { %>
-            <td>Enabled</td>
-            <%}%>
-            <td>
-                <i class="edit icon"></i>
-            </td>
-        </tr>
-        <% }) %>
-
-        </tbody>
-    </table>
+    </div>
+    <div class="ui sixteen wide column">
+        <table id="user" class="ui celled table" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Full Name</th>
+                <th>Location</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>User Email</th>
+                <th>Full Name</th>
+                <th>Location</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <% users.forEach(function(user){ %>
+            <tr id="<%=user._id%>">
+                <td><%= user.mail.toLowerCase()%></td>
+                <td><%= user.name%></td>
+                <td><%= user.country%></td>
+                <td><%= user.department%></td>
+                <% if (user.accountdisabled === true) {%>
+                <td>Disabled</td>
+                <% } else { %>
+                <td>Enabled</td>
+                <%}%>
+                <td>
+                    <i class="edit icon"></i>
+                </td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
