@@ -13,7 +13,7 @@ var returnedUserObject;
 $('.ui.search')
     .search({
         type          : 'category',
-        minCharacters: 3,
+        minCharacters: 4,
         apiSettings : {
             onResponse: function(reqResponse) {
                 var response = {
