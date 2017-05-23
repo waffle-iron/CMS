@@ -61,7 +61,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
         if (err) {
             console.log(err);
         } else {
-            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'Edit', url: 'users/edit'}]);
+            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'Edit', url: 'edit'}]);
             res.render('users/edit', {roles: result[0], users: result[1], breadcrumbs: req.breadcrumbs()});
         }
 
@@ -90,7 +90,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, func
             console.log(err)
         }else {
             console.log(result);
-            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'New', url: 'users/new'}]);
+            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'New', url: 'new'}]);
             res.render('users/new', {roles: result[0], breadcrumbs: req.breadcrumbs()});
         }
     });
