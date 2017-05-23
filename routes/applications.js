@@ -44,4 +44,17 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
     });
 });
 
+
+router.get('/find/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
+   var query = req.params.name;
+    Application.find({}).and([
+       { $or: [{name: new RegExp(query, 'i')}, {description: new RegExp(query, 'i')}] }
+   ]).populate('author owner').exec(function (err, apps) {
+        if(err){
+            console.log(err)
+        }else {
+            res.send(apps);
+        }
+    })
+});
 module.exports = router;
