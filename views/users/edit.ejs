@@ -1,14 +1,5 @@
 <% include ../partials/header.ejs %>
 
-<div class="item">
-    <div class="ui breadcrumb">
-        <a class="section" href="/">Home</a>
-        <span class="divider">/</span>
-        <a class="section" href="/Users/">Users</a>
-        <span class="divider">/</span>
-        <div class="active section">Edit</div>
-    </div>
-</div>
 <div class="ui container body segment">
 <form class="ui form" action="/users/<%- users._id%>?_method=PUT" method="post">
     <div class="ui">

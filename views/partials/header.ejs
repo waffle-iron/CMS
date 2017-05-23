@@ -102,3 +102,11 @@
   </div>
   <div class="dimmed pusher">
       <div class="ui container body margin-0">
+        <div class="item">
+          <div class="ui breadcrumb">
+              <% breadcrumbs.forEach(function (breadcrumb) { %>
+            <a class="section" href="<%= breadcrumb.url%>"><%= breadcrumb.name%></a>
+            <span class="divider">/</span>
+              <% })%>
+          </div>
+        </div>

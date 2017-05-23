@@ -64,8 +64,8 @@ router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, func
                 console.log('fuckin error' + err)
             }else {
                 console.log(result);
-                console.log('fuck');
-                res.render('announcements/new', {tags: result[0], departments: result[1]});
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'New', url: 'announcements/new'}]);
+                res.render('announcements/new', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
             }
    });
 
@@ -107,7 +107,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
                 req.breadcrumbs({name: 'Announcements', url: '/announcements'})
                 res.redirect('/announcements', {breadcrumbs: req.breadcrumbs()});
             } else {
-                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Edit', url: 'announcements/edit'}])
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Edit', url: 'announcements/edit'}]);
                 res.render('announcements/edit', {tags: result[0], departments: result[1], announcement: result[2], breadcrumbs: req.breadcrumbs()});
             }
 

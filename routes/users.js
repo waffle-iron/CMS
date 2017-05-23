@@ -1,5 +1,6 @@
-var util        = require('util');
+var util        = require('util'),
     express     = require('express'),
+    breadcrumbs = require('express-breadcrumbs'),
     router      = express.Router(),
     mongo       = require('mongoose'),
     auth        = require('connect-ensure-login'),
@@ -24,7 +25,8 @@ router.get('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functio
      if(err){
        console.log(err);
      } else {
-         res.render('users/view', {users: users});
+         req.breadcrumbs('Users');
+         res.render('users/view', {users: users, breadcrumbs: req.breadcrumbs()});
      }
   });
 });
@@ -59,7 +61,8 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
         if (err) {
             console.log(err);
         } else {
-            res.render('users/edit', {roles: result[0], users: result[1]});
+            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'Edit', url: 'users/edit'}]);
+            res.render('users/edit', {roles: result[0], users: result[1], breadcrumbs: req.breadcrumbs()});
         }
 
    });
@@ -87,7 +90,8 @@ router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, func
             console.log(err)
         }else {
             console.log(result);
-            res.render('users/new', {roles: result[0]});
+            req.breadcrumbs([{name: 'Users', url: '/users'}, {name: 'New', url: 'users/new'}]);
+            res.render('users/new', {roles: result[0], breadcrumbs: req.breadcrumbs()});
         }
     });
 });

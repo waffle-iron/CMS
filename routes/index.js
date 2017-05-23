@@ -1,4 +1,5 @@
 var express         = require('express'),
+    breadcrumbs     = require('express-breadcrumbs'),
     router          = express.Router(),
     passport        = require('passport'),
     async           = require('async'),
@@ -20,7 +21,8 @@ router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
         if(err){
             console.log(err)
         } else {
-            res.render('index', {announcements: result[0], applications: result[1]});
+            req.breadcrumbs();
+            res.render('index', {announcements: result[0], applications: result[1], breadcrumbs: req.breadcrumbs()});
         }
     });
 });

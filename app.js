@@ -61,7 +61,7 @@ seedDB();
 app.use(breadcrumbs.init());
 app.use(breadcrumbs.setHome());
 app.use('/', breadcrumbs.setHome({
-    name: 'Dashboard',
+    name: 'Home',
     url: '/'
 }));
 
