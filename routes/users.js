@@ -14,7 +14,19 @@ var config = {
         url: 'ldap://10.1.0.230:3268',
         baseDN: 'dc=ccg,dc=local',
         username: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
-        password: 'Admin1Admin2@'
+        password: 'Admin1Admin2@',
+        attributes: {
+            user : [
+                'employeeID',
+                'displayName',
+                'givenName',
+                'sAMAccountName',
+                'mail',
+                'title',
+                'physicalDeliveryOfficeName',
+                'co',
+                'department'
+        ]}
     },
     ad = new ldap(config);
 
