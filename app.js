@@ -19,6 +19,7 @@ var express                 = require('express'),
 var index           = require('./routes/index'),
     users           = require('./routes/users'),
     announcements   = require('./routes/announcements'),
+    applications    = require('./routes/applications'),
     login           = require('./routes/login'),
     logout          = require('./routes/logout');
 
@@ -156,8 +157,9 @@ app.use(function (req, res, next) {
 
 /* define the used routes*/
 app.use('/', index);
-app.use('/announcements', announcements);
 app.use('/users', users);
+app.use('/announcements', announcements);
+app.use('/applications', applications);
 app.use('/login', login);
 app.use('/logout', logout);
 
