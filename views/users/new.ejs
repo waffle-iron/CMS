@@ -60,7 +60,7 @@
                 <select class="ui selection dropdown" name="user[roles]">
                     <option value="">Assign Role</option>
                       <% roles.forEach(function(role){ %>
-                    <option value=<%- role.name%>><%= role.name %></option>
+                    <option value=<%- role._id%>><%= role.name %></option>
                       <%})%>
                 </select>
             </div>
