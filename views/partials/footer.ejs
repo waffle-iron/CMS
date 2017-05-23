@@ -14,6 +14,43 @@
                   transition: 'drop'
               });
           $('.ui.dropdown').dropdown();
+
+          /* main search*/
+          $('#main-search')
+              .search({
+                  type: 'category',
+                  minCharacters: 2,
+                  apiSettings: {
+                      url: '/applications/find/{query}',
+                      onResponse: function(reqResponse) {
+
+                          var response = { results: {} };
+
+                          $.each(reqResponse, function(index, item){
+
+                              var name = '<img src="/' + item.imageUrl + '"' +' style ="width:40px; box-sizing: initial !important;' + '">',
+                                  maxResults = 10;
+
+                              if(index > maxResults){
+                                  return false;
+                              }
+                              if(response.results[name] === undefined){
+                                  response.results[name] = {
+                                      name    :   name,
+                                      results :   []
+                                  };
+                              }
+
+                              response.results[name].results.push({
+                                  title         : item.name,
+                                  description   : item.description,
+                                  url           : item.url
+                              })
+                          });
+                        return response;
+                      }
+                  },
+              });
       </script>
     </body>
 </html>

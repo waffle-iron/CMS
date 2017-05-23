@@ -72,10 +72,13 @@
       <% } %>
       <div class="right menu">
         <div class="item">
-          <div class="ui icon input">
-            <input type="text" placeholder="Search...">
-            <i class="search link icon"></i>
-          </div>
+            <div class="ui category search" id="main-search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search Applications">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
         </div>
         <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu">
           <img class="small-profile-image" src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" alt="small profile picture">

@@ -3,9 +3,9 @@
  */
 
 //default settings for users/find
-$.fn.api.settings.api = {
-    'search' : '/users/find/{query}'
-};
+// $.fn.api.settings.api = {
+//     'search' :
+// };
 var returnedUserObject;
 
 
@@ -15,6 +15,7 @@ $('.ui.search')
         type          : 'category',
         minCharacters: 4,
         apiSettings : {
+            url: '/users/find/{query}',
             onResponse: function(reqResponse) {
                 var response = {
                     results: {}
