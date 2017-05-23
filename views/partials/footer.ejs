@@ -44,12 +44,16 @@
                               response.results[name].results.push({
                                   title         : item.name,
                                   description   : item.description,
-                                  url           : item.url
+                                  actionURL     : item.url
                               })
                           });
                         return response;
                       }
                   },
+                  onSelect : function (result, response){
+                            debugger;
+                            window.open(result.actionURL);
+                  }
               });
       </script>
     </body>
