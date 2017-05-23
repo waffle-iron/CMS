@@ -30,12 +30,9 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
         if(err){
             console.log(err);
         } else {
-            application.author.id = req.user._id;
-            application.author.name = req.user.name;
+            application.author = req.user._id;
             application.tags =req.body.application.tags;
-
-            application.owner.id = req.body.application.department;
-            application.owner.name = req.body.application.department.name
+            application.owner = req.body.application.department;
             application.save();
 
             if(req.body['new-application'] === 'on') {
@@ -43,7 +40,6 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
             } else {
                 res.redirect('/applications');
             }
-
         }
     });
 });
