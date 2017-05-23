@@ -49,7 +49,8 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
         if(err){
             console.log(err);
         } else {
-            User.save();
+
+            user.save();
 
             if(req.body['new-user'] === 'on') {
                 res.redirect('/users/new')

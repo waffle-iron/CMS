@@ -1,69 +1,83 @@
 <% include ../partials/header.ejs %>
 
-<form class="ui form" action="/users" method="post">
-    <div class="ui segment">
-        <header class="ui dividing header">
-            <h3>Add New User</h3>
-        </header>
-        <div class="ui search field">
-            <label>Email</label>
-            <div class="ui icon input">
-                <input type="email" name="user[email]" placeholder="Search Email Address..." class="prompt">
-                <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-        </div>
-        <div class="field">
-            <label>Name</label>
-            <input type="text" name="user[name]"  placeholder="Robert Naccache" readonly="">
-        </div>
-        <div class="field">
-            <label>Title</label>
-            <input type="text" name="user[title]"  placeholder="IT Support Engineer" readonly="">
-        </div>
-        <div class="field">
-            <label>Department</label>
-            <input type="text" name="user[department]"  placeholder="ISD" readonly="">
-        </div>
-        <div class="field">
-            <label>Country</label>
-            <input type="text" name="user[country]"  placeholder="Greece" readonly="">
-        </div>
-        <div class="field">
-            <label>Office</label>
-            <input type="text" name="user[office]"  placeholder="MOA" readonly="">
-        </div>
-        <div class="field">
-            <label>Roles</label>
-            <select class="ui selection dropdown" name="user[roles]">
-                <option value="">Tag</option>
-                  <% roles.forEach(function(role){ %>
-                <option value=<%- role.name%>><%= role.name %></option>
-                  <%})%>
-            </select>
-        </div>
-        <div class="actions">
-            <button class="ui positive right labeled icon button" type="submit">
-                Add
-            </button>
-        </div>
-    </div>
-</form>
-<script>
+<style>
+    .results.transition.visible {
+        width: 560px !important;
+    }
+    .ui.category.search>.results .category>.name {
+        width: 220px!important;
+    }
 
-    $('.ui.search')
-        .search({
-            debug: true,
-            apiSettings: {
-                url: '/users/find/{query}'
-            },
-            type: 'category',
-            fields: {
-                results: {},
-                title:  "mail"
-            },
-            minCharacters: 3
-        })
-    ;
-</script>
+</style>
+<div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+    <h2 class="ui icon header center aligned">
+        <i class="announcement icon"></i>
+        <div class="content">
+            Add Users
+            <div class="sub header">Add a user by searching his email address</div>
+        </div>
+    </h2>
+    <hr style="margin: 50px 0 50px 0;">
+    <form class="ui form" action="/users" method="post">
+            <div class="ui search field">
+                <label>Email</label>
+                <div class="ui icon input">
+                    <input type="email" name="user[mail]" placeholder="Search Email Address..." class="prompt">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+            <div class="three fields">
+                <div class="eight wide field">
+                    <label>Name</label>
+                    <input type="text" name="user[name]"  placeholder="Name" readonly="">
+                </div>
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text" name="user[title]"  placeholder="Title" readonly="">
+                </div>
+                <div class="four wide field">
+                    <label>Group ID</label>
+                    <input type="text" name="user[employeeid]"  placeholder="Number" readonly="">
+                </div>
+            </div>
+            <div class="three fields">
+            <div class="field">
+                <label>Department</label>
+                <input type="text" name="user[department]"  placeholder="Department" readonly="">
+            </div>
+            <div class="field">
+                <label>Country</label>
+                <input type="text" name="user[country]"  placeholder="Office Country" readonly="">
+            </div>
+            <div class="field">
+                <label>Office</label>
+                <input type="text" name="user[office]"  placeholder="Office Name" readonly="">
+            </div>
+            </div>
+            <div class="field">
+                <label>Roles</label>
+                <select class="ui selection dropdown" name="user[roles]">
+                    <option value="">Assign Role</option>
+                      <% roles.forEach(function(role){ %>
+                    <option value=<%- role.name%>><%= role.name %></option>
+                      <%})%>
+                </select>
+            </div>
+            <div class = "ui sixteen wide column">
+                <div class="field">
+                    <div class="ui toggle checkbox checked">
+                        <input type="checkbox" checked="checked" name="user[accountEnabled]">
+                        <label>Account Enabled</label>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="ui positive right labeled icon button" type="submit">
+                        Add
+                    </button>
+                </div>
+            </div>
+    </form>
+</div>
+<script src="/javascripts/usersearch.js"></script>
 <% include ../partials/footer.ejs %>

@@ -149,7 +149,7 @@ var users = [
         country: 'Greece',
         listOfApps: [],
         roles: [ObjectId("59200ab998d04d097040af6e")],
-        accountdisabled: false
+        accountEnabled: true
     },{
         _id: ObjectId("592416130fc2fd16dc6a7072"),
         employeeid: '580181',
@@ -161,7 +161,7 @@ var users = [
         country: 'Greece',
         listOfApps: [],
         roles: [ObjectId("59200ab998d04d097040af6f")],
-        accountdisabled: false
+        accountEnabled: true
     },{
         _id: ObjectId("592416130fc2fd16dc6a7073"),
         employeeid: '418734',
@@ -173,7 +173,7 @@ var users = [
         country: 'Greece',
         listOfApps: [],
         roles: ObjectId("59200ab998d04d097040af6f"),
-        accountdisabled: false
+        accountEnabled: true
     }
 ]
 

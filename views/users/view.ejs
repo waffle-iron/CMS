@@ -45,10 +45,10 @@
                 <td><%= user.name%></td>
                 <td><%= user.country%></td>
                 <td><%= user.department%></td>
-                <% if (user.accountdisabled === true) {%>
-                <td>Disabled</td>
-                <% } else { %>
+                <% if (user.accountEnabled === true) {%>
                 <td>Enabled</td>
+                <% } else { %>
+                <td>Disabled</td>
                 <%}%>
                 <td>
                     <form action="/users/<%= user._id%>/edit" method="get">
