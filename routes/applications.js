@@ -57,4 +57,18 @@ router.get('/find/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmi
         }
     })
 });
+
+router.get('/filter/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
+    var query = req.params.name;
+    Application.find({}).and([
+        { $or: [{name: new RegExp(query, 'i')}, {description: new RegExp(query, 'i')}] }
+    ]).populate('author owner').exec(function (err, apps) {
+        if(err){
+            console.log(err)
+        }else {
+            req.breadcrumbs([{name: 'Applications', url: '/applications'}]);
+            res.render('applications/view', {applications: apps, breadcrumbs: req.breadcrumbs()});
+        }
+    })
+});
 module.exports = router;
