@@ -64,6 +64,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a8009a"),
@@ -74,6 +75,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009b"),
@@ -84,6 +86,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a8009c"),
@@ -94,6 +97,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009d"),
@@ -114,6 +118,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: false
     },{
         _id: ObjectId("592287f03009782848a8009f"),
@@ -124,6 +129,7 @@ var apps = [
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
+        requirePermission: true,
         isOnline: true
     },{
         _id: ObjectId("592287f03009782848a800a0"),
