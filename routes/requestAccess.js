@@ -9,7 +9,6 @@ var express         = require('express'),
     passport        = require('passport'),
     auth            = require('connect-ensure-login'),
     Application     = require('../models/application'),
-    async           = require('async'),
     mailer          = require('nodemailer');
 
 
@@ -18,7 +17,7 @@ router.get('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
         if(err){
             console.log(err);
         } else {
-            req.breadcrumbs([{name: 'Applications', url: '/applications'}]);
+            req.breadcrumbs([{name: 'Access Request', url: '/request/access'}]);
             res.render('requests/app',{applications: apps, breadcrumbs: req.breadcrumbs()});
         }
     });
