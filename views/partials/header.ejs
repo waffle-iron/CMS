@@ -37,14 +37,14 @@
       <i class="info icon"></i> About
     </a>
   </div>
-  <div class="ui basic icon top fixed menu">
+  <div class="ui basic icon top fixed menu" style="height: 50px;">
     <div class="ui container">
       <a id="toggle" class="item">
         <i class="sidebar icon"></i>
       </a>
       <a class="active item" href="/">Home</a>
       <% if (currentUser.roles.length >0 && currentUser.roles.indexOf('system-admin') > -1) { %>
-        <div class="ui  dropdown item ">
+        <div class="ui  dropdown item">
             <p class="menu-margin">Admin</p>
             <div class="ui vertical menu">
                 <div class="ui large header">
@@ -71,16 +71,16 @@
         </div>
       <% } %>
       <div class="right menu">
-        <div class="item">
+        <div class="item"  >
             <div class="ui category search" id="main-search">
-                <div class="ui icon input">
+                <div class="ui icon input" style="height:30px;">
                     <input class="prompt" type="text" placeholder="Search Applications">
                     <i class="search icon"></i>
                 </div>
                 <div class="results"></div>
             </div>
         </div>
-        <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu">
+        <div class="ui item floating labeled dropdown icon user-drop-menu" id="right-menu" >
           <img class="small-profile-image" src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" alt="small profile picture">
           <p><%= currentUser.firstname%></p>
           <div class="menu dropdown" id='dropdown-right-menu' >
