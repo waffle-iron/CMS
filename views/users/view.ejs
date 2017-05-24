@@ -26,9 +26,9 @@
                     <td><%= user.country%></td>
                     <td><%= user.department%></td>
                     <% if (user.accountEnabled === true) {%>
-                    <td>Enabled</td>
+                    <td style="color: green">Enabled</td>
                     <% } else { %>
-                    <td>Disabled</td>
+                    <td style="color: red">Disabled</td>
                     <%}%>
                     <td>
                         <form action="/users/<%= user._id%>/edit" method="get">
