@@ -27,6 +27,7 @@
     "passport-ldapauth": "^1.0.0",
     "remove": "^0.1.5",
     "serve-favicon": "~2.4.2",
-    "text-encoding": "^0.6.4"
+    "text-encoding": "^0.6.4",
+    "unirest": "^0.5.1"
   }
 }
