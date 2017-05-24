@@ -7,7 +7,7 @@ var express         = require('express'),
     Application     = require('../models/application'),
     Department      = require('../models/department'),
     Announcement    = require('../models/announcement')
-    calendar        = require('./calendar');
+    calendar        = require('../helpers/calendar');
 
 /* GET home page. */
 router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
