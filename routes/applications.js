@@ -9,6 +9,8 @@ var express         = require('express'),
     passport        = require('passport'),
     auth            = require('connect-ensure-login'),
     Application     = require('../models/application'),
+    Tag             = require('../models/tag'),
+    Department      = require('../models/department'),
     async           = require('async');
 
 
@@ -44,7 +46,56 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
     });
 });
 
+/* GET show New Application form*/
+router.get('/new', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    async.parallel([
+        function (cb) {
+            Tag.find({},cb);
+        },
+        function (cb) {
+            Department.find({},cb);
+        }
+    ],function (err, result) {
+        if(err) {
+            console.log( err)
+        }else {
+            console.log(result);
+            req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'New', url: 'new'}]);
+            res.render('applications/new', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
+        }
+    });
+});
 
+/* GET  sow edit form for a specific application*/
+router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
+    async.parallel([
+        function (cb) {
+            Tag.find({},cb);
+        },
+        function (cb) {
+            Department.find({},cb);
+        },
+        function (cb) {
+            Application.findById(req.params.id).populate('department').exec(cb);
+        }
+    ],function (err, result) {
+        if(err) {
+            console.log(err);
+        }else {
+            console.log(result);
+
+            if(result[2] === null){
+                req.breadcrumbs({name: 'Applications', url: '/applications'})
+                res.redirect('/applications', {breadcrumbs: req.breadcrumbs()});
+            } else {
+                req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'Edit', url: 'edit'}]);
+                res.render('applications/edit', {tags: result[0], departments: result[1], application: result[2], breadcrumbs: req.breadcrumbs()});
+            }
+        }
+    });
+});
+
+/* GET find app by app name  used by the global search box*/
 router.get('/find/:name', auth.ensureLoggedIn('/login'),  function (req,res, next) {
    var query = req.params.name;
     Application.find({}).and([
@@ -58,6 +109,7 @@ router.get('/find/:name', auth.ensureLoggedIn('/login'),  function (req,res, nex
     })
 });
 
+/* GET find app by app name*/
 router.get('/filter/:name', auth.ensureLoggedIn('/login'), function (req,res, next) {
     var query = req.params.name;
     Application.find({}).and([
