@@ -20,6 +20,7 @@ var index           = require('./routes/index'),
     users           = require('./routes/users'),
     announcements   = require('./routes/announcements'),
     applications    = require('./routes/applications'),
+    accessrequest   = require('./routes/requestAccess'),
     login           = require('./routes/login'),
     logout          = require('./routes/logout');
 
@@ -160,6 +161,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/announcements', announcements);
 app.use('/applications', applications);
+app.use('/request/access', accessrequest);
 app.use('/login', login);
 app.use('/logout', logout);
 
