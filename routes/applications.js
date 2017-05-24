@@ -13,7 +13,7 @@ var express         = require('express'),
 
 
 /* GET list all applications*/
-router.get('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res,next) {
+router.get('/', auth.ensureLoggedIn('/login'), function (req,res,next) {
     Application.find({}).populate('owner author').exec(function (err, apps) {
        if(err){
            console.log(err);
@@ -45,7 +45,7 @@ router.post('/', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, functi
 });
 
 
-router.get('/find/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
+router.get('/find/:name', auth.ensureLoggedIn('/login'),  function (req,res, next) {
    var query = req.params.name;
     Application.find({}).and([
        { $or: [{name: new RegExp(query, 'i')}, {description: new RegExp(query, 'i')}] }
@@ -58,7 +58,7 @@ router.get('/find/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmi
     })
 });
 
-router.get('/filter/:name', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
+router.get('/filter/:name', auth.ensureLoggedIn('/login'), function (req,res, next) {
     var query = req.params.name;
     Application.find({}).and([
         { $or: [{name: new RegExp(query, 'i')}, {description: new RegExp(query, 'i')}] }

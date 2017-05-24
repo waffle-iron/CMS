@@ -24,14 +24,44 @@ router.post('/', passport.authenticate('ldapauth',{
             } else {
                 var roles = [];
 
-                user.roles.forEach(function (role) {
-                    roles.push(role.name);
-                });
+                if(user === null) {
+                    //add user
+                    var newUser = new User({
+                        employeeid: req.user.employeeID,
+                        name: req.user.displayName,
+                        mail: req.user.mail,
+                        title: req.user.title,
+                        department: req.user.department || 'N/A',
+                        office: req.user.physicalDeliveryOfficeName || 'N/A',
+                        country: req.user.country || 'N/A',
+                        listOfApps: [],
+                        roles: [],
+                        accountEnabled: true
 
-                req.session.passport.user.roles = roles;
-                req.session.passport.user._id  = user._id.toString();
-                res.redirect(req.session.returnTo || '/');
-                delete req.session.returnTo;
+                    })
+                    newUser.save(function (err, user) {
+                        if(err){
+                            console.log(err);
+                            res.redirect('/login');
+                        } else {
+                            req.session.passport.user._id  = user._id.toString();
+                            req.session.passport.user.roles = [];
+                            req.flash('success', 'welcome to CCC Portal');
+                            res.redirect(req.session.returnTo || '/');
+                            delete req.session.returnTo;
+                        }
+                    })
+
+                } else {
+                    user.roles.forEach(function (role) {
+                        roles.push(role.name);
+                    });
+
+                    req.session.passport.user.roles = roles;
+                    req.session.passport.user._id  = user._id.toString();
+                    res.redirect(req.session.returnTo || '/');
+                    delete req.session.returnTo;
+                }
             }
         });
 });
