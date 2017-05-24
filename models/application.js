@@ -22,6 +22,7 @@ var applicationSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Tag'
     }],
+    requirePermission: {type: Boolean, default: false},
     isOnline: {type: Boolean, default: true}
 });
 
