@@ -31,10 +31,7 @@
                     <td style="color: red">Disabled</td>
                     <%}%>
                     <td>
-                        <form action="/users/<%= user._id%>/edit" method="get">
-                            <button ><i class="ui edit icon"></i></button>
-                        </form>
-
+                        <a href="/users/<%= user._id%>/edit"><i class="ui icon edit large"></i></a>
                     </td>
                 </tr>
             <% }) %>
