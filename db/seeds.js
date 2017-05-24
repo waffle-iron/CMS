@@ -41,6 +41,7 @@ var tags = [
 var roles = [
     {_id: ObjectId("59200ab998d04d097040af6e"), name: 'system-admin', description: 'administer system related functionalities'},
     {_id: ObjectId("59200ab998d04d097040af6f"), name: 'site-admin', description: 'administer site related functionalities'},
+    {_id: ObjectId("592523ffb6680c365c61c3fc"), name: 'user', description: 'unprivileged user'}
 ]
 
 var apps = [
