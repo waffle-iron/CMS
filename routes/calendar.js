@@ -25,7 +25,7 @@ getCalendar = function (site,cb) {
         holdiays.forEach(function (holdiay) {
             if(Date.now() <= new Date(holdiay.date) && counter <5){
                 result.push({
-                    date    :  Date(holdiay.date),
+                    date    :  new Date(holdiay.date),
                     reason  :   holdiay.reason
                 });
             }
