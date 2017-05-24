@@ -6,7 +6,8 @@ var express         = require('express'),
     auth            = require('connect-ensure-login'),
     Application     = require('../models/application'),
     Department      = require('../models/department'),
-    Announcement    = require('../models/announcement');
+    Announcement    = require('../models/announcement')
+    calendar        = require('./calendar');
 
 /* GET home page. */
 router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
@@ -16,13 +17,16 @@ router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
         },
         function (cb) {
             Application.find({},cb)
+        },
+        function (cb) {
+          calendar(req.user.office,cb);
         }
     ], function (err, result) {
         if(err){
             console.log(err)
         } else {
             req.breadcrumbs();
-            res.render('index', {announcements: result[0], applications: result[1], breadcrumbs: req.breadcrumbs()});
+            res.render('index', {announcements: result[0], applications: result[1], calendar: result[2], breadcrumbs: req.breadcrumbs()});
         }
     });
 });
