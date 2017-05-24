@@ -43,7 +43,7 @@
         <i class="sidebar icon"></i>
       </a>
       <a class="active item" href="/">Home</a>
-      <% if (currentUser.roles.indexOf('system-admin') > -1) { %>
+      <% if (currentUser.roles.length >0 && currentUser.roles.indexOf('system-admin') > -1) { %>
         <div class="ui  dropdown item ">
             <p class="menu-margin">Admin</p>
             <div class="ui vertical menu">
@@ -90,12 +90,14 @@
                   <img  src="data:image/jpeg;base64,<%= currentUser.thumbnail%>" >
                 </div>
                 <div class="content">
-                  <h1 class="header"><%= currentUser.name%></h1>
+                  <h1 class="header"><%= currentUser.name %></h1>
                   <div class="meta">
                     <span class="date"><%= currentUser.title%></span>
                   </div>
                   <div class="description">
-                    <i class="<%= currentUser.country.toLowerCase()%> flag"></i><span><%= currentUser.office%></span>
+                      <% if(currentUser.country !== 'N/A') { %>
+                        <i class="<%= currentUser.country.toLowerCase()%> flag"></i><span><%= currentUser.office%></span>
+                      <% } %>
                   </div>
                 </div>
                 <div class="extra content right aligned ">
