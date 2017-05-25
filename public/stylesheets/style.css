@@ -107,3 +107,5 @@ div.scrollmenu a {
 .round-edges {
   border-radius: .28571429rem;
 }
+
+[class*='equal width'].ui.grid > :not(.row).column, [class*='equal width'].ui.grid > .row > .column, .ui.grid > [class*='equal width'].row > .column { -ms-flex: 1 !important; -webkit-flex: 1 !important; flex: 1 !important; /* IE 10 */ }
