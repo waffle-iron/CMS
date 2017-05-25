@@ -21,7 +21,7 @@
     <div class="ui stackable grid centered app-list" style="margin-top: 15px; padding: 0;">
         <% applications.forEach(function(application){ %>
         <a href="<%= application.url%>" target="_blank" class="three wide column" style="margin: 2px;padding: 2px;">
-            <div class="ui fade reveal image">
+            <div class="ui fade reveal image" style="width:100%">
                 <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%;">
                     <img class="app-logo" src="<%- application.imageUrl %>">
                     <h2 class="ui header app-name"><%- application.name %></h2>
