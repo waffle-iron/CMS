@@ -133,7 +133,11 @@ router.get('/tag/:id', auth.ensureLoggedIn('/login'), function (req, res, next) 
        if(err){
            console.log(err);
        }else {
-           res.render('announcements/view', {announcements: announcements});
+           req.breadcrumbs([
+               {name: 'Announcements', url: '/announcements'},
+               {name: 'Tag', url: '/announcements/tag/' + req.params.id}
+               ]);
+           res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
        }
    });
 });
@@ -144,7 +148,11 @@ router.get('/department/:id', auth.ensureLoggedIn('/login'), function (req, res,
         if(err){
             console.log(err);
         }else {
-            res.render('announcements/view', {announcements: announcements});
+            req.breadcrumbs([
+                {name: 'Announcements', url: '/announcements'},
+                {name: 'Department', url: '/announcements/department/' + req.params.id}
+            ]);
+            res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
         }
     });
 });
