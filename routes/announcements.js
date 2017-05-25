@@ -78,7 +78,8 @@ router.get('/:id', auth.ensureLoggedIn('/login'),function (req, res, next) {
             res.redirect('/announcements');
         } else {
             if(announcement.length > 0){
-                res.render('announcements/view', {announcements: announcement});
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'view', url: '/announcements/' + req.params.id}]);
+                res.render('announcements/view', {announcements: announcement, breadcrumbs: req.breadcrumbs()});
             } else {
                 res.redirect('/announcements');
             }
@@ -100,7 +101,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
         }
     ],function (err, result) {
         if(err) {
-            console.log('fuckin error' + err)
+            console.log(err)
         }else {
             console.log(result);
             if(result[2] === null){
