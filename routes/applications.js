@@ -11,7 +11,8 @@ var express         = require('express'),
     Application     = require('../models/application'),
     Tag             = require('../models/tag'),
     Department      = require('../models/department'),
-    async           = require('async');
+    async           = require('async'),
+    formidable      = require('formidable');
 
 
 /* GET list all applications*/
@@ -61,7 +62,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req, res, next) {
         }else {
             console.log(result);
             req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'New', url: 'new'}]);
-            res.render('applications/new', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
+            res.render('applications/view', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
         }
     });
 });
@@ -123,4 +124,27 @@ router.get('/filter/:name', auth.ensureLoggedIn('/login'), function (req,res, ne
         }
     })
 });
+
+
+router.get('/upload/image', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'upload', url: 'image'}]);
+    res.render('applications/upload',{breadcrumbs: req.breadcrumbs()});
+});
+
+router.post('/upload/image', auth.ensureLoggedIn('/login'), function (req, res, next) {
+    var form = new formidable.IncomingForm();
+    form.parse(req);
+
+    form.on('fileBegin', function (name, file){
+        file.path = 'public/images/applications/' + file.name;
+    });
+
+    form.on('file', function (name, file){
+        console.log('Uploaded ' + file.name);
+        res.redirect('/applications');
+    });
+
+});
+
 module.exports = router;
+
