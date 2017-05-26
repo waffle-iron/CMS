@@ -136,7 +136,14 @@ router.post('/upload/image', auth.ensureLoggedIn('/login'), function (req, res, 
     form.parse(req);
 
     form.on('fileBegin', function (name, file){
-        file.path = 'public/images/applications/' + file.name;
+        var fileType = file.type.split('/').pop();
+        if(fileType == 'svg'){
+            //rename the incoming file
+            file.path = 'public/images/applications/' + file.name;
+        } else {
+            console.log( 'incorrect file type: ' + fileType );
+            req.flash('error', 'file type is not supported. Please consult with helpdesk regarding the file types');
+        }
     });
 
     form.on('file', function (name, file){

@@ -16,7 +16,9 @@
         margin: 0;
     }
 </style>
-
+<% if(error && error.length > 0) { %>
+    <div class="ui error raised message"> <%= error%></div>
+<% }%>
 <div class="ui container body margin-0">
     <div class="ui stackable grid centered app-list" style="margin-top: 15px; padding: 0;">
         <% applications.forEach(function(application){ %>
