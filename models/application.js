@@ -23,7 +23,8 @@ var applicationSchema = new Schema({
         ref: 'Tag'
     }],
     requirePermission: {type: Boolean, default: false},
-    isOnline: {type: Boolean, default: true}
+    isOnline: {type: Boolean, default: true},
+    isSystemAdmin: {type: Boolean, default: false}
 });
 
 module.exports = mongo.model('Application', applicationSchema);
