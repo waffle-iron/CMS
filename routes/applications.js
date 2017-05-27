@@ -125,12 +125,13 @@ router.get('/filter/:name', auth.ensureLoggedIn('/login'), function (req,res, ne
     })
 });
 
-
+/* GET show Upload image form*/
 router.get('/upload/image', auth.ensureLoggedIn('/login'), function (req, res, next) {
     req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'upload', url: 'image'}]);
     res.render('applications/upload',{breadcrumbs: req.breadcrumbs()});
 });
 
+/* POST uploads Application image */
 router.post('/upload/image', auth.ensureLoggedIn('/login'), function (req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req);
