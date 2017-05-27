@@ -73,7 +73,7 @@ app.set('view engine', 'ejs');
 
 /* initialize the session */
 app.use(expressSession({
-    secret: '=25_ar;p1100',
+    secret: config.secret,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 10800000, httpOnly: true} // 3h
@@ -139,7 +139,7 @@ passport.deserializeUser(function(sessionUser, done) {
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser('=25_ar;p1100'));
+app.use(cookieParser(config.secret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(flash());
