@@ -10,9 +10,9 @@ var express                 = require('express'),
     mongo                   = require('mongoose'),
     passport                = require('passport'),
     LdapStrategy            = require('passport-ldapauth').Strategy,
-    // fs                      = require('fs'),
     methodOverride          = require('method-override'),
     flash                   = require('connect-flash'),
+    config                  = require('./config'),
     seedDB                  = require('./db/seeds');
 
 /* Routes */
@@ -27,15 +27,15 @@ var index           = require('./routes/index'),
 var app = express();
 
 //Mongo Connection setup
-var dbURI = 'mongodb://localhost/ccc-portal';
+//var dbURI = 'mongodb://localhost/ccc-portal';
 
-mongo.connect('mongodb://localhost/ccc-portal');
+mongo.connect(config.dbUri());
 
 /*CONNECTION EVENTS*/
 
 /*When successfully connected*/
 mongo.connection.on('connected', function () {
-    console.log('Mongoose default connection open to ' + dbURI);
+    console.log('Mongoose default connection open to ' + config.dbUri());
 });
 
 /*If the connection throws an error*/
