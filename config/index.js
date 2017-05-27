@@ -8,5 +8,6 @@ var config = require('./config.json'),
 module.exports  = {
     dbUri : function () {
         return config.mongo.uri;
-    }
+    },
+    secret: config.secret
 }
