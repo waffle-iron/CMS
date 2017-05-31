@@ -13,14 +13,14 @@ var mongo           = require('mongoose'),
 
 
 var departments = [
-    {_id:  ObjectId("5922895f16dd790518d1e110"), name: 'ISD', description: 'Information System Department', picture: '/images/departments/isd.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e111"), name: 'PMV', description: 'Procurement for Machinery and Vehicles ', picture: '/images/departments/default.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e112"), name: 'KM', description: 'Knowledge Management', picture: '/images/departments/default.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e113"), name: 'CSR', description: 'Corporate social responsibility', picture: '/images/departments/csr.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e114"), name: 'SVC', description: 'Services', picture: '/images/departments/svc.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e115"), name: 'CIB', description: 'Consolidated Insurance Brokers', picture: '/images/departments/cib.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e116"), name: 'HR', description: 'Human Resource', picture: '/images/departments/hr.svg'},
-    {_id:  ObjectId("5922895f16dd790518d1e117"), name: 'MAC', description: 'Managing office Accounts', picture: '/images/departments/mac.svg'}
+    {_id:  ObjectId("5922895f16dd790518d1e110"), name: 'ISD', description: 'Information System Department', picture: '/images/departments/ISD.svg', icon: '/images/departments/icons/ISD-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e111"), name: 'PMV', description: 'Procurement for Machinery and Vehicles ', picture: '/images/departments/PMV.svg', icon: '/images/departments/icons/pmv-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e112"), name: 'KM', description: 'Knowledge Management', picture: '/images/departments/KM.svg', icon: '/images/departments/icons/km-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e113"), name: 'CSR', description: 'Corporate social responsibility', picture: '/images/departments/csr.svg', icon: '/images/departments/icons/csr-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e114"), name: 'SVC', description: 'Services', picture: '/images/departments/svc.svg', icon: '/images/departments/icons/svc-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e115"), name: 'CIB', description: 'Consolidated Insurance Brokers', picture: '/images/departments/cib.svg', icon: '/images/departments/icons/cib-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e116"), name: 'HR', description: 'Human Resource', picture: '/images/departments/hr.svg', icon: '/images/departments/icons/hr-ico.svg'},
+    {_id:  ObjectId("5922895f16dd790518d1e117"), name: 'MAC', description: 'Managing office Accounts', picture: '/images/departments/mac.svg', icon: '/images/departments/icons/mac-ico.svg'}
 ]
 
 var tags = [

@@ -9,6 +9,7 @@ var departmentSchema = new Schema({
     name: String,
     description: String,
     picture: String,
+    icon: String
 });
 
 module.exports = mongo.model('Department', departmentSchema);
