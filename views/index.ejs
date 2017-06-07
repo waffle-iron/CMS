@@ -15,7 +15,6 @@
     }
     .hidden-app {
         margin-top: 0!important;
-        padding-top: 4em!important;
         background: #F5F5F5!important;
     }
 
@@ -35,14 +34,14 @@
 
 <div class="ui container body margin-0">
     <div class="ui two column stackable grid padding-0 margin-0">
-        <div class="ui ten wide column " style="padding:15px 0; margin-top:15px">
-            <div class="ui three column stackable grid centered app-list">
+        <div class="ui ten wide column " style="padding:15px 0;">
+            <div class="ui four wide column stackable grid centered app-list">
                 <% applications.forEach(function(application){ %>
-                    <a href="<%= application.url%>" target="_blank" class="five wide column">
+                    <a href="<%= application.url%>" target="_blank" class="four wide column">
                     <div class="ui fade reveal image" style="width:100%">
-                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%; padding-top: 0!important;">
                             <img class="app-logo" src="<%- application.imageUrl %>">
-                            <h2 class="ui header app-name"><%- application.name %></h2>
+                            <h4 class="ui header app-name"><%- application.name %></h4>
                         </div>
                         <div class="ui raised very text center aligned segment fixsize hidden middle align content hidden-app" >
                             <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>

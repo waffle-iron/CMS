@@ -24,11 +24,11 @@
         <% applications.forEach(function(application){ %>
         <a href="<%= application.url%>" target="_blank" class="three wide column" style="margin: 2px;padding: 2px;">
             <div class="ui fade reveal image" style="width:100%">
-                <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%;">
+                <div class="ui raised very text center aligned segment big-app visible content" style="width:100%;">
                     <img class="app-logo" src="<%- application.imageUrl %>">
                     <h2 class="ui header app-name"><%- application.name %></h2>
                 </div>
-                <div class="ui raised very text center aligned segment fixsize hidden middle align content hidden-app" >
+                <div class="ui raised very text center aligned segment big-app hidden middle align content hidden-app" >
                     <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>
                     <% if(application.isOnline) { %>
                     <button class="ui positive basic button">Online</button>

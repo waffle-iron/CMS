@@ -16,6 +16,12 @@ background: linear-gradient(to left, #5691c8, #457fcffa);
   background: #FFF3E0;
 }
 
+/* index page*/
+
+
+
+
+
 /* footer elements */
 .ui.footer.form-page{
   position:fixed;
@@ -29,8 +35,11 @@ background: linear-gradient(to left, #5691c8, #457fcffa);
   margin-top: -10px;
 }
 
+.big-app {
+  height: 180px;
+}
 .fixsize {
-  min-height: 180px;
+  height: 120px;
 }
 
 .fluid.ui.blue.button {

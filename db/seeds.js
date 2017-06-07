@@ -142,8 +142,58 @@ var apps = [
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
         isOnline: true
+    },{
+        _id: ObjectId("592287f03009782848a800a1"),
+        name: 'IT Induction',
+        description: 'IT Awareness and Training Courses',
+        imageUrl: '/images/applications/ibill-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net/course/view.php?id=29',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
+        isOnline: true
+    },{
+        _id: ObjectId("592287f03009782848a800a2"),
+        name: 'IT Quality',
+        description: 'Awareness and Training Courses',
+        imageUrl: '/images/applications/ibill-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=664',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
+        isOnline: true
+    },{
+        _id: ObjectId("592287f03009782848a800a3"),
+        name: 'ISMS',
+        description: 'Information Security Management System',
+        imageUrl: '/images/applications/ibill-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=665',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
+        isOnline: true
+    },{
+        _id: ObjectId("592287f03009782848a800a4"),
+        name: ' RASO Induction',
+        description: 'RASO Induction, Awareness and Training Courses',
+        imageUrl: '/images/applications/ibill-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=669',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
+        isOnline: true
+    },{
+        _id: ObjectId("592287f03009782848a800a5"),
+        name: 'HSE Induction',
+        description: 'HSE Induction, Awareness and Training Courses',
+        imageUrl: '/images/applications/ibill-bw_icon.svg',
+        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=666',
+        exposedTo: {sites: ['MOA'], countries: ['greece']},
+        author: ObjectId("592416130fc2fd16dc6a7071"),
+        owner: ObjectId("5922895f16dd790518d1e110"),
+        isOnline: true
     }
-]
+];
 
 var users = [
     {
