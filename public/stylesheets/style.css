@@ -18,6 +18,11 @@ background: linear-gradient(to left, #5691c8, #457fcffa);
 
 /* index page*/
 
+a.four.wide.column {
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+  padding-bottom: 0px!important;
+}
 
 
 
