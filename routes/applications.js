@@ -62,7 +62,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req, res, next) {
         }else {
             console.log(result);
             req.breadcrumbs([{name: 'Applications', url: '/applications'}, {name: 'New', url: 'new'}]);
-            res.render('applications/view', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
+            res.render('applications/new', {tags: result[0], departments: result[1], breadcrumbs: req.breadcrumbs()});
         }
     });
 });
