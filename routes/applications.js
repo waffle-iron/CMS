@@ -77,7 +77,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
             Department.find({},cb);
         },
         function (cb) {
-            Application.findById(req.params.id).populate('department').exec(cb);
+            Application.findById(req.params.id).populate('department author owner').exec(cb);
         }
     ],function (err, result) {
         if(err) {
