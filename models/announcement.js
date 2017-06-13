@@ -25,7 +25,16 @@ var announcementSchema = new Schema({
     tags : [{
         type: Schema.Types.ObjectId,
         ref: 'Tag'
-    }]
+    }],
+    transaction: {
+        reason: String,
+        isApproved: {type: Boolean, default: false},
+        transactionDate: {type: Date, default: Date.now},
+        validatedBy: {type: String}
+    },
+    isApproved: {type: Boolean, default: false},
+    exposedToCountry: {type: Boolean, default: false},
+    exposedGlobally: {type: Boolean, default: false}
 });
 
 module.exports = mongo.model('Announcement', announcementSchema);
