@@ -96,6 +96,16 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin,
     });
 });
 
+router.put('/:id', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res,next) {
+    Application.findByIdAndUpdate(req.params.id, req.body.application, function(err, toBeUpdated) {
+        if(err){
+            res.redirect('/applications');
+        } else {
+            res.redirect('/applications');
+        }
+    });
+});
+
 /* GET find app by app name  used by the global search box*/
 router.get('/find/:name', auth.ensureLoggedIn('/login'),  function (req,res, next) {
    var query = req.params.name;

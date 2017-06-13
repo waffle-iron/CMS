@@ -9,7 +9,7 @@
         </div>
     </h2>
     <!--Form Starts here -->
-    <form class="ui form" action="/applications" method="post">
+    <form class="ui form" action="/applications/<%- application._id%>?_method=PUT" method="post">
         <div class="ui segment">
             <div class="fields">
                 <div class="required six wide field">
@@ -34,9 +34,14 @@
                 </div>
                 <div class="four wide field">
                     <label>Application Status</label>
-                    <select name="application[isOnline]">
-                        <option value="true">Online</option>
+                    <select class="ui search selection dropdown new-dep" name="application[isOnline]">
+                        <%if (application.isOnline){%>
+                        <option value="true"selected>Online</option>
                         <option value="false">Offline</option>
+                        <% } else {%>
+                        <option value="false"selected>Offline</option>
+                        <option value="true">Online</option>
+                        <% } %>
                     </select>
                 </div>
                 <div class="four wide field">
