@@ -1,4 +1,86 @@
 <% include ../partials/header.ejs%>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<h1>Edit Application</h1>
+<div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+    <!--Header -->
+    <h2 class="ui icon header center aligned">
+        <i class="block layout icon"></i>
+        <div class="content">
+            Edit Application
+            <div class="sub header">The Bellow Form can be Used to Edit an Application</div>
+        </div>
+    </h2>
+    <!--Form Starts here -->
+    <form class="ui form" action="/applications" method="post">
+        <div class="ui segment">
+            <div class="fields">
+                <div class="required six wide field">
+                    <label>Name</label>
+                    <input type="text" placeholder="Application Name" class="new-title" name="application[name]" value="<%= application.name%> ">
+                </div>
+                <div class="required ten wide field">
+                    <label>Description</label>
+                    <input type="text" placeholder="Short Description" class="new-title" name="application[description]" value="<%= application.description%>">
+                </div>
+            </div>
+            <div class="required field">
+                <label>Url</label>
+                <input type="text" placeholder="Application URL" class="new-title" name="application[url]" value="<%= application.url%>">
+            </div>
+        </div>
+        <div class="ui segment">
+            <div class="fields">
+                <div class="required eight wide field">
+                    <label>Icon</label>
+                    <input type="text" placeholder="Application Image" class="new-title" name="application[imageUrl]" value="<%= application.imageUrl%>">
+                </div>
+                <div class="four wide field">
+                    <label>Application Status</label>
+                    <select name="application[isOnline]">
+                        <option value="true">Online</option>
+                        <option value="false">Offline</option>
+                    </select>
+                </div>
+                <div class="four wide field">
+                    <label>Creation Date</label>
+                    <input type="text" placeholder="Application Image" class="new-title" readonly="" value="<%= application.creationDate%>">
+                </div>
+            </div>
+            <div class="fields">
+                <div class="six wide field">
+                    <label>Author</label>
+                    <input type="text" placeholder="Application Author" class="new-title" value="<%= application.author%>" readonly="">
+                </div>
+                <div class="three wide field">
+                    <label>Site</label>
+                    <input type="text" placeholder="Site Name" class="new-title" name="application[exposedTo.sites]" value="<%= application.exposedTo.sites%>" readonly="">
+                </div>
+                <div class="three wide field">
+                    <label>Country</label>
+                    <input type="text" placeholder="Site Name" class="new-title" name="application[exposedTo.countries]" value="<%= application.exposedTo.countries%>" readonly="">
+                </div>
+
+                <div class="four wide field">
+                    <label>Owner</label>
+                    <input type="text" placeholder="Application Owner" class="new-title" value="<%= application.owner%>" readonly="">
+                </div>
+            </div>
+        </div>
+        <footer class="ui grid footer segment">
+            <div class="two column row">
+                <div class="four wide column">
+                    <div class="ui checkbox left floated label-padding">
+                        <input type="checkbox" tabindex="0"  name="new-application" id="new-application">
+                        <label>Add New Application</label>
+                    </div>
+                </div>
+                <div class="right floated right aligned twelve wide column">
+                    <div class="ui buttons">
+                        <p class="ui button" id="preview">Preview</p>
+                        <div class="or"></div>
+                        <button class="ui positive submit button" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+</div>
 <% include ../partials/footer.ejs%>
