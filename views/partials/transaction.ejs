@@ -1,0 +1,22 @@
+<!-- Transaction Log-->
+<div class="ui segment">
+    <div class="required field">
+        <label>Transaction Description</label>
+        <textarea name="announcement[transaction.reason]" id="transaction" rows="10" cols="80">
+        </textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            CKEDITOR.replace( 'transaction', {
+                customConfig: '/javascripts/config.js',
+                on:{
+                    instanceReady: function (evt)
+                    {
+                        var editor = evt.editor,
+                            body = editor.document.getBody();
+                        body.setAttribute('id', 'content-body');
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
