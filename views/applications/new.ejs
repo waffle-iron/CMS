@@ -1,4 +1,38 @@
 <% include ../partials/header.ejs%>
+<style>
+    .three.wide.column > input
+    {
+        display: none;
+    }
+
+    .app-image {
+        border :1px solid #e8e8e9;
+        border-radius: .28571429rem;
+        width: 135px;
+        height: 135px;
+    }
+
+    .app-image:hover {
+        cursor: pointer; cursor: hand;
+    }
+
+    #image-upload {
+        display: none;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .no-bottom-margin {
+        margin-bottom: 0!important;
+    }
+
+    .top-margin {
+        margin-top: 10px!important;
+    }
+
+</style>
 
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
     <!--Header -->
@@ -11,38 +45,42 @@
     </h2>
     <!--Form Starts here -->
     <form class="ui form" action="/applications" method="post">
+
         <div class="ui segment">
-                <div class="fields">
-                    <div class="required six wide field">
-                        <label>Name</label>
-                        <input type="text" placeholder="Application Name" class="new-title" name="application[name]">
+            <div class="fields no-bottom-margin">
+                <div class="field">
+                    <label for="image-upload">
+                        <img src="/images/applications/default.svg" class="app-image"/>
+                    </label>
+                    <input id="image-upload" type="file" accept=".svg" name="application[imageUrl]">
+                </div>
+                <div class="fifteen wide field">
+
+                    <div class="fields">
+                        <div class="required six wide field">
+                            <label>Name</label>
+                            <input type="text" placeholder="Application Name" class="new-title" name="application[name]">
+                        </div>
+                        <div class="required ten wide field">
+                            <label>Description</label>
+                            <input type="text" placeholder="Short Description" class="new-title" name="application[description]">
+                        </div>
                     </div>
-                    <div class="required ten wide field">
-                        <label>Description</label>
-                        <input type="text" placeholder="Short Description" class="new-title" name="application[description]">
+                    <div class="required field top-margin">
+                        <label>Address</label>
+                        <input type="text" placeholder="Application URL" class="new-title" name="application[url]">
                     </div>
                 </div>
-                <div class="required field">
-                    <label>Url</label>
-                    <input type="text" placeholder="Application URL" class="new-title" name="application[url]">
-                </div>
+            </div>
         </div>
         <div class="ui segment">
                 <div class="fields">
-                    <div class="required eight wide field">
-                        <label>Icon</label>
-                        <input type="text" placeholder="Application Image" class="new-title" name="application[imageUrl]" value="/images/application/default.svg">
-                    </div>
                     <div class="four wide field">
                         <label>Application Status</label>
-                        <select name="application[isOnline]">
+                        <select class="ui search selection dropdown new-dep" name="application[isOnline]">
                             <option value="true">Online</option>
                             <option value="false">Offline</option>
                         </select>
-                    </div>
-                    <div class="four wide field">
-                        <label>Creation Date</label>
-                        <input type="text" placeholder="Application Image" class="new-title" readonly="">
                     </div>
                 </div>
                 <div class="fields">
@@ -84,5 +122,29 @@
             </footer>
     </form>
 </div>
+<script>
+    var dateToday = new Date;
+    document.getElementById('date-today').value = dateToday.toDateString();
+</script>
+<script>
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.app-image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#image-upload").change(function(){
+        readURL(this);
+    });
+
+</script>
 
 <% include ../partials/footer.ejs%>
