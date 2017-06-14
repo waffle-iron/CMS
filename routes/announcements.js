@@ -28,7 +28,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
 });
 
 /* Submits new announcement */
-router.post('/', auth.ensureLoggedIn('/login'),middleware.isSystemAdmin , function (req, res, next) {
+router.post('/', auth.ensureLoggedIn('/login') , function (req, res, next) {
     Announcement.create(req.body.announcement, function (err, announcement) {
         if(err){
             console.log(err);
@@ -51,7 +51,7 @@ router.post('/', auth.ensureLoggedIn('/login'),middleware.isSystemAdmin , functi
 });
 
 /* shows the new announcement form */
-router.get('/new', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req,res, next) {
+router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
    async.parallel([
            function (cb) {
                Tag.find({},cb);
@@ -88,7 +88,7 @@ router.get('/:id', auth.ensureLoggedIn('/login'),function (req, res, next) {
 });
 
 /* show edit form*/
-router.get('/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
+router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next) {
     async.parallel([
         function (cb) {
             Tag.find({},cb);

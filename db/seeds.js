@@ -218,7 +218,7 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: [ObjectId("59200ab998d04d097040af6e")],
+        roles: [ObjectId("59200ab998d04d097040af6f")],
         accountEnabled: true
     },{
         _id: ObjectId("592416130fc2fd16dc6a7073"),
