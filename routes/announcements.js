@@ -17,7 +17,7 @@ var express         = require('express'),
 /* View all announcements based on category  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
     if(req.query.category === 'company'){
-        Announcement.find({'category': 'company'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+        Announcement.find({'category': 'company', 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
             if (err) {
                 console.log(err);
             } else {
@@ -26,7 +26,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
             }
         });
     } else if(req.query.category === 'public') {
-        Announcement.find({'category': 'public'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+        Announcement.find({'category': 'public', 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
             if (err) {
                 console.log(err);
             } else {
