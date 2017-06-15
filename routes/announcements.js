@@ -16,27 +16,18 @@ var express         = require('express'),
 
 /* View all announcements based on category  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    if(req.query.category === 'company'){
-        Announcement.find({'category': 'company', 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+
+    //Check category from query field to render page. Default renders company announcements
+    var category = req.query.category || 'company' ;
+
+        Announcement.find({'category': category, 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
             if (err) {
                 console.log(err);
             } else {
-                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Company', url: '/?category=company'}]);
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name:  category, url: '/?category='+ category}]);
                 res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
             }
         });
-    } else if(req.query.category === 'public') {
-        Announcement.find({'category': 'public', 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
-            if (err) {
-                console.log(err);
-            } else {
-                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Public', url: '/?category=public'}]);
-                res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
-            }
-        });
-    } else {
-        res.redirect('/');
-    }
 });
 
 /* Submits new announcement */
