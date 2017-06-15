@@ -5,9 +5,12 @@
 var mongo   = require('mongoose'),
     Schema  = mongo.Schema;
 
+var category = ['company','public'];
+
 var announcementSchema = new Schema({
     title: String,
     body: String,
+    category: {type: String, enum:category},
     imageUrl: {type: String, default: ''},
     creationDate: {type: Date, default: Date.now},
     archiveAfter: {type: Number, default: 30},

@@ -83,21 +83,42 @@
                         });
                     </script>
                     </div>
-                <div class="inline fields">
-                    <label>Display this Announcement to</label>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" name="announcement[exposedToCountry]">
-                            <label>My Country</label>
+                    <div class="fields">
+                        <div class="ten wide field">
+                            <div class="inline fields">
+                                <label>Display this Announcement to</label>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="announcement[exposedToCountry]">
+                                        <label>My Country</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="announcement[exposedGlobally]">
+                                        <label>All of CCC</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="six wide field">
+                            <div class="inline fields">
+                                <label>Announcement Type</label>
+                                <div class="field">
+                                    <div class=" radio checkbox">
+                                        <input type="radio" name="announcement[category]" checked="checked" name="category" value="public">
+                                        <label>Public</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class=" radio checkbox">
+                                        <input type="radio" name="announcement[category]" name="category" value="company">
+                                        <label>Company</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" name="announcement[exposedGlobally]">
-                            <label>All of CCC</label>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!--submission section -->
             <footer class="ui grid footer segment">

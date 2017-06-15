@@ -16,15 +16,25 @@ var express         = require('express'),
 
 /* View all announcements  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    Announcement.find({ 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
-        if(err){
-            console.log(err);
-        }else {
-            req.breadcrumbs('Announcements')
-            res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
-        }
-    });
-
+    if(req.query.category === 'company'){
+        Announcement.find({'category': 'company'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+            if (err) {
+                console.log(err);
+            } else {
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Company', url: '/?category=company'}]);
+                res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
+            }
+        });
+    } else {
+        Announcement.find({'category': 'public'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+            if (err) {
+                console.log(err);
+            } else {
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Public', url: '/?category=public'}]);
+                res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
+            }
+        });
+    }
 });
 
 /* Submits new announcement */
@@ -129,7 +139,7 @@ router.get('/:id/edit', auth.ensureLoggedIn('/login'), function (req, res, next)
 });
 
 /* update announcement */
-router.put('/:id', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function (req, res, next) {
+router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
     Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, toBeUpdated) {
         if(err){
             res.redirect('/announcements');

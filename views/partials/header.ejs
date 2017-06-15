@@ -50,14 +50,9 @@
                 <div class="ui large header">
                   <h4>Announcement</h4>
                 </div>
-                <div class="item">
-                    <i class="ui right floated announcement icon"></i>
-                    <span class="text">Management</span>
-                    <div class="menu">
-                        <a class="item" href="/announcements/new">Add New <i class="ui right floated plus icon"></i></a>
-                        <a href="/announcements/approval" class="item">Approve<i class="ui right floated checkmark box icon"></i></a>
-                    </div>
-                </div>
+                <a href="/announcements/approval" class="item">
+                    Approve<i class="ui right floated checkmark box icon"></i>
+                </a>
                 <div class="ui large header">
                     <h4>Administration</h4>
                 </div>
@@ -75,6 +70,17 @@
             </div>
         </div>
       <% } %>
+    <div class="ui  dropdown item">
+        <p class="menu-margin">Menu</p>
+        <div class="ui vertical menu">
+            <div class="ui large header">
+                <h4>Announcement</h4>
+            </div>
+            <a class ="item" href="/announcements/?category=company">View Company<i class="ui right floated building icon"></i></a>
+            <a class ="item" href="/announcements/?category=public">View Public<i class="ui right floated child icon"></i></a>
+            <a class ="item" href="/announcements/new">Add New<i class="ui right floated plus icon"></i></a>
+        </div>
+    </div>
       <div class="right menu">
         <div class="item"  >
             <div class="ui category search" id="main-search">
