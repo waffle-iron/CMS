@@ -1,7 +1,10 @@
 <% include ../partials/header.ejs %>
 <style>
-    td:nth-of-type(4) {
+    td:nth-of-type(8) {
         text-transform: capitalize;
+    }
+    .ui.celled.table tr th:first-child {
+        border-left: 1px solid #e3e4e6;
     }
 </style>
 
@@ -12,22 +15,35 @@
 <div class="ui segment aligned" style="margin-bottom: 30px; padding-top: 15px;">
     <div class="ui sixteen wide column">
         <table id="user" class="ui selectable celled table aligned" cellspacing="0" width="100%">
+            <!--create a two row header with local/country/global as a submenu of Category-->
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Department</th>
-                <th>Scope</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th rowspan="2">Title</th>
+                <th rowspan="2">Author</th>
+                <th rowspan="2">Department</th>
+                <th rowspan="1" colspan="3">Announcement Scope</th>
+                <th rowspan="2">Country</th>
+                <th rowspan="2">Category</th>
+                <th rowspan="2">Status</th>
+                <th rowspan="2">Actions</th>
+            </tr>
+            <tr>
+                <th>Local</th>
+                <th>Country</th>
+                <th>Global</th>
             </tr>
             </thead>
+            <!--itterate through pending announcment to display them to admin-->
             <tbody>
             <% announcements.forEach(function(announcement){ %>
             <tr id="<%= announcement._id %>">
                 <td><%= announcement.title %></td>
                 <td><%= announcement.author.name %></td>
                 <td><%= announcement.department.name%></td>
+                <td><i class="checkmark icon"></i></td>
+                <td><% if (announcement.exposedToCountry) {%> <i class="checkmark icon"></i> <%}%></td>
+                <td><% if (announcement.exposedGlobally) {%> <i class="checkmark icon"></i> <%}%></td>
+                <td>Country goes here</td>
                 <td><%= announcement.category %></td>
                 <td><%= announcement.status %></td>
                 <td>

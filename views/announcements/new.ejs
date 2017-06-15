@@ -86,17 +86,17 @@
                     <div class="fields">
                         <div class="ten wide field">
                             <div class="inline fields">
-                                <label>Display this Announcement to</label>
+                                <label>Display Announcement Accross</label>
                                 <div class="field">
                                     <div class="ui checkbox">
                                         <input type="checkbox" name="announcement[exposedToCountry]">
-                                        <label>My Country</label>
+                                        <label><%= currentUser.country%></label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui checkbox">
                                         <input type="checkbox" name="announcement[exposedGlobally]">
-                                        <label>All of CCC</label>
+                                        <label>All CCC</label>
                                     </div>
                                 </div>
                             </div>

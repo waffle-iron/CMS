@@ -119,7 +119,7 @@ passport.serializeUser(function(user, done) {
         mail: user.mail,
         title: user.title,
         office: user.physicalDeliveryOfficeName,
-        country: user.co || 'greece',
+        country: user.co || 'Greece',
         department: user.department,
         thumbnail:  Buffer.from(user._raw.thumbnailPhoto,'binary').toString('base64'),
         roles: user.roles
