@@ -16,7 +16,7 @@ var express         = require('express'),
 
 /* View all announcements  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
-    Announcement.find().populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+    Announcement.find({ 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
@@ -69,6 +69,18 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
             }
    });
 
+});
+
+/* shows the announcement approval form */
+router.get('/approval', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res,next){
+    Announcement.find( {'status': 'Pending'}).populate('user department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+        if(err){
+            console.log(err);
+        }else {
+            req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Approval', url: 'approval'}]);
+            res.render('announcements/approval', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
+        }
+    });
 });
 
 /* show a single announcement*/
@@ -156,6 +168,9 @@ router.get('/department/:id', auth.ensureLoggedIn('/login'), function (req, res,
         }
     });
 });
+
+
+
 
 module.exports = router;
 
