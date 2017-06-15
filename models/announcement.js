@@ -33,7 +33,7 @@ var announcementSchema = new Schema({
         reason: String,
         isApproved: {type: Boolean, default: false},
         transactionDate: {type: Date, default: Date.now},
-        validatedBy: {type: String}gg
+        validatedBy: {type: String}
     },
     status: {type: String, default: 'Pending'},
     exposedToCountry: {type: Boolean, default: false},
