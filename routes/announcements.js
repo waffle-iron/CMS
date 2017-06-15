@@ -14,7 +14,7 @@ var express         = require('express'),
     async           = require('async');
 
 
-/* View all announcements  */
+/* View all announcements based on category  */
 router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
     if(req.query.category === 'company'){
         Announcement.find({'category': 'company'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
@@ -25,7 +25,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
                 res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
             }
         });
-    } else {
+    } else if(req.query.category === 'public') {
         Announcement.find({'category': 'public'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
             if (err) {
                 console.log(err);
@@ -34,6 +34,8 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
                 res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
             }
         });
+    } else {
+        res.redirect('/');
     }
 });
 
