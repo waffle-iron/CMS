@@ -1,5 +1,9 @@
 <% include ../partials/header.ejs %>
-
+<style>
+    td:nth-of-type(4) {
+        text-transform: capitalize;
+    }
+</style>
 
 <script src="/javascripts/jquery.dataTables.min.js" async></script>
 <script src="/javascripts/dataTables.semanticui.min.js" async></script>
@@ -13,6 +17,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Department</th>
+                <th>Scope</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -23,6 +28,7 @@
                 <td><%= announcement.title %></td>
                 <td><%= announcement.author.name %></td>
                 <td><%= announcement.department.name%></td>
+                <td><%= announcement.category %></td>
                 <td><%= announcement.status %></td>
                 <td>
                     <a href="/announcements/<%= announcement._id%>/edit"><i class="ui icon edit large"></i></a>
