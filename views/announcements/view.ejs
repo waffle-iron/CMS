@@ -8,10 +8,17 @@
         text-decoration: none;
         color: inherit;
     }
+    .annoucement-title{
+        margin-bottom: 15px!important;
+    }
 
 </style>
 
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+
+    <div class="ui header right aligned">
+        <a href="/announcements/new" data-tooltip="Add New Announcement" data-position="bottom right"><i class=" medium plus square outline icon" ></i></a>
+    </div>
     <h2 class="ui icon header center aligned">
         <i class="announcement icon"></i>
         <div class="content">
@@ -37,7 +44,7 @@
                     <% }) %>
                 </div>
                 <div class="content ">
-                    <p class="header"><%= announcement.title%></p>
+                    <p class="header annoucement-title"><%= announcement.title%></p>
                     <div class="announcement ">
                         <%- announcement.body %>
                     </div>
