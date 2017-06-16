@@ -43,7 +43,7 @@
                 <td><i class="checkmark icon"></i></td>
                 <td><% if (announcement.exposedToCountry) {%> <i class="checkmark icon"></i> <%}%></td>
                 <td><% if (announcement.exposedGlobally) {%> <i class="checkmark icon"></i> <%}%></td>
-                <td>Country goes here</td>
+                <td><%= announcement.author.id.country%></td>
                 <td><%= announcement.category %></td>
                 <td><%= announcement.status %></td>
                 <td>

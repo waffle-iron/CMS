@@ -76,7 +76,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 
 /* shows the announcement approval form */
 router.get('/approval', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res,next){
-    Announcement.find( {'status': 'Pending'}).populate('user department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+    Announcement.find( {'status': 'Pending'}).populate('author.id department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
