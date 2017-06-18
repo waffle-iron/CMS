@@ -24,7 +24,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
             if (err) {
                 console.log(err);
             } else {
-                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name:  category, url: '/?category='+ category}]);
+                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name:  category, url: '/announcements/?category='+ category}]);
                 res.render('announcements/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
             }
         });
