@@ -109,16 +109,17 @@
         </div>
         <div class="six wide field">
           <div class="inline fields">
+            <!--check which radio button is selected and display-->
             <label>Announcement Type</label>
             <div class="field">
               <div class=" radio checkbox">
-                <input type="radio" name="announcement[category]" checked="" name="category" value="public" id="public">
+                <input type="radio" name="announcement[category]" <% if(announcement.category === "public") { %> checked="checked" <%}%> name="category" value="public" id="public">
                 <label>Public</label>
               </div>
             </div>
             <div class="field">
               <div class=" radio checkbox">
-                <input type="radio" name="announcement[category]" checked="" name="category" value="company" id="company">
+                <input type="radio" name="announcement[category]" <% if(announcement.category === "company") { %> checked="checked" <%}%> name="category" value="company" id="company">
                 <label>Company</label>
               </div>
             </div>
@@ -189,13 +190,6 @@
           idArray.push(selTag);
       });
       $('.ui.dropdown.new-tags').dropdown('set selected', idArray);
-
-
-      if ( <%= announcement.category%> === 'company') {
-          $("#company").prop('checked', true);
-      } else {
-          $("#public").prop('checked', true);
-      }
 
 </script>
 <script src="/javascripts/new-form.js"></script>
