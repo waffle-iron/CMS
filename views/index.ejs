@@ -61,11 +61,13 @@
                 </div>
             </div>
         </div>
+        <!-- Right Menu with announcements/widgets-->
         <div class="right floated six wide column">
+            <!--Company Announcements-->
             <div class="ui raised very text segment" id="short-announcements">
-                <p class="ui orange ribbon label">Announcements</p>
+                <p class="ui orange ribbon label">Company Announcements</p>
                 <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
-                    <% announcements.forEach(function(announcement){ %>
+                    <% announcementsCompany.forEach(function(announcement){ %>
                     <li>
                         <div class="ui feed">
                             <div class="event">
@@ -87,6 +89,33 @@
                 </ul>
                 <a class="announce-more" href="/announcements/?category=company">view more...</a>
             </div>
+            <!--Public Announcements-->
+            <!--TODO: Populate the announcements-->
+            <div class="ui raised very text segment" id="short-announcements">
+                <p class="ui teal ribbon label">Public Announcements</p>
+                <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
+                    <% announcementsPublic.forEach(function(announcement){ %>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label ">
+                                    <img src="<%= announcement.department.icon %>">
+                                </div>
+                                <div class="text content">
+                                    <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
+                                    <h5>
+                                        <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                    </h5>
+                                    <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,80) %>
+                                    <a href="/announcements/<%- announcement._id %>">...More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+                <a class="announce-more" href="/announcements/?category=public">view more...</a>
+            </div>
             <div class="ui raised very text segment">
                 <p class="ui red ribbon label">Upcoming Holidays</p>
                 <div class="ui celled list">
@@ -94,7 +123,6 @@
                         <div class="item">
                             <img class="ui avatar image" src="http://www.clipartbest.com/cliparts/yco/eqz/ycoeqzaKi.svg">
                             <div class="content">
-
                                 <div class="header"><%= holiday.reason %></div>
                                 <div><%= new Date(holiday.date).toLocaleDateString()%></div>
                             </div>

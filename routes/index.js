@@ -20,13 +20,16 @@ router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
         },
         function (cb) {
           calendar(req.user.office,cb);
+        },
+        function (cb) {
+            Announcement.find({'category': 'public', 'status': 'Approved'},null,{sort : {creationDate: 'desc'}}).populate('department').limit(5).exec(cb);
         }
     ], function (err, result) {
         if(err){
             console.log(err)
         } else {
             req.breadcrumbs();
-            res.render('index', {announcements: result[0], applications: result[1], calendar: result[2], breadcrumbs: req.breadcrumbs()});
+            res.render('index', {announcementsCompany: result[0], applications: result[1], calendar: result[2], announcementsPublic: result[3], breadcrumbs: req.breadcrumbs()});
         }
     });
 });
