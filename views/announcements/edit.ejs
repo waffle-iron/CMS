@@ -127,16 +127,10 @@
         </div>
       </div>
     </div>
-      <!-- if the user is a system admin, show transaction option-->
-      <% if (currentUser.roles.indexOf('system-admin') > -1) { %>
-            <% include ../partials/transaction.ejs %>
-      <% } %>
-
       <!-- if the form has been already been submited, change status for re-approval -->
       <% if (announcement.status === "Approved" && currentUser.roles.indexOf('user') == -1) { %>
             <input type="hidden" name="announcement[status]" value="Pending">
       <% } %>
-
     <!--submission section -->
     <footer class="ui grid footer segment">
       <div class="two column row">
