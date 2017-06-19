@@ -16,7 +16,11 @@
             <div class="ui segment">
                 <div class="fields">
                     <div class="field new-pic">
-                        <img class="item img-icon" src="/images/departments/Default.svg" alt="Default Icon">
+                        <label for="image-upload">
+                            <img class="item img-icon" src="/images/departments/Default.svg" alt="Default Icon">
+                        </label>
+                        <!--field gets populated by jquery based on category and department-->
+                        <input id="image-upload" type="input" accept=".svg" name="announcement[imageUrl]">
                     </div>
                     <div class="fifteen wide field">
                         <div class="fields">
@@ -27,14 +31,12 @@
                             <!--Department Dropdown List -->
                             <div class="required four wide field">
                                 <label>Department</label>
-
-                                    <select class="ui search selection dropdown new-dep" name="announcement[department]">
+                                    <select class="ui search selection dropdown new-dep" name="announcement[department]" onchange="populatePic()">
                                         <option value="">Department</option>
                                         <% departments.forEach(function(dep){ %>
                                         <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%- dep.name%></option>
                                         <% })%>
                                     </select>
-
                             </div>
                         </div>
                         <div class="fields form-row">
@@ -106,13 +108,13 @@
                                 <label>Announcement Type</label>
                                 <div class="field">
                                     <div class=" radio checkbox">
-                                        <input type="radio" name="announcement[category]" checked="checked" name="category" value="public">
+                                        <input type="radio" name="announcement[category]" checked="checked" value="public" onclick="populatePic()">
                                         <label>Public</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class=" radio checkbox">
-                                        <input type="radio" name="announcement[category]" name="category" value="company">
+                                        <input type="radio" name="announcement[category]" value="company" onclick="populatePic()">
                                         <label>Company</label>
                                     </div>
                                 </div>

@@ -33,6 +33,22 @@ $('.ui.modal')
     .modal('attach events', '#preview', 'show')
 ;
 
+/*populate announcement picture based on department.
+if the category is public, set default image (no department shown).
+ */
+
+function populatePic() {
+    var isPublic = $('.radio.checkbox [value=public]').is(":checked");
+    var selectedDep = $('.new-dep option:selected').data("support");
+    if(isPublic){
+        $('#image-upload').val('/images/departments/Default.svg');
+    } else {
+        $('#image-upload').val(selectedDep);
+    }
+}
+
+
+
 $.fn.form.settings.rules.myCustomRule = function() {
     // Your validation condition goes here
     return ($('#content-body p') === '');

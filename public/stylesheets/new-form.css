@@ -60,3 +60,9 @@ ui.label:first-child {
 .form-row {
     margin-top: 10px!important;
 }
+
+/* hide input imageURL field */
+
+#image-upload {
+    display: none;
+}

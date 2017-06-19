@@ -11,7 +11,7 @@ var announcementSchema = new Schema({
     title: String,
     body: String,
     category: {type: String, enum:category},
-    imageUrl: {type: String, default: ''},
+    imageUrl: {type: String, default: '/images/departments/Default.svg'},
     creationDate: {type: Date, default: Date.now},
     archiveAfter: {type: Number, default: 30},
     department: {

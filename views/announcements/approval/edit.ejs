@@ -8,7 +8,7 @@
         <i class="announcement icon"></i>
         <div class="content">
             Announcement Form
-            <div class="sub header">Use the Below Form to Submit a Edit Announcement</div>
+            <div class="sub header">Use the Below Form for Approval</div>
         </div>
     </h2>
     <!--Form Starts here -->
@@ -16,7 +16,11 @@
         <div class="ui segment">
             <div class="fields">
                 <div class="field new-pic">
-                    <img class="item img-icon" src="<%= announcement.department.picture%>" alt="Default Icon">
+                    <label for="image-upload">
+                        <img class="item img-icon" src="<%= announcement.imageUrl%>" alt="Default Icon">
+                    </label>
+                    <!--field gets populated by jquery based on category and department-->
+                    <input id="image-upload" type="input" accept=".svg" name="announcement[imageUrl]" value="<%- announcement.imageUrl%>">
                 </div>
                 <div class="fifteen wide field">
                     <div class="fields">
@@ -28,7 +32,7 @@
                         <div class="required four wide field">
                             <label>Department</label>
                             <div class="field">
-                                <select class="ui search selection dropdown new-dep" name="announcement[department]" id="tag-dropdown">
+                                <select class="ui search selection dropdown new-dep" name="announcement[department]" id="tag-dropdown" onchange="populatePic()>
                                     <option value="" >Department</option>
                                     <% departments.forEach(function(dep){ %>
                                     <%if (announcement.department.id == dep._id){%>
@@ -113,13 +117,19 @@
                         <label>Announcement Type</label>
                         <div class="field">
                             <div class=" radio checkbox">
-                                <input type="radio" name="announcement[category]" <% if(announcement.category === "public") { %> checked="checked" <%}%> name="category" value="public" id="public">
+                                <input type="radio" name="category" value="public" id="public" onclick="populatePic()" name="announcement[category]"
+                                        <% if(announcement.category === "public") { %>
+                                       checked="checked"
+                                        <%}%> >
                                 <label>Public</label>
                             </div>
                         </div>
                         <div class="field">
                             <div class=" radio checkbox">
-                                <input type="radio" name="announcement[category]" <% if(announcement.category === "company") { %> checked="checked" <%}%> name="category" value="company" id="company">
+                                <input type="radio" name="category" value="company" id="company" onclick="populatePic()" name="announcement[category]"
+                                        <% if(announcement.category === "company") { %>
+                                       checked="checked"
+                                        <%}%>>
                                 <label>Company</label>
                             </div>
                         </div>
