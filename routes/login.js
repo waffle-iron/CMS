@@ -22,8 +22,6 @@ router.post('/', passport.authenticate('ldapauth',{
             if(err){
                 console.log(err);
             } else {
-                var roles = [];
-
                 if(user === null) {
                     //add user
                     var newUser = new User({
@@ -35,7 +33,10 @@ router.post('/', passport.authenticate('ldapauth',{
                         office: req.user.physicalDeliveryOfficeName || 'N/A',
                         country: req.user.country || 'N/A',
                         listOfApps: [],
-                        roles: [],
+                        role: {
+                            id: ObjectId("592523ffb6680c365c61c3fc"),
+                            roleName: 'user'
+                        },
                         accountEnabled: true
 
                     })
@@ -45,7 +46,7 @@ router.post('/', passport.authenticate('ldapauth',{
                             res.redirect('/login');
                         } else {
                             req.session.passport.user._id  = user._id.toString();
-                            req.session.passport.user.roles = [];
+                            req.session.passport.user.role = user.role;
                             req.flash('success', 'welcome to CCC Portal');
                             res.redirect(req.session.returnTo || '/');
                             delete req.session.returnTo;
@@ -53,11 +54,10 @@ router.post('/', passport.authenticate('ldapauth',{
                     })
 
                 } else {
-                    user.roles.forEach(function (role) {
-                        roles.push(role.name);
-                    });
-
-                    req.session.passport.user.roles = roles;
+                    req.session.passport.user.role.id = user.role.id;
+                    req.session.passport.user.role.roleName = user.role.roleName;
+                    req.session.passport.user.role.listOfCountries = user.role.listOfCountries;
+                    req.session.passport.user.role.listOfSites = user.role.listOfSites;
                     req.session.passport.user._id  = user._id.toString();
                     res.redirect(req.session.returnTo || '/');
                     delete req.session.returnTo;

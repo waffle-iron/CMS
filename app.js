@@ -122,7 +122,7 @@ passport.serializeUser(function(user, done) {
         country: user.co || 'Greece',
         department: user.department,
         thumbnail:  Buffer.from(user._raw.thumbnailPhoto,'binary').toString('base64'),
-        roles: user.roles
+        role: user.role || {}
     };
 
     done(null, sessionUser);
