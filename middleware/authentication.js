@@ -22,7 +22,7 @@ exports.isLoggedIn = function(req, res, next) {
 };
 
 exports.isSystemAdmin = function (req, res, next) {
-    if (req.user.roles.indexOf('system-admin') > -1){
+    if (Object.keys(req.user.role).length !== 0 && req.user.role.roleName == 'system-admin'){
         return next();
     } else {
         req.flash('error', 'you dont have permission');
@@ -31,7 +31,8 @@ exports.isSystemAdmin = function (req, res, next) {
 }
 
 exports.isSiteAdmin = function (req, res, next) {
-    if (req.user.roles.indexOf('site-admin') > -1){
+    //Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin'
+    if (Object.keys(req.user.role).length !== 0 && req.user.role.roleName == 'site-admin'){
         return next();
     } else {
         req.flash('error', 'you dont have permission');
