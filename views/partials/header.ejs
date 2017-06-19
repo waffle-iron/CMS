@@ -43,7 +43,7 @@
         <i class="sidebar icon"></i>
       </a>
       <a class="item" href="/">Home</a>
-      <% if (Object.keys(currentUser).length === 0 && obj.constructor === Object && currentUser.role.roleName === 'system-admin' > -1) { %>
+      <% if (Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') {  %>
         <div class="ui  dropdown item">
             <p class="menu-margin">Admin</p>
             <div class="ui vertical menu">
