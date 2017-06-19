@@ -75,42 +75,13 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 });
 
 /* displays the list of pending announcements to be approved */
-router.get('/approval/view', auth.ensureLoggedIn('/login'), middleware.validateRole('system-admin'), function(req, res,next){
+router.get('/approval', auth.ensureLoggedIn('/login'), middleware.validateRole('system-admin'), function(req, res,next){
     Announcement.find( {'status': 'Pending'}).populate('author.id department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
             req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Approval', url: 'approval'}]);
-            res.render('announcements/approval/view', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
-        }
-    });
-});
-
-/* displays the admin edit menu for approving individual announcement */
-router.get('/approval/:id/edit', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res,next){
-    async.parallel([
-        function (cb) {
-            Tag.find({},cb);
-        },
-        function (cb) {
-            Department.find({},cb);
-        },
-        function (cb) {
-            Announcement.findById(req.params.id).populate('department').exec(cb);
-        }
-    ],function (err, result) {
-        if(err) {
-            console.log(err)
-        }else {
-            console.log(result);
-            if(result[2] === null){
-                req.breadcrumbs({name: 'Announcements', url: '/announcements'})
-                res.redirect('/announcements', {breadcrumbs: req.breadcrumbs()});
-            } else {
-                req.breadcrumbs([{name: 'Announcements', url: '/announcements'}, {name: 'Approve', url: 'approve'}]);
-                res.render('announcements/approval/edit', {tags: result[0], departments: result[1], announcement: result[2], breadcrumbs: req.breadcrumbs()});
-            }
-
+            res.render('announcements/approval', {announcements: announcements, breadcrumbs: req.breadcrumbs()});
         }
     });
 });
@@ -165,9 +136,11 @@ router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
     Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, toBeUpdated) {
         if(err){
             res.redirect('/announcements');
-        } else if (~req.headers.referer.indexOf("/announcements/approval/")) {
-            res.redirect('/announcements/approval/view');
-        }else{
+        } else {
+            if(req.user.role.roleName === 'user'){
+                toBeUpdated.status = 'Pending';
+                toBeUpdated.save();
+            }
             res.redirect('/announcements');
         }
     });

@@ -137,9 +137,9 @@
         </div>
       </div>
     </div>
-      <!-- if the form has been already been submited, change status for re-approval using hidden input -->
-      <% if (announcement.status === "Approved" && currentUser.roles.indexOf('user') == -1) { %>
-            <input type="hidden" name="announcement[status]" value="Pending">
+    <!-- if the user is a system admin, show transaction option-->
+      <% if (Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') {  %>
+          <% include ../partials/transaction.ejs %>
       <% } %>
     <!--submission section -->
     <footer class="ui grid footer segment">

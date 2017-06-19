@@ -219,8 +219,10 @@ var users = [
         country: 'Greece',
         listOfApps: [],
         role: {
-            id: ObjectId("59200ab998d04d097040af6f"),
-            roleName: 'site-admin'
+            // id: ObjectId("59200ab998d04d097040af6f"),
+            // roleName: 'site-admin'
+            id: ObjectId("592523ffb6680c365c61c3fc"),
+            roleName: 'user'
         },
         accountEnabled: true
     },{

@@ -1,4 +1,4 @@
-<% include ../../partials/header.ejs %>
+<% include ../partials/header.ejs %>
 <style>
     td:nth-of-type(8) {
         text-transform: capitalize;
@@ -47,7 +47,7 @@
                 <td><%= announcement.category %></td>
                 <td><%= announcement.status %></td>
                 <td>
-                    <a href="/announcements/approval/<%= announcement._id%>/edit"><i class="ui icon edit large"></i></a>
+                    <a href="/announcements/<%= announcement._id%>/edit"><i class="ui icon edit large"></i></a>
                 </td>
             </tr>
             <% }) %>
@@ -61,4 +61,4 @@
     } );
 
 </script>
-<% include ../../partials/footer.ejs %>
+<% include ../partials/footer.ejs %>

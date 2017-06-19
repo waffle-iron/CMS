@@ -53,7 +53,7 @@
                         <%- announcement.body %>
                     </div>
                 </div>
-                <% if (currentUser.roles.indexOf('system-admin') > -1 || announcement.author.name === currentUser.name) { %>
+                <% if ((Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') || announcement.author.name === currentUser.name) { %>
                     <a href="" class="edit-url"><i class="edit icon"></i></a>
                 <% } %>
             </div>
