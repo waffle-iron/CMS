@@ -206,7 +206,7 @@ var users = [
         department: 'ISD',
         country: 'Greece',
         listOfApps: [],
-        roles: [ObjectId("59200ab998d04d097040af6e")],
+        role: { id: ObjectId("59200ab998d04d097040af6e"), roleName: 'system-admin'},
         accountEnabled: true
     },{
         _id: ObjectId("592416130fc2fd16dc6a7072"),
@@ -218,7 +218,10 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: [ObjectId("59200ab998d04d097040af6f")],
+        role: {
+            id: ObjectId("59200ab998d04d097040af6f"),
+            roleName: 'site-admin'
+        },
         accountEnabled: true
     },{
         _id: ObjectId("592416130fc2fd16dc6a7073"),
@@ -230,7 +233,10 @@ var users = [
         office: 'MOA',
         country: 'Greece',
         listOfApps: [],
-        roles: ObjectId("59200ab998d04d097040af6f"),
+        role: {
+                id: ObjectId("592523ffb6680c365c61c3fc"),
+                roleName: 'user'
+        },
         accountEnabled: true
     }
 ]

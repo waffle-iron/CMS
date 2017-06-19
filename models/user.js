@@ -17,10 +17,15 @@ var userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Application'
     }],
-    roles : [{
-        type: Schema.Types.ObjectId,
-        ref: 'Role'
-    }],
+    role: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Role'
+        },
+        roleName: {type: String, default: 'User'},
+        listOfCountries: [],
+        listOfSites: []
+    },
     accountEnabled: Boolean
 });
 
