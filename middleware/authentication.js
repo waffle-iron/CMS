@@ -21,6 +21,17 @@ exports.isLoggedIn = function(req, res, next) {
     }
 };
 
+exports.validateRole = function (roleName) {
+    return function(req, res, next) {
+        if (Object.keys(req.user.role).length !== 0 && req.user.role.roleName == roleName){
+            return next();
+        } else {
+            req.flash('error', 'you dont have permission');
+            res.redirect('back');
+        }
+    }
+};
+
 exports.isSystemAdmin = function (req, res, next) {
     if (Object.keys(req.user.role).length !== 0 && req.user.role.roleName == 'system-admin'){
         return next();
