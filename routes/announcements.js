@@ -75,7 +75,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 });
 
 /* displays the list of pending announcements to be approved */
-router.get('/approval/view', auth.ensureLoggedIn('/login'), middleware.isSystemAdmin, function(req, res,next){
+router.get('/approval/view', auth.ensureLoggedIn('/login'), middleware.validateRole('system-admin'), function(req, res,next){
     Announcement.find( {'status': 'Pending'}).populate('author.id department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
         if(err){
             console.log(err);
