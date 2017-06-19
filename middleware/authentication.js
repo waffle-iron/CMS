@@ -28,7 +28,16 @@ exports.isSystemAdmin = function (req, res, next) {
         req.flash('error', 'you dont have permission');
         res.redirect('back');
     }
-}
+};
+
+exports.isCountryAdmin = function (req, res, next) {
+    if (Object.keys(req.user.role).length !== 0 && req.user.role.roleName == 'country-admin'){
+        return next();
+    } else {
+        req.flash('error', 'you dont have permission');
+        res.redirect('back');
+    }
+};
 
 exports.isSiteAdmin = function (req, res, next) {
     //Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin'
@@ -38,7 +47,7 @@ exports.isSiteAdmin = function (req, res, next) {
         req.flash('error', 'you dont have permission');
         res.redirect('back');
     }
-}
+};
 
 exports.findUser = function (username) {
     var query = util.format(
@@ -52,4 +61,4 @@ exports.findUser = function (username) {
         }
         return users;
     });
-}
+};
