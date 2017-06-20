@@ -72,6 +72,10 @@
         </div>
       </div>
     </div>
+      <!-- if the user is a system admin, show transaction option-->
+      <% if (Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') {  %>
+      <% include ../partials/transaction.ejs %>
+      <% } %>
     <!--WYSIWYG Editor CKeditor-->
     <div class="ui segment">
       <div class="required field">
@@ -118,7 +122,7 @@
             <label>Announcement Type</label>
             <div class="field">
               <div class=" radio checkbox">
-                <input type="radio" name="category" value="public" id="public" onclick="populatePic()" name="announcement[category]"
+                <input type="radio" value="public" id="public" onclick="populatePic()" name="announcement[category]"
                         <% if(announcement.category === "public") { %>
                               checked="checked"
                         <%}%> >
@@ -127,7 +131,7 @@
             </div>
             <div class="field">
               <div class=" radio checkbox">
-                <input type="radio" name="category" value="company" id="company" onclick="populatePic()" name="announcement[category]"
+                <input type="radio" value="company" id="company" onclick="populatePic()" name="announcement[category]"
                         <% if(announcement.category === "company") { %>
                               checked="checked"
                         <%}%>>
@@ -138,10 +142,7 @@
         </div>
       </div>
     </div>
-    <!-- if the user is a system admin, show transaction option-->
-      <% if (Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') {  %>
-          <% include ../partials/transaction.ejs %>
-      <% } %>
+
     <!--submission section -->
     <footer class="ui grid footer segment">
         <div class="two column row">

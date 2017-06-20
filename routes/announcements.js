@@ -137,10 +137,13 @@ router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
         if(err){
             res.redirect('/announcements');
         } else {
+            //if the user edits the form, the state changes to pending to be re-approved
             if(req.user.role.roleName === 'user'){
                 toBeUpdated.status = 'Pending';
                 toBeUpdated.save();
             }
+            //if admin changes status to approved, transaction changes to approved
+
             res.redirect('/announcements');
         }
     });
