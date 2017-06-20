@@ -143,7 +143,10 @@ router.put('/:id', auth.ensureLoggedIn('/login'), function (req, res, next) {
                 toBeUpdated.save();
             }
             //if admin changes status to approved, transaction changes to approved
-
+            if(req.body.announcement.status === "Approved"){
+               toBeUpdated.transaction.isApproved = true;
+               toBeUpdated.save();
+            }
             res.redirect('/announcements');
         }
     });
