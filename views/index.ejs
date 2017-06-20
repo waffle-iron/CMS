@@ -76,11 +76,11 @@
                                 </div>
                                 <div class="text content">
                                     <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
-                                    <h5>
-                                        <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
-                                    </h5>
-                                    <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,80) %>
-                                    <a href="/announcements/<%- announcement._id %>">...More</a>
+                                    <a href="/announcements/<%- announcement._id %>">
+                                        <h5>
+                                            <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                        </h5>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -103,11 +103,11 @@
                                 </div>
                                 <div class="text content">
                                     <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
-                                    <h5>
-                                        <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
-                                    </h5>
-                                    <%- announcement.body.replace(/<(?:.|\n)*?>/gm, '').substring(0,80) %>
-                                    <a href="/announcements/<%- announcement._id %>">...More</a>
+                                    <a href="/announcements/<%- announcement._id %>">
+                                        <h5>
+                                            <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                        </h5>
+                                    </a>
                                 </div>
                             </div>
                         </div>
