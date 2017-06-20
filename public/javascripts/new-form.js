@@ -14,7 +14,8 @@ $('#preview').click(function(){
     $('.article-date').text(today.toDateString());
     $('.article-title').text($('.new-title').val());
     $('.article-text').html(CKEDITOR.instances.editor1.getData());
-    $('.article-img').attr('src',$('.new-dep option:selected').data("support"));
+    $('.article-img').attr('src',$('#image-upload').val());
+    //$('.article-img').attr('src',$('.new-dep option:selected').data("support"));
 
     //Clear Tags and re-populate
     $('.article-tags').empty();
