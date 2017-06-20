@@ -5,6 +5,7 @@
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
   <!--Header -->
   <h2 class="ui icon header center aligned">
+        <br>
     <i class="announcement icon"></i>
     <div class="content">
       Announcement Form
@@ -143,27 +144,28 @@
       <% } %>
     <!--submission section -->
     <footer class="ui grid footer segment">
-      <div class="two column row">
-        <div class="four wide column">
-          <div class="ui checkbox left floated label-padding">
-            <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
-            <label>Add New Announcement</label>
-          </div>
+        <div class="two column row">
+            <div class="six wide column">
+                <div class="ui checkbox left floated label-padding">
+                    <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
+                    <label>Add New Announcement</label>
+                </div>
+            </div>
+            <div class="right floated right aligned ten wide column">
+                <div class="ui negative basic button" id="delete">Delete</div>
+                <div class="ui buttons">
+                    <p class="ui button" id="preview">Preview</p>
+                         <div class="or"></div>
+                    <button class="ui positive submit button" type="submit">Submit</button>
+                </div>
+            </div>
         </div>
-        <div class="right floated right aligned twelve wide column">
-          <div class="ui buttons">
-            <p class="ui button" id="preview">Preview</p>
-            <div class="or"></div>
-            <button class="ui positive submit button" type="submit">Submit</button>
-          </div>
-        </div>
-      </div>
     </footer>
     <div class="ui error message"></div>
   </form>
 </div>
 
-<!-- Set Modal -->
+<!-- Set Modal for edit preview -->
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="ui raised very padded text segment" id="modal-preview">
@@ -187,6 +189,30 @@
     </div>
   </div>
 </div>
+
+<!--set modal for confirmation of delete-->
+<div class="ui basic modal">
+    <div class="ui icon header">
+        <i class="trash outline icon"></i>
+          Delete Announcement
+    </div>
+    <div class="content center aligned segment">
+        <p class="delete-warning">Once you delete an announcement, there is no going back. Please be certain.</p>
+    </div>
+    <div class="actions">
+        <form action="/announcements/<%- announcement._id%>?_method=PUT" method="post">
+            <div class="ui basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+            </div>
+            <button class="ui red  button" name="announcement[toBeRemoved]" value=true>
+                <i class="checkmark icon"></i>
+                Yes
+            </button>
+        </form>
+    </div>
+</div>
+
 <script>
       var idArray = [];
       var importedTags = <%- JSON.stringify(announcement.tags)%>;

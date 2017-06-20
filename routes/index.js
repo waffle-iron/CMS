@@ -13,7 +13,7 @@ var express         = require('express'),
 router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
     async.parallel([
         function (cb) {
-            Announcement.find({'category': 'company', 'status': 'Approved'},null,{sort : {creationDate: 'desc'}}).populate('department').limit(5).exec(cb);
+            Announcement.find({'category': 'company', 'status': 'Approved', 'toBeRemoved': { $ne: true}},null,{sort : {creationDate: 'desc'}}).populate('department').limit(5).exec(cb);
         },
         function (cb) {
             Application.find({},cb)
@@ -22,7 +22,7 @@ router.get('/', auth.ensureLoggedIn('/login'), function(req, res, next) {
           calendar(req.user.office,cb);
         },
         function (cb) {
-            Announcement.find({'category': 'public', 'status': 'Approved'},null,{sort : {creationDate: 'desc'}}).populate('department').limit(5).exec(cb);
+            Announcement.find({'category': 'public', 'status': 'Approved', 'toBeRemoved': { $ne: true}},null,{sort : {creationDate: 'desc'}}).populate('department').limit(5).exec(cb);
         }
     ], function (err, result) {
         if(err){

@@ -20,7 +20,7 @@ router.get('/',auth.ensureLoggedIn('/login'), function (req,res, next) {
     //Check category from query field to render page. Default renders company announcements
     var category = req.query.category || 'company' ;
 
-        Announcement.find({'category': category, 'status': 'Approved'}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+        Announcement.find({'category': category, 'status': 'Approved','toBeRemoved': { $ne: true}}).populate('department tags').sort({creationDate: 'desc'}).exec(function (err, announcements) {
             if (err) {
                 console.log(err);
             } else {
@@ -76,7 +76,7 @@ router.get('/new', auth.ensureLoggedIn('/login'), function (req,res, next) {
 
 /* displays the list of pending announcements to be approved */
 router.get('/approval', auth.ensureLoggedIn('/login'), middleware.validateRole('system-admin'), function(req, res,next){
-    Announcement.find( {'status': 'Pending'}).populate('author.id department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
+    Announcement.find( {'status': 'Pending','toBeRemoved': { $ne: true}}).populate('author.id department').sort({creationDate: 'desc'}).exec(function (err, announcements) {
         if(err){
             console.log(err);
         }else {
@@ -175,9 +175,6 @@ router.get('/department/:id', auth.ensureLoggedIn('/login'), function (req, res,
         }
     });
 });
-
-
-
 
 module.exports = router;
 

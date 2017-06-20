@@ -36,6 +36,7 @@ var announcementSchema = new Schema({
         validatedBy: {type: String}
     },
     status: {type: String, default: 'Pending'},
+    toBeRemoved: {type: Boolean, default: false},
     exposedToCountry: {type: Boolean, default: false},
     exposedGlobally: {type: Boolean, default: false}
 });

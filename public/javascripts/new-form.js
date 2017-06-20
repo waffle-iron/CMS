@@ -33,6 +33,12 @@ $('.ui.modal')
     .modal('attach events', '#preview', 'show')
 ;
 
+//opens modal for delete
+$('.ui.modal')
+    .modal('attach events', '#delete', 'show')
+;
+
+
 /*populate announcement picture based on department.
 if the category is public, set default image (no department shown).
  */
