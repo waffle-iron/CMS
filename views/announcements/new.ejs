@@ -1,7 +1,11 @@
 <% include ../partials/header.ejs %>
 <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/new-form.css">
-
+<style>
+    #upload-file {
+        display: none;
+    }
+</style>
 <div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
         <!--Header -->
         <h2 class="ui icon header center aligned">
@@ -45,7 +49,7 @@
                                 <label>Duration</label>
                                 <input type="number" value="30" name="announcement[archiveAfter]" max="30" min="1">
                             </div>
-                            <div class="required twelve wide field">
+                            <div class="required ten wide field">
                                 <!-- Tag drowpdown section -->
                                 <label>Tag</label>
                                     <select class="ui search selection multiple dropdown new-tags" name="announcement[tags]">
@@ -59,6 +63,13 @@
 
                                         <% })%>
                                     </select>
+                            </div>
+                            <div class="one wide field">
+                                <label>sAttachment</label>
+                                <label for="upload-file" class="ui button">
+                                    <i class="attach icon"></i>
+                                </label>
+                                <input id="upload-file" type="file" accept=".pdf">
                             </div>
                         </div>
                     </div>

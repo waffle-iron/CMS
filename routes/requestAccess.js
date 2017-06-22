@@ -25,7 +25,8 @@ router.get('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
 
 router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
     var smtpConfig = {
-        host: '10.1.1.128',
+        /* add SMPT config */
+        host: 'SMTP-HOSTNAME',
         port: 25,
         secure: false
     };
@@ -33,7 +34,7 @@ router.post('/', auth.ensureLoggedIn('/login'), function (req, res, next) {
     var transporter = mailer.createTransport(smtpConfig);
     var mailOptions = {
         from: req.user.mail,
-        to: 'helpdesk@ccc.net',
+        to: 'admin@admin.com',
         subject: 'Access reques for : ' + req.body.application,
         html: 'Dear <strong>helpdesk : <strong>' +
               '<p></p><p></p>' +

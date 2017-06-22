@@ -4,11 +4,16 @@
 
 var ldap    = require('activedirectory'),
     util    = require('util');
+
+/**
+ * LDAP Config, fill in based on LDAP Settings
+ * @type {{url: string, baseDN: string, username: string, password: string}}
+ */
 var config = {
-    url: 'ldap://10.1.0.230:3268',
-    baseDN: 'dc=ccg,dc=local',
-    username: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
-    password: 'Admin1Admin2@'
+    url: 'ldap://HOSTNAME:PORT',
+    baseDN: 'dc=CONTOSO,dc=com',
+    username: 'CN=Computers,DC=CONTOSO,DC=com',
+    password: 'Password'
     },
     ad = new ldap(config);
 

@@ -1,5 +1,6 @@
 /**
  * Created by sghaida on 5/24/2017.
+ * Used to connect to company's Work Schedule API for WorkSchedule widget.
  */
 
 var express         = require('express'),
@@ -13,7 +14,7 @@ var express         = require('express'),
 getCalendar = function (site,cb) {
 
 
-    var req = unirest.get('http://orgcal.cf.cloud.ccg.local/cal/orgcal/getby/org/' + site).header(
+    var req = unirest.get('http://Application-URL-GOES-HERE' + site).header(
         {'Content-Type': 'application/json; '}
     ).end(function (response) {
 

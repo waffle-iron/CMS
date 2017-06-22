@@ -42,15 +42,21 @@ var roles = [
     {_id: ObjectId("59200ab998d04d097040af6e"), name: 'system-admin', description: 'administer system related functionalities'},
     {_id: ObjectId("59200ab998d04d097040af6f"), name: 'site-admin', description: 'administer site related functionalities'},
     {_id: ObjectId("592523ffb6680c365c61c3fc"), name: 'user', description: 'unprivileged user'}
-]
+];
 
+
+/**
+ * List of Default applications are imported into the DB.
+ * URL field will define the link to the webapp's URL
+ * @type {[*]}
+ */
 var apps = [
     {
         _id: ObjectId("592287f03009782848a80098"),
         name: 'ISD Wiki',
         description: 'Information Systems Department Wiki',
         imageUrl: '/images/applications/isd-wiki-bw_icon.svg',
-        url: 'https://wiki.ccc.gr',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -60,7 +66,7 @@ var apps = [
         name: 'AD Manager',
         description: 'Manage Engine Active Directory Manager',
         imageUrl: '/images/applications/isd-ad-bw_icon.svg',
-        url: 'https://cloud-adman-01.cloud.ccg.local:8443/',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -72,7 +78,7 @@ var apps = [
         name: 'Academy',
         description: 'CCC Learning Platform',
         imageUrl: '/images/applications/academy-bw_icon.svg',
-        url: 'https://ccctraining.ccc.net',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -83,7 +89,7 @@ var apps = [
         name: 'My Files',
         description: 'Next-cloud File Sharing',
         imageUrl: '/images/applications/my-files-bw_icon.svg',
-        url: 'http://share.ccc.net',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -94,7 +100,7 @@ var apps = [
         name: 'Fanous',
         description: 'Knowledge Management Platform',
         imageUrl: '/images/applications/fanous-bw_icon.svg',
-        url: 'http://fanous.ccc.gr',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -105,7 +111,7 @@ var apps = [
         name: 'Webmail',
         description: 'MOA Webmail',
         imageUrl: '/images/applications/webmail-icon.svg',
-        url: 'https://moawebmail.ccc.gr/owa',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -115,7 +121,7 @@ var apps = [
         name: 'Maximo',
         description: 'IBM Maximo',
         imageUrl: '/images/applications/maximo-bw_icon.svg',
-        url: 'http://maximo.ccc.gr',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -126,7 +132,7 @@ var apps = [
         name: 'Citrix',
         description: 'Citrix Apps',
         imageUrl: '/images/applications/citrix-bw_icon.svg',
-        url: 'https://apps.ccc.net',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -137,7 +143,7 @@ var apps = [
         name: 'iBill',
         description: 'Lync Telephony Billing System',
         imageUrl: '/images/applications/ibill-bw_icon.svg',
-        url: 'http://ibill.ccc.gr/ibill',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -147,7 +153,7 @@ var apps = [
         name: 'IT Induction',
         description: 'IT Awareness and Training Courses',
         imageUrl: '/images/applications/isd-Induction.svg',
-        url: 'https://ccctraining.ccc.net/course/view.php?id=29',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -157,7 +163,7 @@ var apps = [
         name: 'IT Quality',
         description: 'Awareness and Training Courses',
         imageUrl: '/images/applications/isd-Quality.svg',
-        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=664',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -167,7 +173,7 @@ var apps = [
         name: 'ISMS',
         description: 'Information Security Management System',
         imageUrl: '/images/applications/isd-ISMS.svg',
-        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=665',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -177,7 +183,7 @@ var apps = [
         name: ' RASO Induction',
         description: 'RASO Induction, Awareness and Training Courses',
         imageUrl: '/images/applications/isd-RASO.svg',
-        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=669',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -187,7 +193,7 @@ var apps = [
         name: 'HSE Induction',
         description: 'HSE Induction, Awareness and Training Courses',
         imageUrl: '/images/applications/isd-HSE.svg',
-        url: 'https://ccctraining.ccc.net/mod/page/view.php?id=666',
+        url: 'http://wwww.google.com',
         exposedTo: {sites: ['MOA'], countries: ['greece']},
         author: ObjectId("592416130fc2fd16dc6a7071"),
         owner: ObjectId("5922895f16dd790518d1e110"),
@@ -219,8 +225,6 @@ var users = [
         country: 'Greece',
         listOfApps: [],
         role: {
-            // id: ObjectId("59200ab998d04d097040af6f"),
-            // roleName: 'site-admin'
             id: ObjectId("592523ffb6680c365c61c3fc"),
             roleName: 'user'
         },

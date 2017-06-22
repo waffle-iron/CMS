@@ -79,13 +79,17 @@ app.use(expressSession({
     cookie: { maxAge: 10800000, httpOnly: true} // 3h
 }));
 
+/**
+ * LDAP Configuration
+ * Fill in the fields to connect to LDAP
+ */
 
 var ldapOpts = {
     server: {
-        url: 'ldap://10.1.0.230:3268',
-        bindDn: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
-        bindCredentials: 'Admin1Admin2@',
-        searchBase: 'dc=ccg,dc=local',
+        url: 'ldap://Hostname:Port',
+        bindDn: 'CN=Builtin,DC=CONTOSO,DC=com',
+        bindCredentials: 'Admin',
+        searchBase: 'dc=CONTOSO,dc=com',
         searchFilter: '(&(objectcategory=person)(objectclass=user)(|(samaccountname={{username}})(mail={{username}})))',
         searchAttributes: [
             'displayName',

@@ -11,10 +11,10 @@ var util        = require('util'),
     async       = require('async');
 
 var config = {
-        url: 'ldap://10.1.0.230:3268',
-        baseDN: 'dc=ccg,dc=local',
-        username: 'CN=LDAPU,DC=gr,DC=ccg,DC=local',
-        password: 'Admin1Admin2@',
+        url: 'ldap://Hostname:Port',
+        baseDN: 'DC=CONTOSO,DC=com',
+        username: 'CN=Builtin,DC=CONTOSO,DC=com',
+        password: 'Password',
         attributes: {
             user : [
                 'employeeID',
