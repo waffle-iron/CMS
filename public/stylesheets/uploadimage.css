@@ -1,0 +1,21 @@
+.img-icon {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #dededf;
+}
+
+.submit-button {
+    margin-top: 23px;
+    height: 43px;
+    padding: 0 15px;
+}
+
+.note {
+    font-size: 8pt;
+    font-style: italic;
+    color: red;
+}
+
+.fields {
+    margin-bottom: 0!important;
+}

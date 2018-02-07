@@ -1,0 +1,29 @@
+<!-- Transaction Log-->
+<div class="ui segment">
+    <div class="fields">
+        <div class="required twelve wide field">
+            <label>Approval Reason</label>
+            <input name="announcement[transaction.reason]" value="This Announcement Meets Approval Criteria"></input>
+        </div>
+        <div class="four wide field">
+            <label>Announcement Status</label>
+            <select class="ui search selection dropdown new-dep" name="announcement[status]">
+                <option value="Approved"
+                        <% if(announcement.status === 'Approved') {%>
+                            selected="selected"
+                        <% } %>
+                >Approved</option>
+                <option value="Disapprove"
+                        <% if(announcement.status === 'Disapproved') {%>
+                        selected="selected"
+                        <% } %>
+                >Disapprove</option>
+                <option value="Pending"
+                        <% if(announcement.status === 'Pending') {%>
+                        selected="selected"
+                        <% } %>
+                >Pending</option>
+            </select>
+        </div>
+    </div>
+</div>

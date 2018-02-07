@@ -1,0 +1,69 @@
+<% include ../partials/header.ejs %>
+<style>
+    .announcement-tags {
+        margin-bottom: 5px!important;
+    }
+    .edit-url {
+        font-size: 1.5em;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .annoucement-title {
+        margin-bottom: 15px!important;
+    }
+
+    .ui.breadcrumb a {
+        text-transform: capitalize;
+    }
+</style>
+
+<div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+
+    <div class="ui header right aligned">
+        <a href="/announcements/new" data-tooltip="Add New Announcement" data-position="bottom right"><i class=" medium plus square outline icon" ></i></a>
+    </div>
+    <h2 class="ui icon header center aligned">
+        <i class="announcement icon"></i>
+        <div class="content">
+            Announcements
+            <div class="sub header">Find a list of all the announcements here. Make sure to check this page daily for any new news!</div>
+        </div>
+    </h2>
+    <hr style="margin: 50px 0 50px 0; border-color: #dededf; border-top: 0; border-left:0; border-right: 0;">
+    <div class="ui raised very padded text">
+        <% announcements.forEach(function (announcement) { %>
+        <div class="ui items segment" id="<%=announcement._id%>">
+            <div class="item">
+                <div class="ui small image">
+                    <a href="/announcements/department/<%= announcement.department._id%>">
+                        <img class="item round-edges" src="<%= announcement.imageUrl%>" alt="department logo">
+                    </a>
+                    <h5> <%= announcement.creationDate.toLocaleDateString()%></h5>
+                    <h4>Author</h4>
+                    <p><i><%= announcement.author.name%></i></p>
+                    <h4>Tags</h4>
+                    <% announcement.tags.forEach(function(tag) { %>
+                    <a class="small ui <%= tag.color %> basic label announcement-tags" href="/announcements/tag/<%= tag._id%>"><%= tag.name %></a>
+                    <% }) %>
+                </div>
+                <div class="content ">
+                    <p class="header annoucement-title"><%= announcement.title%></p>
+                    <div class="announcement ">
+                        <%- announcement.body %>
+                    </div>
+                </div>
+                <% if ((Object.keys(currentUser).length !== 0 &&  currentUser.role.roleName == 'system-admin') || announcement.author.name === currentUser.name) { %>
+                    <a href="" class="edit-url"><i class="edit icon"></i></a>
+                <% } %>
+            </div>
+        </div>
+        <%})%>
+    </div>
+</div>
+<script>
+    $('.edit.icon').click(function(){
+        $('.edit-url').attr('href', '/announcements/'+ $(this).parent().parent().parent().attr('id') + '/edit');
+    })
+</script>
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,77 @@
+<% include ../partials/header.ejs %>
+
+<div class="ui container body segment">
+<form class="ui form" action="/users/<%- users._id%>?_method=PUT" method="post">
+    <h2 class="ui icon header center aligned">
+        <i class="announcement icon"></i>
+        <div class="content">
+            Edit Users
+            <div class="sub header">Edit an Already Existing User</div>
+        </div>
+    </h2>
+    <hr style="margin: 50px 0 50px 0;">
+    <div class="ui">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="user[email]" value="<%=users.mail%>" readonly="">
+        </div>
+        <div class="three fields">
+            <div class="eight wide field">
+                <label>Name</label>
+                <input type="text" name="user[name]" value="<%=users.name%>" readonly="">
+            </div>
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="user[title]" value="<%= users.title%>" readonly="">
+            </div>
+            <div class="four wide field">
+                <label>Group ID</label>
+                <input type="text" name="user[employeeid]" value="<%= users.employeeid %>" readonly="">
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field">
+                <label>Department</label>
+                <input type="text" name="user[department]" value="<%=users.department%>"  placeholder="ISD" readonly="">
+            </div>
+            <div class="field">
+                <label>Country</label>
+                <input type="text" name="user[country]"  value="<%=users.country%>" readonly="">
+            </div>
+            <div class="field">
+                <label>Office</label>
+                <input type="text" name="user[office]"  value="<%=users.office%>" readonly="">
+            </div>
+        </div>
+        <div class="field">
+            <label>Roles</label>
+            <select class="ui selection dropdown user-roles" name="user[roles]">
+                <option value="">Role</option>
+                <% roles.forEach(function(role){%>
+                    <option value="<%- role._id%>"><%- role.name %></option>
+                <% })%>
+            </select>
+        </div>
+            <div class="two fields">
+                <div class="field" style="margin-top: 7px;">
+                    <div class="ui toggle checkbox checked">
+                        <input type="checkbox" checked="checked" name="user[accountEnabled]">
+                        <label>Account Enabled</label>
+                    </div>
+                </div>
+                <div class="field action">
+                    <button class=" ui labeled icon button" type="submit" style="float: right">
+                        <i class="icon user"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+</form>
+</div>
+<script>
+    var test = <%- JSON.stringify(users.roles)%>;
+    $('.user-roles').dropdown('set selected', test[0].name);
+</script>
+<% include ../partials/footer.ejs %>

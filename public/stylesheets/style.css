@@ -1,8 +1,128 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.pusher {
+  padding-top: 100px;
 }
 
-a {
-  color: #00B7FF;
+body.pushable>.pusher {
+  background: #FFF3E0;
 }
+
+
+body {
+  /*
+background: #457fca;
+background: -webkit-linear-gradient(to left, #5691c8, #457fca);
+background: linear-gradient(to left, #5691c8, #457fcffa);
+*/
+  background: #FFF3E0;
+}
+
+/* index page*/
+
+a.four.wide.column {
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+  padding-bottom: 0px!important;
+}
+
+
+/* footer elements */
+.ui.footer.form-page{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+  z-index: 4;
+  text-align: center;
+  height: 1em;
+}
+.footer-description {
+  margin-top: -10px;
+}
+
+.big-app {
+  height: 180px;
+}
+.fixsize {
+  height: 120px;
+}
+
+.fluid.ui.blue.button {
+  box-shadow: 3px 3px 3px #888888;
+}
+
+.app-content {
+  margin-top: 25px;
+  border-radius: 4px;
+
+}
+.app-list {
+  padding-top: 15px;
+}
+
+.user-drop-menu p {
+  padding-left: 10px;
+  margin:0;
+}
+
+.padding-0 {
+  padding: 0 0!important;
+}
+.margin-0{
+  margin: 0 0!important;
+}
+.anounce-padding{
+  padding-left: 15px;
+}
+
+announce-width {
+  max-width: 100% !important;
+}
+
+.article-text {
+  line-height: 1.5em;
+
+}
+.ui.items>.item>.content>.description {
+  font-size: 1.1em;
+}
+
+div.scrollmenu {
+  margin-bottom: 30px!important;
+  overflow: auto;
+  position:relative;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+.announce-list li {
+  padding-bottom: 5px;
+}
+
+.five.wide.column {
+  padding: 0 0!important;
+}
+.menu-margin {
+  margin: 0;
+}
+
+/*Round header profile image*/
+.small-profile-image {
+  border-radius: 30px;
+}
+
+/* delete modal */
+.delete-warning {
+  text-align: center;
+}
+
+/*Round edges on announcement image */
+.round-edges {
+  border-radius: .28571429rem;
+}
+
+[class*='equal width'].ui.grid > :not(.row).column, [class*='equal width'].ui.grid > .row > .column, .ui.grid > [class*='equal width'].row > .column { -ms-flex: 1 !important; -webkit-flex: 1 !important; flex: 1 !important; /* IE 10 */ }

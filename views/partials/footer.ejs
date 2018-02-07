@@ -1,0 +1,60 @@
+          </div>
+          <footer class="ui inverted vertical footer segment form-page">
+            <div class="ui container footer-description">ISD Athens - Please contact the RND guys for any issues.</div>
+          </footer>
+      </div>
+      <script>
+          $('#toggle').on('click',function(){
+              $('.ui.sidebar').sidebar('toggle');
+          });
+
+          $('#right-menu')
+              .dropdown({
+                  // you can use any ui transition
+                  transition: 'drop'
+              });
+          $('.ui.dropdown').dropdown();
+
+          /* main search*/
+          $('#main-search')
+              .search({
+                  type: 'category',
+                  minCharacters: 2,
+                  apiSettings: {
+                      url: '/applications/find/{query}',
+                      onResponse: function(reqResponse) {
+
+                          var response = { results: {} };
+
+                          $.each(reqResponse, function(index, item){
+
+                              var name = '<img src="' + item.imageUrl + '"' +' style ="width:40px; box-sizing: initial !important;' + '">',
+                                  maxResults = 10;
+
+                              if(index > maxResults){
+                                  return false;
+                              }
+                              if(response.results[name] === undefined){
+                                  response.results[name] = {
+                                      name    :   name,
+                                      results :   []
+                                  };
+                              }
+
+                              response.results[name].results.push({
+                                  title         : item.name,
+                                  description   : item.description,
+                                  actionURL     : item.url
+                              })
+                          });
+                        return response;
+                      }
+                  },
+                  onSelect : function (result, response){
+                            debugger;
+                            window.open(result.actionURL);
+                  }
+              });
+      </script>
+    </body>
+</html>

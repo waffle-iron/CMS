@@ -1,11 +1,136 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include partials/header.ejs %>
+<style>
+    .app-logo {
+        width: 75px;
+        display: inline!important;
+    }
+    .app-name {
+        margin-top: 5px!important;
+    }
+    #short-announcements {
+        padding-bottom: 25px!important;
+    }
+    .announce-more{
+        float: right;
+    }
+    .hidden-app {
+        margin-top: 0!important;
+        background: #F5F5F5!important;
+    }
+
+    .text.content h4 {
+        margin: 0;
+    }
+
+    .event {
+        padding-bottom: 10px!important;
+    }
+    @media (min-width: 992px) {
+        .ui.ten.wide.column {
+            max-width: 60%!important;
+        }
+    }
+</style>
+
+<div class="ui container body margin-0">
+    <div class="ui two column stackable grid padding-0 margin-0">
+        <div class="ui ten wide column " style="padding:15px 0;">
+            <div class="ui four wide column stackable grid centered app-list">
+                <% applications.forEach(function(application){ %>
+                    <a href="<%= application.url%>" target="_blank" class="four wide column">
+                    <div class="ui fade reveal image" style="width:100%">
+                        <div class="ui raised very text center aligned segment fixsize visible content" style="width:100%; padding-top: 0!important;">
+                            <img class="app-logo" src="<%- application.imageUrl %>">
+                            <h4 class="ui header app-name"><%- application.name %></h4>
+                        </div>
+                        <div class="ui raised very text center aligned segment fixsize hidden middle align content hidden-app" >
+                            <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>
+                            <% if(application.isOnline) { %>
+                                <button class="ui positive basic button">Online</button>
+                            <% } else { %>
+                                <button class="ui negative basic button">Offline</button>
+                            <% }%>
+                        </div>
+                    </div>
+                </a>
+                <% }) %>
+                <div class="fifteen wide column" style="margin:  30px 0 0 0!important ; padding: 0 0!important ;">
+                    <a href="/applications">
+                        <button class="fluid ui blue button">All Apps</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Right Menu with announcements/widgets-->
+        <div class="right floated six wide column">
+            <!--Company Announcements-->
+            <div class="ui raised very text segment" id="short-announcements">
+                <p class="ui orange ribbon label">Company Announcements</p>
+                <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
+                    <% announcementsCompany.forEach(function(announcement){ %>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label ">
+                                    <img src="<%= announcement.department.icon %>">
+                                </div>
+                                <div class="text content">
+                                    <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
+                                    <a href="/announcements/<%- announcement._id %>">
+                                        <h5>
+                                            <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                        </h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+                <a class="announce-more" href="/announcements/?category=company">view more...</a>
+            </div>
+            <!--Public Announcements-->
+            <!--TODO: Populate the announcements-->
+            <div class="ui raised very text segment" id="short-announcements">
+                <p class="ui teal ribbon label">Public Announcements</p>
+                <ul class="announce-list" style="list-style-type: none;padding-left:15px;">
+                    <% announcementsPublic.forEach(function(announcement){ %>
+                    <li>
+                        <div class="ui feed">
+                            <div class="event">
+                                <div class="label ">
+                                    <img src="<%= announcement.imageUrl %>">
+                                </div>
+                                <div class="text content">
+                                    <!--<p class="date"><%- announcement.creationDate.toDateString() %></p>-->
+                                    <a href="/announcements/<%- announcement._id %>">
+                                        <h5>
+                                            <%- announcement.title.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) %>
+                                        </h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+                <a class="announce-more" href="/announcements/?category=public">view more...</a>
+            </div>
+            <div class="ui raised very text segment">
+                <p class="ui red ribbon label">Upcoming Holidays</p>
+                <div class="ui celled list">
+                    <% calendar.forEach(function (holiday) { %>
+                        <div class="item">
+                            <img class="ui avatar image" src="http://www.clipartbest.com/cliparts/yco/eqz/ycoeqzaKi.svg">
+                            <div class="content">
+                                <div class="header"><%= holiday.reason %></div>
+                                <div><%= new Date(holiday.date).toLocaleDateString()%></div>
+                            </div>
+                        </div>
+                    <%});%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

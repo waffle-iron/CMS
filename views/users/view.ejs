@@ -1,0 +1,48 @@
+<% include ../partials/header.ejs %>
+
+
+<script src="/javascripts/jquery.dataTables.min.js" async></script>
+<script src="/javascripts/dataTables.semanticui.min.js" async></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>-->
+
+<div class="ui segment aligned" style="margin-bottom: 30px; padding-top: 15px;">
+    <div class="ui sixteen wide column">
+        <table id="user" class="ui selectable celled table aligned" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Full Name</th>
+                <th>Location</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% users.forEach(function(user){ %>
+                <tr id="<%=user._id%>">
+                    <td><%= user.mail.toLowerCase()%></td>
+                    <td><%= user.name%></td>
+                    <td><%= user.country%></td>
+                    <td><%= user.department%></td>
+                    <% if (user.accountEnabled === true) {%>
+                    <td style="color: green">Enabled</td>
+                    <% } else { %>
+                    <td style="color: red">Disabled</td>
+                    <%}%>
+                    <td>
+                        <a href="/users/<%= user._id%>/edit"><i class="ui icon edit large"></i></a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#user').DataTable();
+    } );
+
+</script>
+<% include ../partials/footer.ejs %>

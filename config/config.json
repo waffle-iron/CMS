@@ -1,0 +1,6 @@
+{
+  "secret" : "=25_ar;p1100",
+  "mongo": {
+    "uri" : "mongodb://localhost/ccc-portal"
+  }
+}

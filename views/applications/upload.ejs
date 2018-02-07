@@ -1,0 +1,56 @@
+<% include ../partials/header.ejs%>
+<link rel="stylesheet" href="/stylesheets/uploadimage.css">
+<div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+    <!--Header -->
+    <h2 class="ui icon header center aligned">
+        <i class="block layout icon"></i>
+        <div class="content">
+            Upload Application Image
+            <div class="sub header">Use the Below Form to Upload an Image</div>
+        </div>
+    </h2>
+    <div class="ui segment">
+        <form class="ui form" action="image" enctype="multipart/form-data" method="post">
+            <div class="fields">
+                <div class="four wide field app-image">
+                    <img class="item img-icon" src="/images/applications/default.svg" alt="Default Icon">
+                </div>
+                <div class="twelve wide field">
+                    <div class="fields">
+                        <div class="fourteen wide field">
+                            <label>Select a file to upload</label>
+                            <input id="imgurl" type="file" name="upload" multiple accept=".svg">
+                        </div>
+                        <div class="two wide field">
+                            <input type="submit" value="Upload" class="submit-button">
+                        </div>
+                    </div>
+                    <p class="note">
+                        *Note that only *.SVG files are accept as application images.
+                        Make sure the width and height are the same (box)
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.img-icon').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgurl").change(function(){
+        readURL(this);
+    });
+
+</script>
+<% include ../partials/footer.ejs%>

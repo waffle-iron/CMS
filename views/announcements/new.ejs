@@ -1,0 +1,184 @@
+<% include ../partials/header.ejs %>
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/new-form.css">
+<style>
+    #upload-file {
+        display: none;
+    }
+</style>
+<div class="ui container body segment" style="margin-bottom: 50px; padding-top: 15px;">
+        <!--Header -->
+        <h2 class="ui icon header center aligned">
+            <i class="announcement icon"></i>
+            <div class="content">
+                Announcement Form
+                <div class="sub header">Use the Below Form to Submit a New Announcement</div>
+            </div>
+        </h2>
+        <!--Form Starts here -->
+        <form class="ui form" action="/announcements" method="post">
+            <div class="ui segment">
+                <div class="fields">
+                    <div class="field new-pic">
+                        <label for="image-upload">
+                            <img class="item img-icon" src="/images/departments/Default.svg" alt="Default Icon">
+                        </label>
+                        <!--field gets populated by jquery based on category and department-->
+                        <input id="image-upload" type="input" accept=".svg" name="announcement[imageUrl]">
+                    </div>
+                    <div class="fifteen wide field">
+                        <div class="fields">
+                            <div class="required twelve wide field">
+                                <label>Title</label>
+                                <input type="text" placeholder="Title" class="new-title" name="announcement[title]">
+                            </div>
+                            <!--Department Dropdown List -->
+                            <div class="required four wide field">
+                                <label>Department</label>
+                                    <select class="ui search selection dropdown new-dep" name="announcement[department]" onchange="populatePic()">
+                                        <option value="">Department</option>
+                                        <% departments.forEach(function(dep){ %>
+                                        <option value="<%= dep._id%>" data-support="<%= dep.picture%>"><%- dep.name%></option>
+                                        <% })%>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="fields form-row">
+                            <!-- duration dropdown list -->
+                            <div class="four wide field">
+                                <label>Duration</label>
+                                <input type="number" value="30" name="announcement[archiveAfter]" max="30" min="1">
+                            </div>
+                            <div class="required ten wide field">
+                                <!-- Tag drowpdown section -->
+                                <label>Tag</label>
+                                    <select class="ui search selection multiple dropdown new-tags" name="announcement[tags]">
+                                        <option value="">Tag</option>
+                                        <script>
+                                            this.tags = [];
+                                            this.tags.push(<%- JSON.stringify(tags)%>)
+                                        </script>
+                                        <% tags.forEach(function(tag){ %>
+                                        <option value="<%- tag._id%>"><%- tag.name%></option>
+
+                                        <% })%>
+                                    </select>
+                            </div>
+                            <div class="one wide field">
+                                <label>sAttachment</label>
+                                <label for="upload-file" class="ui button">
+                                    <i class="attach icon"></i>
+                                </label>
+                                <input id="upload-file" type="file" accept=".pdf">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--WYSIWYG Editor CKeditor-->
+            <div class="ui segment">
+                <div class="required field">
+                    <label>Content</label>
+                    <textarea name="announcement[body]" id="editor1" rows="10" cols="80">
+                        </textarea>
+                    <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        CKEDITOR.replace( 'editor1', {
+                            customConfig: '/javascripts/config.js',
+                            on:{
+                                instanceReady: function (evt)
+                                {
+                                    var editor = evt.editor,
+                                    body = editor.document.getBody();
+                                    body.setAttribute('id', 'content-body');
+                                }
+                            }
+                        });
+                    </script>
+                    </div>
+                    <div class="fields">
+                        <div class="ten wide field">
+                            <div class="inline fields">
+                                <label>Display Announcement Accross</label>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="announcement[exposedToCountry]">
+                                        <label><%= currentUser.country%></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="announcement[exposedGlobally]">
+                                        <label>All CCC</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="six wide field">
+                            <div class="inline fields">
+                                <label>Announcement Type</label>
+                                <div class="field">
+                                    <div class=" radio checkbox">
+                                        <input type="radio" name="announcement[category]" checked="checked" value="public" onclick="populatePic()">
+                                        <label>Public</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class=" radio checkbox">
+                                        <input type="radio" name="announcement[category]" value="company" onclick="populatePic()">
+                                        <label>Company</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!--submission section -->
+            <footer class="ui grid footer segment">
+                <div class="two column row">
+                    <div class="four wide column">
+                        <div class="ui checkbox left floated label-padding">
+                            <input type="checkbox" tabindex="0"  name="new-announcement" id="new-announcement">
+                            <label>Add New Announcement</label>
+                        </div>
+                    </div>
+                    <div class="right floated right aligned twelve wide column">
+                        <div class="ui buttons">
+                            <p class="ui button" id="preview">Preview</p>
+                            <div class="or"></div>
+                            <button class="ui positive submit button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+
+    <!-- Set Modal -->
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="ui raised very padded text segment" id="modal-preview">
+            <div class="ui items">
+                <div class="item">
+                    <a class="ui small image">
+                        <img class="item article-img" src="/images/departments/Default.svg" alt="Department Icon">
+                        <h5 class="article-date"></h5>
+                        <h4>Author</h4>
+                        <p><%= currentUser.name%></p>
+                        <h4>Tags</h4>
+                        <div class = "article-tags"></div>
+                    </a>
+                    <div class="content">
+                        <a class="header article-title"></a>
+                        <div class="description">
+                            <p class="article-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/javascripts/new-form.js"></script>
+
+<% include ../partials/footer.ejs %>

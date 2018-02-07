@@ -1,0 +1,64 @@
+<% include ../partials/header.ejs %>
+<style>
+    td:nth-of-type(8) {
+        text-transform: capitalize;
+    }
+    .ui.celled.table tr th:first-child {
+        border-left: 1px solid #e3e4e6;
+    }
+</style>
+
+<script src="/javascripts/jquery.dataTables.min.js" async></script>
+<script src="/javascripts/dataTables.semanticui.min.js" async></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>-->
+
+<div class="ui segment aligned" style="margin-bottom: 30px; padding-top: 15px;">
+    <div class="ui sixteen wide column">
+        <table id="user" class="ui selectable celled table aligned" cellspacing="0" width="100%">
+            <!--create a two row header with local/country/global as a submenu of Category-->
+            <thead>
+            <tr>
+                <th rowspan="2">Title</th>
+                <th rowspan="2">Author</th>
+                <th rowspan="2">Department</th>
+                <th rowspan="1" colspan="3">Announcement Scope</th>
+                <th rowspan="2">Country</th>
+                <th rowspan="2">Category</th>
+                <th rowspan="2">Status</th>
+                <th rowspan="2">Actions</th>
+            </tr>
+            <tr>
+                <th>Local</th>
+                <th>Country</th>
+                <th>Global</th>
+            </tr>
+            </thead>
+            <!--itterate through pending announcment to display them to admin-->
+            <tbody>
+            <% announcements.forEach(function(announcement){ %>
+            <tr id="<%= announcement._id %>">
+                <td><%= announcement.title %></td>
+                <td><%= announcement.author.name %></td>
+                <td><%= announcement.department.name%></td>
+                <td><i class="checkmark icon"></i></td>
+                <td><% if (announcement.exposedToCountry) {%> <i class="checkmark icon"></i> <%}%></td>
+                <td><% if (announcement.exposedGlobally) {%> <i class="checkmark icon"></i> <%}%></td>
+                <td><%= announcement.author.id.country%></td>
+                <td><%= announcement.category %></td>
+                <td><%= announcement.status %></td>
+                <td>
+                    <a href="/announcements/<%= announcement._id%>/edit"><i class="ui icon edit large"></i></a>
+                </td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#user').DataTable();
+    } );
+
+</script>
+<% include ../partials/footer.ejs %>

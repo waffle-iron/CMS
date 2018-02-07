@@ -1,0 +1,45 @@
+<% include ../partials/header.ejs%>
+<style>
+    .app-logo {
+        width: 75px;
+        display: inline!important;
+    }
+    .app-name {
+        margin-top: 5px!important;
+    }
+    .hidden-app {
+        margin-top: 0!important;
+        padding-top: 4em!important;
+        background: #F5F5F5!important;
+    }
+    .text.content h4 {
+        margin: 0;
+    }
+</style>
+<% if(error && error.length > 0) { %>
+    <div class="ui error raised message"> <%= error%></div>
+<% }%>
+<div class="ui container body margin-0">
+    <div class="ui stackable grid centered app-list" style="margin-top: 15px; padding: 0;">
+        <% applications.forEach(function(application){ %>
+        <a href="<%= application.url%>" target="_blank" class="three wide column" style="margin: 2px;padding: 2px;">
+            <div class="ui fade reveal image" style="width:100%">
+                <div class="ui raised very text center aligned segment big-app visible content" style="width:100%;">
+                    <img class="app-logo" src="<%- application.imageUrl %>">
+                    <h2 class="ui header app-name"><%- application.name %></h2>
+                </div>
+                <div class="ui raised very text center aligned segment big-app hidden middle align content hidden-app" >
+                    <p class="ui header" style="font-size: 8pt;"><%- application.description%></p>
+                    <% if(application.isOnline) { %>
+                    <button class="ui positive basic button">Online</button>
+                    <% } else { %>
+                    <button class="ui negative basic button">Offline</button>
+                    <% }%>
+                </div>
+            </div>
+        </a>
+        <% }) %>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs%>
